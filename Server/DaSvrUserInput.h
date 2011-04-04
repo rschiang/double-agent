@@ -42,7 +42,7 @@ public:
 
 // Operations
 public:
-	static DaSvrUserInput * CreateInstance (interface ISpRecoResult * pRecoResult, bool pGlobalCommand, LPCTSTR pClientMutexName = NULL);
+	static DaSvrUserInput * CreateInstance (interface ISpRecoResult* pRecoResult, bool pGlobalCommand, LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

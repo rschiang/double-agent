@@ -111,9 +111,9 @@ CAgentPopupWnd::~CAgentPopupWnd ()
 #endif
 }
 
-CAgentPopupWnd * CAgentPopupWnd::CreateInstance ()
+CAgentPopupWnd* CAgentPopupWnd::CreateInstance ()
 {
-	CComObject<CAgentPopupWnd> *	lInstance = NULL;
+	CComObject<CAgentPopupWnd>*	lInstance = NULL;
 	LogComErr (LogIfActive|LogTime, CComObject<CAgentPopupWnd>::CreateInstance (&lInstance));
 	return lInstance;
 }
@@ -267,14 +267,14 @@ HRESULT STDMETHODCALLTYPE CAgentPopupWnd::ContextSensitiveHelp (BOOL fEnterMode)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentPopupWnd::Create (CWindow * pParentWnd, CRect * pInitialRect, DWORD pExStyle)
+bool CAgentPopupWnd::Create (CWindow* pParentWnd, CRect* pInitialRect, DWORD pExStyle)
 {
 	bool				lRet = false;
 	HWND				lParentWnd = (pParentWnd) ? pParentWnd->m_hWnd : NULL;
 	CRect				lInitialRect (0,0,0,0);
 	DWORD				lStyle = WS_POPUP;
-	CAgentFile *		lAgentFile;
-	CAgentFileName *	lAgentFileName;
+	CAgentFile*		lAgentFile;
+	CAgentFileName*	lAgentFileName;
 
 	CThreadSecurity::AllowUiPiMessage (CAgentNotifyIcon::mTaskbarCreatedMsg);
 
@@ -309,7 +309,7 @@ bool CAgentPopupWnd::Create (CWindow * pParentWnd, CRect * pInitialRect, DWORD p
 			&&	(lAgentFileName = lAgentFile->FindName ())
 			)
 		{
-			SetWindowText (CAtlString ((BSTR)lAgentFileName->mName));
+			SetWindowText (CAtlString ((BSTR)lAgentFileName->Name));
 		}
 #ifdef	_LOG_INSTANCE
 		if	(LogIsActive())
@@ -334,7 +334,7 @@ bool CAgentPopupWnd::Create (CWindow * pParentWnd, CRect * pInitialRect, DWORD p
 	return lRet;
 }
 
-LRESULT CAgentPopupWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 	mNotifyIcon.Remove ();
@@ -372,7 +372,7 @@ DWORD CAgentPopupWnd::GetAlphaSmoothing () const
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentPopupWnd::Attach (long pCharID, CEventNotify * pNotify, const CAgentIconData * pIconData, bool pSetActiveCharID)
+bool CAgentPopupWnd::Attach (long pCharID, CEventNotify* pNotify, const CAgentIconData* pIconData, bool pSetActiveCharID)
 {
 	bool	lRet = false;
 	long	lPrevCharID = mCharID;
@@ -412,7 +412,7 @@ bool CAgentPopupWnd::Attach (long pCharID, CEventNotify * pNotify, const CAgentI
 //	up before the next application becomes active.
 //
 					INT_PTR			lNotifyNdx;
-					CEventNotify *	lNotify;
+					CEventNotify*	lNotify;
 					long			lInputInactiveCharID = 0;
 					long			lInputActiveCharID = 0;
 
@@ -477,7 +477,7 @@ bool CAgentPopupWnd::Attach (long pCharID, CEventNotify * pNotify, const CAgentI
 	return lRet;
 }
 
-bool CAgentPopupWnd::Detach (long pCharID, CEventNotify * pNotify)
+bool CAgentPopupWnd::Detach (long pCharID, CEventNotify* pNotify)
 {
 	bool	lRet = false;
 	long	lPrevCharID = mCharID;
@@ -498,7 +498,7 @@ bool CAgentPopupWnd::Detach (long pCharID, CEventNotify * pNotify)
 			)
 		{
 			INT_PTR			lNotifyNdx;
-			CEventNotify *	lNotify;
+			CEventNotify*	lNotify;
 			long			lInputActiveCharID = 0;
 
 			if	(
@@ -579,7 +579,7 @@ bool CAgentPopupWnd::ShowPopup (long pForCharID, VisibilityCauseType pVisiblityC
 {
 	bool			lRet = false;
 	bool			lIsPlaying = IsPlaying ();
-	CAgentFile *	lAgentFile;
+	CAgentFile*	lAgentFile;
 
 	if	(pForCharID <= 0)
 	{
@@ -618,7 +618,7 @@ bool CAgentPopupWnd::ShowPopup (long pForCharID, VisibilityCauseType pVisiblityC
 		{
 			CRect					lWindowRect;
 			CMemDCHandle			lDC;
-			tS <CAgentFileImage>	lImage;
+			CAgentFileImage			lImage;
 			UINT					lImageFormatSize;
 			tPtr <BITMAPINFO>		lImageFormat;
 			LPVOID					lBitmapBits;
@@ -629,7 +629,7 @@ bool CAgentPopupWnd::ShowPopup (long pForCharID, VisibilityCauseType pVisiblityC
 			ModifyStyleEx (0, WS_EX_LAYERED);
 
 			GetWindowRect (&lWindowRect);
-			lImage.mImageSize = lWindowRect.Size ();
+			lImage.put_ImageSize (lWindowRect.Size());
 
 			if	(
 					(
@@ -642,7 +642,7 @@ bool CAgentPopupWnd::ShowPopup (long pForCharID, VisibilityCauseType pVisiblityC
 				&&	(lAgentFile->GetImageFormat (lImageFormat, &lImage, (GetAlphaSmoothing()?true:false)))
 				)
 			{
-				BYTE			lTransparency = lAgentFile->GetTransparency();
+				BYTE			lTransparency = lAgentFile->Header.Transparency;
 				BLENDFUNCTION	lBlend = {AC_SRC_OVER, 0, 255, AC_SRC_ALPHA};
 
 				if	(!GetAlphaSmoothing())
@@ -873,7 +873,7 @@ bool CAgentPopupWnd::HidePopup (long pForCharID, VisibilityCauseType pVisiblityC
 
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentPopupWnd::MovePopup (const CPoint & pPosition, long pForCharID, MoveCauseType pMoveCause, bool pAlwaysNotify)
+bool CAgentPopupWnd::MovePopup (const CPoint& pPosition, long pForCharID, MoveCauseType pMoveCause, bool pAlwaysNotify)
 {
 	bool	lRet = false;
 
@@ -910,7 +910,7 @@ bool CAgentPopupWnd::MovePopup (const CPoint & pPosition, long pForCharID, MoveC
 				try
 				{
 					INT_PTR				lNotifyNdx;
-					CEventNotify *		lNotify;
+					CEventNotify*		lNotify;
 					long				lNotifyCharID;
 					MoveCauseType		lMoveCause;
 
@@ -931,7 +931,7 @@ bool CAgentPopupWnd::MovePopup (const CPoint & pPosition, long pForCharID, MoveC
 	return lRet;
 }
 
-bool CAgentPopupWnd::SizePopup (const CSize & pSize, long pForCharID, bool pAlwaysNotify)
+bool CAgentPopupWnd::SizePopup (const CSize& pSize, long pForCharID, bool pAlwaysNotify)
 {
 	bool	lRet = false;
 
@@ -975,7 +975,7 @@ bool CAgentPopupWnd::SizePopup (const CSize & pSize, long pForCharID, bool pAlwa
 				try
 				{
 					INT_PTR			lNotifyNdx;
-					CEventNotify *	lNotify;
+					CEventNotify*	lNotify;
 
 					for	(lNotifyNdx = 0; lNotify = mNotify (lNotifyNdx); lNotifyNdx++)
 					{
@@ -994,13 +994,13 @@ bool CAgentPopupWnd::SizePopup (const CSize & pSize, long pForCharID, bool pAlwa
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentPopupWnd::ShowQueued (CQueuedShow * pQueuedShow)
+bool CAgentPopupWnd::ShowQueued (CQueuedShow* pQueuedShow)
 {
 	bool	lRet = false;
 
 	if	(!IsWindowVisible ())
 	{
-		CAgentStreamInfo *	lStreamInfo;
+		CAgentStreamInfo*	lStreamInfo;
 		long				lSequenceDuration = 0;
 
 		if	(
@@ -1023,7 +1023,7 @@ bool CAgentPopupWnd::ShowQueued (CQueuedShow * pQueuedShow)
 	return lRet;
 }
 
-bool CAgentPopupWnd::HideQueued (CQueuedHide * pQueuedHide)
+bool CAgentPopupWnd::HideQueued (CQueuedHide* pQueuedHide)
 {
 	bool	lRet = false;
 
@@ -1037,7 +1037,7 @@ bool CAgentPopupWnd::HideQueued (CQueuedHide * pQueuedHide)
 
 /////////////////////////////////////////////////////////////////////////////
 
-long CAgentPopupWnd::QueueMove (long pCharID, const CPoint & pPosition, DWORD pSpeed)
+long CAgentPopupWnd::QueueMove (long pCharID, const CPoint& pPosition, DWORD pSpeed)
 {
 	long			lReqID = 0;
 	CQueuedMove *	lQueuedMove = NULL;
@@ -1102,7 +1102,7 @@ bool CAgentPopupWnd::CanDoAnimationQueue ()
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnMouseActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnMouseActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT lResult = 0;
 
@@ -1115,7 +1115,7 @@ LRESULT CAgentPopupWnd::OnMouseActivate (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT lResult = 0;
 
@@ -1139,7 +1139,7 @@ LRESULT CAgentPopupWnd::OnActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOO
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 
@@ -1155,7 +1155,7 @@ LRESULT CAgentPopupWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, BO
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnNcLButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcLButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 #ifdef	_DEBUG_MOUSE
@@ -1179,7 +1179,7 @@ LRESULT CAgentPopupWnd::OnNcLButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnNcLButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcLButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 #ifdef	_DEBUG_MOUSE
@@ -1194,7 +1194,7 @@ LRESULT CAgentPopupWnd::OnNcLButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, 
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnNcLButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcLButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcLButtonDblClk [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1204,7 +1204,7 @@ LRESULT CAgentPopupWnd::OnNcLButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lPar
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnNcRButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcRButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcRButtonDown [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1212,7 +1212,7 @@ LRESULT CAgentPopupWnd::OnNcRButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return OnRButtonDown (uMsg, wParam, lParam, bHandled);
 }
 
-LRESULT CAgentPopupWnd::OnNcRButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcRButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 #ifdef	_DEBUG_MOUSE
@@ -1232,7 +1232,7 @@ LRESULT CAgentPopupWnd::OnNcRButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, 
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnNcRButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcRButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcRButtonDblClk [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1242,7 +1242,7 @@ LRESULT CAgentPopupWnd::OnNcRButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lPar
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnNcMButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcMButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcMButtonDown [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1250,7 +1250,7 @@ LRESULT CAgentPopupWnd::OnNcMButtonDown (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return OnMButtonDown (uMsg, wParam, lParam, bHandled);
 }
 
-LRESULT CAgentPopupWnd::OnNcMButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcMButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcMButtonUp [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1258,7 +1258,7 @@ LRESULT CAgentPopupWnd::OnNcMButtonUp (UINT uMsg, WPARAM wParam, LPARAM lParam, 
 	return OnMButtonUp (uMsg, wParam, lParam, bHandled);
 }
 
-LRESULT CAgentPopupWnd::OnNcMButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNcMButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_MOUSE
 	LogMessage (_DEBUG_MOUSE, _T("OnNcMButtonDblClk [%d %d]"), GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
@@ -1270,7 +1270,7 @@ LRESULT CAgentPopupWnd::OnNcMButtonDblClk (UINT uMsg, WPARAM wParam, LPARAM lPar
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnEnterSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnEnterSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 	CRect	lWinRect;
@@ -1286,7 +1286,7 @@ LRESULT CAgentPopupWnd::OnEnterSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnExitSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnExitSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 	CRect	lWinRect;
@@ -1315,7 +1315,7 @@ LRESULT CAgentPopupWnd::OnExitSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam,
 		try
 		{
 			INT_PTR			lNotifyNdx;
-			CEventNotify *	lNotify;
+			CEventNotify*	lNotify;
 			long			lNotifyCharID;
 
 			if	(mIsDragging)
@@ -1355,7 +1355,7 @@ LRESULT CAgentPopupWnd::OnExitSizeMove (UINT uMsg, WPARAM wParam, LPARAM lParam,
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnMoving (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnMoving (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 	LPCRECT	lRect = (LPCRECT)lParam;
@@ -1378,7 +1378,7 @@ LRESULT CAgentPopupWnd::OnMoving (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL 
 		{
 			try
 			{
-				CEventNotify *	lNotify;
+				CEventNotify*	lNotify;
 
 				if	(lNotify = GetNotifyClientNotify (mCharID))
 				{
@@ -1394,7 +1394,7 @@ LRESULT CAgentPopupWnd::OnMoving (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL 
 	return lResult;
 }
 
-LRESULT CAgentPopupWnd::OnMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnMove (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 
@@ -1438,7 +1438,7 @@ bool CAgentPopupWnd::IsIconVisible () const
 	return mNotifyIcon.SafeIsVisible ();
 }
 
-bool CAgentPopupWnd::UpdateNotifyIcon (const CAgentIconData * pIconData)
+bool CAgentPopupWnd::UpdateNotifyIcon (const CAgentIconData* pIconData)
 {
 	if	(mNotifyIcon.GetCharID() == GetCharID())
 	{
@@ -1451,14 +1451,14 @@ bool CAgentPopupWnd::UpdateNotifyIcon (const CAgentIconData * pIconData)
 	return false;
 }
 
-bool CAgentPopupWnd::SetNotifyIconTip (const CAgentIconData * pIconData, CAgentFile * pAgentFile, LANGID pLangID)
+bool CAgentPopupWnd::SetNotifyIconTip (const CAgentIconData* pIconData, CAgentFile* pAgentFile, LANGID pLangID)
 {
 	return mNotifyIcon.SetIconTip (pIconData, pAgentFile, pLangID);
 }
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentPopupWnd::OnNotifyIcon (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnNotifyIcon (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	UINT	lButtonMsg = mNotifyIcon.OnNotifyIcon (m_hWnd, wParam, lParam);
 
@@ -1511,7 +1511,7 @@ LRESULT CAgentPopupWnd::OnNotifyIcon (UINT uMsg, WPARAM wParam, LPARAM lParam, B
 	return 0;
 }
 
-void CAgentPopupWnd::OnIconDblClick (const CPoint & pPoint)
+void CAgentPopupWnd::OnIconDblClick (const CPoint& pPoint)
 {
 //
 //	MS Agent leaves default command processing to the calling application
@@ -1521,7 +1521,7 @@ void CAgentPopupWnd::OnIconDblClick (const CPoint & pPoint)
 	{
 		try
 		{
-			CEventNotify *	lNotify;
+			CEventNotify*	lNotify;
 
 			if	(lNotify = GetNotifyClientNotify (mCharID))
 			{
@@ -1534,7 +1534,7 @@ void CAgentPopupWnd::OnIconDblClick (const CPoint & pPoint)
 #endif
 }
 
-LRESULT CAgentPopupWnd::OnTaskbarCreated (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentPopupWnd::OnTaskbarCreated (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 

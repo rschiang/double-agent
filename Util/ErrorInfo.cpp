@@ -39,7 +39,7 @@ CErrorInfo::CErrorInfo ()
 {
 }
 
-CErrorInfo::CErrorInfo (LPCTSTR pDescription, LPCTSTR pSource, const GUID & pGuid, LPCTSTR pHelpFile, DWORD pHelpContext)
+CErrorInfo::CErrorInfo (LPCTSTR pDescription, LPCTSTR pSource, const GUID& pGuid, LPCTSTR pHelpFile, DWORD pHelpContext)
 :	mDescription (pDescription),
 	mSource (pSource),
 	mGuid (pGuid),
@@ -48,7 +48,7 @@ CErrorInfo::CErrorInfo (LPCTSTR pDescription, LPCTSTR pSource, const GUID & pGui
 {
 }
 
-CErrorInfo::CErrorInfo (HRESULT pError, LPCTSTR pSource, const GUID & pGuid, LPCTSTR pHelpFile, DWORD pHelpContext)
+CErrorInfo::CErrorInfo (HRESULT pError, LPCTSTR pSource, const GUID& pGuid, LPCTSTR pHelpFile, DWORD pHelpContext)
 :	mSource (pSource),
 	mGuid (pGuid),
 	mHelpFile (pHelpFile),

@@ -42,7 +42,7 @@ public:
 
 // Operations
 public:
-	static DaSvrAnimationNames * CreateInstance (CAgentFile & pAgentFile, LPCTSTR pClientMutexName = NULL);
+	static DaSvrAnimationNames * CreateInstance (CAgentFile& pAgentFile, LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

@@ -56,7 +56,7 @@ public:
 public:
 	virtual bool VerifyClientLifetime ();
 	virtual void OnClientEnded ();
-	virtual bool _OnDownloadComplete (CFileDownload * pDownload);
+	virtual bool _OnDownloadComplete (CFileDownload* pDownload);
 	virtual bool _PreNotify ();
 	virtual bool _PostNotify ();
 
@@ -124,12 +124,12 @@ public:
 	HRESULT STDMETHODCALLTYPE InterfaceSupportsErrorInfo (REFIID riid);
 
 	// IDaServer2
-	HRESULT STDMETHODCALLTYPE Load (VARIANT Provider, long * pdwCharID, long * RequestID);
+	HRESULT STDMETHODCALLTYPE Load (VARIANT Provider, long* pdwCharID, long* RequestID);
 	HRESULT STDMETHODCALLTYPE Unload (long CharacterID);
-	HRESULT STDMETHODCALLTYPE Register (IUnknown * punkNotifySink, long * pdwSinkID);
+	HRESULT STDMETHODCALLTYPE Register (IUnknown * punkNotifySink, long* pdwSinkID);
 	HRESULT STDMETHODCALLTYPE Unregister (long dwSinkID);
 	HRESULT STDMETHODCALLTYPE GetCharacter (long CharacterID, IDispatch ** Character);
-	HRESULT STDMETHODCALLTYPE GetSuspended (long * Suspended);
+	HRESULT STDMETHODCALLTYPE GetSuspended (long* Suspended);
 
     HRESULT STDMETHODCALLTYPE GetCharacterEx (long CharacterID, IDaSvrCharacter **Character);
     HRESULT STDMETHODCALLTYPE GetVersion (short *MajorVersion, short *MinorVersion);
@@ -152,14 +152,14 @@ public:
 	HRESULT STDMETHODCALLTYPE get_Settings (IDaSvrSettings **Settings);
 
 	// IStdMarshalInfo
-    HRESULT STDMETHODCALLTYPE GetClassForHandler (DWORD dwDestContext, void *pvDestContext, CLSID *pClsid);
+    HRESULT STDMETHODCALLTYPE GetClassForHandler (DWORD dwDestContext, void*pvDestContext, CLSID *pClsid);
 
 // Implementation
 protected:
 	void Disconnect (bool pAbandonned);
 	void UnloadAllCharacters (bool pAbandonned = false);
 	CAtlString GetSearchPath ();
-	HRESULT LoadCharacter (LPCTSTR pFilePath, bool pIsDefault, long & pCharID, long & pReqID);
+	HRESULT LoadCharacter (LPCTSTR pFilePath, bool pIsDefault, long& pCharID, long& pReqID);
 	HRESULT UnloadCharacter (long pCharID);
 
 protected:

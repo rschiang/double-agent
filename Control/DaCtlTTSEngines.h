@@ -85,7 +85,7 @@ public:
 
 	// IDaCtlTTSEngines
 	HRESULT STDMETHODCALLTYPE get_Item (VARIANT Index,  IDaCtlTTSEngine ** TTSEngine);
-	HRESULT STDMETHODCALLTYPE get_Count (long * Value);
+	HRESULT STDMETHODCALLTYPE get_Count (long* Value);
 	HRESULT STDMETHODCALLTYPE get__NewEnum (IUnknown ** Enum);
 
 // Implementation

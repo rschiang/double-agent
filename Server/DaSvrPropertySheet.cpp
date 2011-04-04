@@ -66,9 +66,9 @@ DaSvrPropertySheet::~DaSvrPropertySheet ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrPropertySheet * DaSvrPropertySheet::CreateInstance (LPCTSTR pClientMutexName)
+DaSvrPropertySheet* DaSvrPropertySheet::CreateInstance (LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrPropertySheet> *	lInstance = NULL;
+	CComObject<DaSvrPropertySheet>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrPropertySheet>::CreateInstance (&lInstance))))
 	{

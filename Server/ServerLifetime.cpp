@@ -273,7 +273,7 @@ void CServerLifetime::VerifyObjectLifetimes (bool pImmediate)
 				CoSuspendClassObjects ();
 				lCoCreateSuspended = true;
 			}
-			
+
 			for (lObjectNdx = 0; true; lObjectNdx++)
 			{
 				{
@@ -287,7 +287,7 @@ void CServerLifetime::VerifyObjectLifetimes (bool pImmediate)
 				if	(!lObject)
 				{
 					break;
-				}				
+				}
 
 				try
 				{

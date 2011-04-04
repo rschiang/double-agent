@@ -79,7 +79,7 @@ CPropSheetCpl::~CPropSheetCpl()
 bool CPropSheetCpl::InitPages (bool pElevatedOnly)
 {
 	bool						lRet = false;
-	CAtlPropertyPage *			lPage;
+	CAtlPropertyPage*			lPage;
 	tPtr <CPropPageRegistry>	lRegistryPage;
 
 	mPages.DeleteAll ();
@@ -147,7 +147,7 @@ bool CPropSheetCpl::InitPages (bool pElevatedOnly)
 void CPropSheetCpl::SetStartPage (LPCTSTR pPageName)
 {
 	CAtlString			lPageName (pPageName);
-	CAtlPropertyPage *	lPage;
+	CAtlPropertyPage*	lPage;
 	INT_PTR				lNdx;
 
 	if	(!lPageName.IsEmpty ())

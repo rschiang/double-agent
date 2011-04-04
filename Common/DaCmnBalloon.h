@@ -35,9 +35,9 @@ public:
 
 // Operations
 public:
-	void Initialize (long pCharID, CInstanceAnchor * pAnchor, CAgentFile * pFile, class CAgentCharacterWnd * pOwnerWnd);
+	void Initialize (long pCharID, CInstanceAnchor* pAnchor, CAgentFile* pFile, class CAgentCharacterWnd* pOwnerWnd);
 	bool SetLangID (LANGID pLangID);
-	class CAgentBalloonOptions * GetBalloonOptions (LANGID pLangID = 0, bool pIgnoreDisabled = false);
+	class CAgentBalloonOptions* GetBalloonOptions (LANGID pLangID = 0, bool pIgnoreDisabled = false);
 
 // Interfaces
 public:
@@ -74,18 +74,18 @@ public:
 
 // Implementation
 protected:
-	class CAgentBalloonWnd * GetBalloonWnd (long pCharID = 0);
-	class CAgentCharacterWnd * GetOwnerWnd ();
-	CAgentFileBalloon * GetCustomConfig (bool pCreate = false);
+	class CAgentBalloonWnd* GetBalloonWnd (long pCharID = 0);
+	class CAgentCharacterWnd* GetOwnerWnd ();
+	CAgentFileBalloon* GetCustomConfig (bool pCreate = false);
 public:
 	static COLORREF GetOleColor (OLE_COLOR pColor);
 
 protected:
-	CInstanceAnchor *			mAnchor;
+	CInstanceAnchor*			mAnchor;
 	long						mCharID;
 	LANGID						mLangID;
-	CAgentFile *				mFile;
-	class CAgentCharacterWnd *	mOwnerWnd;
+	CAgentFile*				mFile;
+	class CAgentCharacterWnd*	mOwnerWnd;
 	CDaBalloonConfig			mGlobalConfig;
 	tPtr <CAgentFileBalloon>	mCustomConfig;
 	tPtr <ULARGE_INTEGER>		mCustomStyle;

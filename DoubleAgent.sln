@@ -56,6 +56,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SHFB Plugin", "Tools\SHFB P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MsiHxReg", "Tools\MsiHxReg\MsiHxReg.vcproj", "{65F5BAFF-B070-473A-8B3B-A54C3B9DC3DD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CharFileCLR", "DaCharFileCLR.vcproj", "{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -164,6 +166,14 @@ Global
 		{65F5BAFF-B070-473A-8B3B-A54C3B9DC3DD}.Release|Win32.ActiveCfg = Release|Win32
 		{65F5BAFF-B070-473A-8B3B-A54C3B9DC3DD}.Release|Win32.Build.0 = Release|Win32
 		{65F5BAFF-B070-473A-8B3B-A54C3B9DC3DD}.Release|x64.ActiveCfg = Release|Win32
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Debug|Win32.Build.0 = Debug|Win32
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Debug|x64.ActiveCfg = Debug|x64
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Debug|x64.Build.0 = Debug|x64
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Release|Win32.ActiveCfg = Release|Win32
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Release|Win32.Build.0 = Release|Win32
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Release|x64.ActiveCfg = Release|x64
+		{BC62D6F2-CF64-4F75-99E8-C76B192BEEE7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,7 +35,7 @@ CDaCmnUserInput::~CDaCmnUserInput()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CDaCmnUserInput::Initialize (ISpRecoResult * pRecoResult, bool pGlobalCommand)
+void CDaCmnUserInput::Initialize (ISpRecoResult* pRecoResult, bool pGlobalCommand)
 {
 	if	(pRecoResult)
 	{

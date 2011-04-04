@@ -33,7 +33,7 @@ public:
 // Operations
 public:
 	HRESULT UseAllInputs ();
-	HRESULT UseTheseInputs (class CAgentFile * pFile, LANGID pLangId);
+	HRESULT UseTheseInputs (class CAgentFile* pFile, LANGID pLangId);
 };
 
 /////////////////////////////////////////////////////////////////////////////

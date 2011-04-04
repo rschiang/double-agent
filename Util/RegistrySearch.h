@@ -32,10 +32,10 @@ class CRegistrySearch
 {
 // Operations
 public:
-	static bool GetGlobalClassesKey (CRegKeyEx & pGlobalClasses, bool pAltPlatform = false);
-	static bool GetUserClassesKey (CRegKeyEx & pUserClasses, bool pAltPlatform = false);
-	static bool GetClassesRootKey (CRegKeyEx & pClassesRoot, bool pAltPlatform = false);
-	static void GetRootKeys (CRegKeyEx & pGlobalClasses, CRegKeyEx & pUserClasses, CRegKeyEx & pClassesRoot, bool pAltPlatform = false);
+	static bool GetGlobalClassesKey (CRegKeyEx& pGlobalClasses, bool pAltPlatform = false);
+	static bool GetUserClassesKey (CRegKeyEx& pUserClasses, bool pAltPlatform = false);
+	static bool GetClassesRootKey (CRegKeyEx& pClassesRoot, bool pAltPlatform = false);
+	static void GetRootKeys (CRegKeyEx& pGlobalClasses, CRegKeyEx& pUserClasses, CRegKeyEx& pClassesRoot, bool pAltPlatform = false);
 
 	static CString GetClassProgId (REFGUID pClassId, HKEY pRootKey);
 	static CString GetClassViProgId (REFGUID pClassId, HKEY pRootKey);

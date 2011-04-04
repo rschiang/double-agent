@@ -218,7 +218,8 @@ void CAnimationTestDlg::ShowCharacters ()
 			}
 		}
 
-//**/	mCharacterList.InsertItem (0, _T("http://www.trurons.com/jess/agent/Jess.acf"));
+/**/	mCharacterList.InsertItem (0, _T("C:\\DoubleAgent\\_Test/Chars\\TestChar1.acs"));
+/**/	mCharacterList.InsertItem (0, _T("file://C:/DoubleAgent/_Test/Chars/TestChar1.acf"));
 		mCharacterList.InsertItem (0, _T("<default>"));
 	}
 
@@ -250,7 +251,7 @@ bool CAnimationTestDlg::ShowCharacter (LPCTSTR pCharacterPath)
 		{
 			try
 			{
-				CAgentPreviewWnd *	lPreview;
+				CAgentPreviewWnd*	lPreview;
 				CRect				lClientRect;
 
 				SafeFreeSafePtr (mAgentPreviewWnd);
@@ -270,7 +271,7 @@ bool CAnimationTestDlg::ShowCharacter (LPCTSTR pCharacterPath)
 						:	(mAgentPreviewWnd->Open (CAgentFiles::GetDefCharPath()))
 						)
 					{
-						if	(lPreview = dynamic_cast <CAgentPreviewWnd *> (mAgentPreviewWnd.Ptr()))
+						if	(lPreview = dynamic_cast <CAgentPreviewWnd*> (mAgentPreviewWnd.Ptr()))
 						{
 							lPreview->SetBkColor (GetSysColor (COLOR_WINDOW));
 						}
@@ -322,7 +323,7 @@ void CAnimationTestDlg::ShowCharacterDetails ()
 {
 	CString				lName;
 	CString				lDesc;
-	CAgentFileName *	lFileName;
+	CAgentFileName*	lFileName;
 
 	if	(
 			(mAgentPreviewWnd)
@@ -331,8 +332,8 @@ void CAnimationTestDlg::ShowCharacterDetails ()
 		&&	(lFileName = mAgentPreviewWnd->GetAgentFile()->FindName ())
 		)
 	{
-		lName = lFileName->mName;
-		lDesc = lFileName->mDesc1;
+		lName = lFileName->Name;
+		lDesc = lFileName->Desc1;
 	}
 
 	mCharacterNameEdit.SetWindowText (lName);
@@ -363,18 +364,17 @@ void CAnimationTestDlg::ShowGestures ()
 					(mCharacter != NULL)
 				||	(!PathIsURL (mCharacterPath))
 				)
-			&&	(lAgentFile = CAgentFile::CreateInstance())
+			&&	(lAgentFile = CAgentFile::CreateInstance (lCharacterPath))
 			&&	(SUCCEEDED (lAgentFile->Open (lCharacterPath)))
 			)
 		{
 			INT_PTR	lNdx;
 
 			mGestures.AddString (_T(""));
-			lAgentFile->ReadGestures();
 
-			for	(lNdx = 0; lNdx < (INT_PTR)lAgentFile->GetGestures().mNames.GetCount(); lNdx++)
+			for	(lNdx = 0; lNdx < (INT_PTR)lAgentFile->Gestures.mNames.GetCount(); lNdx++)
 			{
-				mGestures.AddString (lAgentFile->GetGestures().mNames.GetAt (lNdx));
+				mGestures.AddString (lAgentFile->Gestures.mNames.GetAt (lNdx));
 			}
 
 			if	(
@@ -439,18 +439,17 @@ void CAnimationTestDlg::ShowStates ()
 					(mCharacter != NULL)
 				||	(!PathIsURL (mCharacterPath))
 				)
-			&&	(lAgentFile = CAgentFile::CreateInstance())
+			&&	(lAgentFile = CAgentFile::CreateInstance (lCharacterPath))
 			&&	(SUCCEEDED (lAgentFile->Open (lCharacterPath)))
 			)
 		{
 			INT_PTR	lNdx;
 
 			mStates.AddString (_T(""));
-			lAgentFile->ReadStates();
 
-			for	(lNdx = 0; lNdx < (INT_PTR)lAgentFile->GetStates().mNames.GetCount(); lNdx++)
+			for	(lNdx = 0; lNdx < (INT_PTR)lAgentFile->States.mNames.GetCount(); lNdx++)
 			{
-				mStates.AddString (lAgentFile->GetStates().mNames.GetAt (lNdx));
+				mStates.AddString (lAgentFile->States.mNames.GetAt (lNdx));
 			}
 
 			if	(
@@ -1015,10 +1014,10 @@ bool CAnimationTestDlg::ReleaseAgentCharacter ()
 			LogComErr (_LOG_AGENT_CALLS, mServer->Unload (mCharacterId), _T("Unload [%d]"), mCharacterId);
 		}
 
-		mCharacterId = 0;
 		SetWindowText (mWinTitle);
 		lRet = true;
 	}
+	mCharacterId = 0;
 	return lRet;
 }
 
@@ -1808,7 +1807,7 @@ void CAnimationTestDlg::OnActivateApp(BOOL bActive, _MFC_ACTIVATEAPP_PARAM2 dwTh
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE CAnimationTestDlg::XDaSvrNotifySink::GetTypeInfoCount(UINT *pctinfo)
+HRESULT STDMETHODCALLTYPE CAnimationTestDlg::XDaSvrNotifySink::GetTypeInfoCount(UINT*pctinfo)
 {
 	METHOD_PROLOGUE_EX_(CAnimationTestDlg, DaSvrNotifySink)
 #ifdef	_DEBUG_COM
@@ -1835,7 +1834,7 @@ HRESULT STDMETHODCALLTYPE CAnimationTestDlg::XDaSvrNotifySink::GetIDsOfNames(REF
 	return pThis->GetIDispatch(FALSE)->GetIDsOfNames (riid, rgszNames, cNames, lcid, rgDispId);
 }
 
-HRESULT STDMETHODCALLTYPE CAnimationTestDlg::XDaSvrNotifySink::Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS *pDispParams, VARIANT *pVarResult, EXCEPINFO *pExcepInfo, UINT *puArgErr)
+HRESULT STDMETHODCALLTYPE CAnimationTestDlg::XDaSvrNotifySink::Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS *pDispParams, VARIANT *pVarResult, EXCEPINFO *pExcepInfo, UINT*puArgErr)
 {
 	METHOD_PROLOGUE_EX(CAnimationTestDlg, DaSvrNotifySink)
 #ifdef	_DEBUG_COM

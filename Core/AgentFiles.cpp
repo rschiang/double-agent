@@ -35,7 +35,7 @@ CAgentFiles::~CAgentFiles()
 {
 }
 
-const CAtlPtrTypeArray <CAgentFile> & CAgentFiles::Files () const
+const CAtlPtrTypeArray <CAgentFile>& CAgentFiles::Files () const
 {
 	return mFiles;
 }
@@ -74,7 +74,7 @@ HRESULT CAgentFiles::Load (LPCTSTR pPath, UINT pLogLevel)
 
 			try
 			{
-				tPtr <CAgentFile>	lFile = CAgentFile::CreateInstance();
+				tPtr <CAgentFile>	lFile = CAgentFile::CreateInstance (lFoundPath);
 
 #if	FALSE
 				CAtlString lLogPath;
@@ -109,7 +109,7 @@ HRESULT CAgentFiles::Load (LPCTSTR pPath, UINT pLogLevel)
 INT_PTR CAgentFiles::FindDefChar ()
 {
 	CAtlString		lDefaultChar;
-	CAgentFile *	lFile;
+	CAgentFile*	lFile;
 	INT_PTR			lNdx;
 
 	lDefaultChar = (BSTR)GetDefCharPath ();
@@ -119,7 +119,7 @@ INT_PTR CAgentFiles::FindDefChar ()
 		{
 			if	(
 					(lFile = mFiles (lNdx))
-				&&	(lDefaultChar.CompareNoCase ((BSTR)lFile->GetPath ()) == 0)
+				&&	(lDefaultChar.CompareNoCase ((BSTR)lFile->Path) == 0)
 				)
 			{
 				return lNdx;
@@ -129,10 +129,10 @@ INT_PTR CAgentFiles::FindDefChar ()
 	return -1;
 }
 
-CAgentFile * CAgentFiles::GetDefChar ()
+CAgentFile* CAgentFiles::GetDefChar ()
 {
 	CAtlString		lDefaultChar;
-	CAgentFile *	lFile;
+	CAgentFile*	lFile;
 	INT_PTR			lNdx;
 
 	lDefaultChar = (BSTR)GetDefCharPath ();
@@ -142,7 +142,7 @@ CAgentFile * CAgentFiles::GetDefChar ()
 		{
 			if	(
 					(lFile = mFiles (lNdx))
-				&&	(lDefaultChar.CompareNoCase ((BSTR)lFile->GetPath ()) == 0)
+				&&	(lDefaultChar.CompareNoCase ((BSTR)lFile->Path) == 0)
 				)
 			{
 				return lFile;
@@ -198,7 +198,7 @@ tBstrPtr CAgentFiles::GetAgentPath (bool pAlternatePlatform)
 	return lPath.AllocSysString();
 }
 
-tBstrPtr CAgentFiles::GetSystemCharsPath (UINT pPathNum, UINT * pPathNumFound)
+tBstrPtr CAgentFiles::GetSystemCharsPath (UINT pPathNum, UINT* pPathNumFound)
 {
 	UINT		lPathNum = 0;
 	CAtlString	lPath;
@@ -327,7 +327,7 @@ tBstrPtr CAgentFiles::GetOfficeCharsPath ()
 
 //////////////////////////////////////////////////////////////////////
 
-tBstrPtr CAgentFiles::GetDefCharPath (const CAtlStringArray * pSearchPath)
+tBstrPtr CAgentFiles::GetDefCharPath (const CAtlStringArray* pSearchPath)
 {
 	CAtlString	lFileName = CRegString (CRegKeyEx (HKEY_CURRENT_USER, _T("Software\\Microsoft\\Microsoft Agent"), true), _T("SystemCharacter")).Value ();
 
@@ -384,7 +384,7 @@ HRESULT CAgentFiles::SetDefCharPath (LPCTSTR pCharPath)
 		if	(PathFileExists (lPath))
 		{
 			if	(
-					(lAgentFile = CAgentFile::CreateInstance())
+					(lAgentFile = CAgentFile::CreateInstance (lPath))
 				&&	(SUCCEEDED (lResult = lAgentFile->Open (lPath)))
 				)
 			{

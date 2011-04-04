@@ -64,7 +64,7 @@ public:
 public:
 	// IObjectWithSite
     STDMETHOD (SetSite) (IUnknown *pUnkSite);
-    STDMETHOD (GetSite) (REFIID riid, void **ppvSite);
+    STDMETHOD (GetSite) (REFIID riid, void**ppvSite);
 
 	// IShellExtInit
     STDMETHOD (Initialize) (LPCITEMIDLIST pFolderId, IDataObject * pDataObject, HKEY pProgIdKey);

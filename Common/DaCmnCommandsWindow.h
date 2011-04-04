@@ -32,7 +32,7 @@ public:
 
 // Operations
 public:
-	void Initialize (CVoiceCommandsWnd * pVoiceCommandsWnd);
+	void Initialize (CVoiceCommandsWnd* pVoiceCommandsWnd);
 
 // Interfaces
 public:
@@ -49,7 +49,7 @@ public:
 
 // Implementation
 protected:
-	CVoiceCommandsWnd *	mVoiceCommandsWnd;
+	CVoiceCommandsWnd*	mVoiceCommandsWnd;
 };
 
 /////////////////////////////////////////////////////////////////////////////

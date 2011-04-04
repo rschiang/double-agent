@@ -58,9 +58,9 @@ DaSvrBalloon::~DaSvrBalloon ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrBalloon * DaSvrBalloon::CreateInstance (long pCharID, CInstanceAnchor * pAnchor, CAgentFile * pFile, CAgentCharacterWnd * pOwner, LPCTSTR pClientMutexName)
+DaSvrBalloon * DaSvrBalloon::CreateInstance (long pCharID, CInstanceAnchor* pAnchor, CAgentFile* pFile, CAgentCharacterWnd* pOwner, LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrBalloon> *	lInstance = NULL;
+	CComObject<DaSvrBalloon>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrBalloon>::CreateInstance (&lInstance))))
 	{

@@ -35,7 +35,7 @@ static inline long ElapsedTicks (DWORD pStartTicks, DWORD pCurrentTicks)
 	return (pCurrentTicks >= pStartTicks) ? pCurrentTicks - pStartTicks : (ULONG_MAX - pStartTicks) + pCurrentTicks;
 }
 
-static inline bool TicksElapsed (DWORD & pStartTicks, DWORD pTickCount)
+static inline bool TicksElapsed (DWORD& pStartTicks, DWORD pTickCount)
 {
 	DWORD	lTicks = GetTickCount ();
 
@@ -48,7 +48,7 @@ static inline bool TicksElapsed (DWORD & pStartTicks, DWORD pTickCount)
 	return false;
 }
 
-static inline bool TicksElapsed (DWORD & pStartTicks, DWORD pCurrentTicks, DWORD pTickCount)
+static inline bool TicksElapsed (DWORD& pStartTicks, DWORD pCurrentTicks, DWORD pTickCount)
 {
 	if	((long) ((pCurrentTicks >= pStartTicks) ? pCurrentTicks - pStartTicks : (ULONG_MAX - pStartTicks) + pCurrentTicks) >= (long) pTickCount)
 	{

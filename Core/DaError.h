@@ -27,14 +27,14 @@
 class CServerError : public CErrorInfo
 {
 public:
-	CServerError (HRESULT pResult, const GUID & pGuid = GUID_NULL);
+	CServerError (HRESULT pResult, const GUID& pGuid = GUID_NULL);
 
 	friend CAtlString DaErrorDescription (HRESULT pResult);
 };
 
 //////////////////////////////////////////////////////////////////////
 
-inline HRESULT PutServerError (HRESULT pResult, const GUID & pGuid = GUID_NULL)
+inline HRESULT PutServerError (HRESULT pResult, const GUID& pGuid = GUID_NULL)
 {
 	if	(FAILED (pResult))
 	{
@@ -54,7 +54,7 @@ inline HRESULT PutServerError (HRESULT pResult, const GUID & pGuid = GUID_NULL)
 class CControlError : public CErrorInfo
 {
 public:
-	CControlError (HRESULT pResult, const GUID & pGuid = GUID_NULL);
+	CControlError (HRESULT pResult, const GUID& pGuid = GUID_NULL);
 
 	friend CAtlString DaErrorDescription (HRESULT pResult);
 };
@@ -66,7 +66,7 @@ inline void ClearControlError ()
 	CControlError::ClearErrorInfo ();
 }
 
-inline HRESULT PutControlError (HRESULT pResult, const GUID & pGuid = GUID_NULL)
+inline HRESULT PutControlError (HRESULT pResult, const GUID& pGuid = GUID_NULL)
 {
 	if	(FAILED (pResult))
 	{

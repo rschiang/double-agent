@@ -183,7 +183,7 @@ void DaCtlTTSEngines::InitializeObjects ()
 			IDaCtlTTSEnginePtr					lItemInterface;
 			CSapi5VoiceInfo *					lSapi5VoiceInfo;
 #ifndef	_WIN64
-			CSapi4VoiceInfo *					lSapi4VoiceInfo;
+			CSapi4VoiceInfo*					lSapi4VoiceInfo;
 #endif
 
 			for	(lNdx = 0; true; lNdx++)

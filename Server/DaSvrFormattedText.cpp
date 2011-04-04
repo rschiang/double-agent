@@ -310,7 +310,7 @@ HRESULT STDMETHODCALLTYPE DaSvrFormattedText::Append (IDaSvrFormattedText *Forma
 
 	try
 	{
-		lFormattedText = dynamic_cast <CComObject <DaSvrFormattedText> *> (FormattedText);
+		lFormattedText = dynamic_cast <CComObject <DaSvrFormattedText>*> (FormattedText);
 	}
 	catch AnyExceptionSilent
 

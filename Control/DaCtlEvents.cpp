@@ -47,7 +47,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 
-static INT_PTR CountUnk (CComDynamicUnkArray & pUnkArray)
+static INT_PTR CountUnk (CComDynamicUnkArray& pUnkArray)
 {
 	int	lRet = 0;
 	int	lNdx;
@@ -1322,7 +1322,7 @@ HRESULT STDMETHODCALLTYPE CServerNotifySink::Command (long CommandID, IDaSvrUser
 #endif
 	CAtlString						lActiveCharacterID;
 	DaCtlCharacter *				lActiveCharacter;
-	CComObject <DaCtlUserInput> *	lUserInput = NULL;
+	CComObject <DaCtlUserInput>*	lUserInput = NULL;
 	IDaCtlUserInputPtr				lInterface;
 
 	if	(SUCCEEDED (CComObject <DaCtlUserInput>::CreateInstance (&lUserInput)))

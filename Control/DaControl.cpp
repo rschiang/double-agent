@@ -1100,7 +1100,7 @@ IDaCtlRequest * DaControl::PutRequest (DaRequestCategory pCategory, long pReqID,
 {
 	IDaCtlRequestPtr			lInterface;
 	DaCtlRequest *				lRequest = NULL;
-	CComObject <DaCtlRequest> *	lNewRequest = NULL;
+	CComObject <DaCtlRequest>*	lNewRequest = NULL;
 
 	if	(pReqID)
 	{
@@ -1503,7 +1503,7 @@ LRESULT DaControl::OnActivateApp(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& 
 	return 0;
 }
 
-LRESULT DaControl::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT DaControl::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	CSapiVoiceCache::CleanupStaticInstance ();
 	bHandled = FALSE;
@@ -1884,7 +1884,7 @@ bool DaControl::IsDesigning ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-bool DaControl::CalcWindowStyles (DWORD & pStyle, DWORD & pExStyle)
+bool DaControl::CalcWindowStyles (DWORD& pStyle, DWORD& pExStyle)
 {
 	bool	lRet = false;
 
@@ -2477,7 +2477,7 @@ STDMETHODIMP DaControl::get_Characters (IDaCtlCharacters2 **Characters)
 	LogMessage (_DEBUG_INTERFACE, _T("[%p(%d)] DaControl::get_Characters"), this, max(m_dwRef,-1));
 #endif
 	HRESULT							lResult = S_OK;
-	CComObject <DaCtlCharacters> *	lCharacters = NULL;
+	CComObject <DaCtlCharacters>*	lCharacters = NULL;
 	IDaCtlCharacters2Ptr			lInterface;
 
 	if	(Characters == NULL)

@@ -42,7 +42,7 @@ public:
 
 // Operations
 public:
-	static DaSvrCharacterFiles * CreateInstance (LPCTSTR pClientMutexName = NULL);
+	static DaSvrCharacterFiles* CreateInstance (LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 
@@ -75,7 +75,7 @@ public:
 	HRESULT STDMETHODCALLTYPE InterfaceSupportsErrorInfo (REFIID riid);
 
 	// IDaSvrCharacterFiles
-	HRESULT STDMETHODCALLTYPE get_FilePaths (SAFEARRAY **FilePaths);
+	HRESULT STDMETHODCALLTYPE get_FilePaths (SAFEARRAY**FilePaths);
 	HRESULT STDMETHODCALLTYPE get_SearchPath (BSTR *SearchPath);
 	HRESULT STDMETHODCALLTYPE put_SearchPath (BSTR SearchPath);
 	HRESULT STDMETHODCALLTYPE get_DefaultSearchPath (BSTR *DefaultSearchPath);

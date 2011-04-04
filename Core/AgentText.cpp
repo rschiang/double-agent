@@ -46,14 +46,14 @@ CAgentText::CAgentText (UINT pSapiVersion)
 	SetSapiVersion (pSapiVersion);
 }
 
-CAgentText::CAgentText (const CAtlStringArray & pWords, UINT pSapiVersion)
+CAgentText::CAgentText (const CAtlStringArray& pWords, UINT pSapiVersion)
 :	mSapiVersion (0)
 {
 	SetSapiVersion (pSapiVersion);
 	operator= (pWords);
 }
 
-CAgentText::CAgentText (const CAgentText & pText, UINT pSapiVersion)
+CAgentText::CAgentText (const CAgentText& pText, UINT pSapiVersion)
 :	mSapiVersion (0)
 {
 	SetSapiVersion (pSapiVersion);
@@ -66,14 +66,14 @@ CAgentText::~CAgentText ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentText & CAgentText::operator= (const CAtlStringArray & pWords)
+CAgentText& CAgentText::operator= (const CAtlStringArray& pWords)
 {
 	mTextWords.RemoveAll ();
 	operator+= (pWords);
 	return *this;
 }
 
-CAgentText & CAgentText::operator+= (const CAtlStringArray & pWords)
+CAgentText& CAgentText::operator+= (const CAtlStringArray& pWords)
 {
 	Append (pWords, pWords);
 	return *this;
@@ -81,7 +81,7 @@ CAgentText & CAgentText::operator+= (const CAtlStringArray & pWords)
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentText & CAgentText::operator= (const CAgentText & pText)
+CAgentText& CAgentText::operator= (const CAgentText& pText)
 {
 	mSapiVersion = pText.mSapiVersion;
 	mText = pText.mText;
@@ -90,18 +90,18 @@ CAgentText & CAgentText::operator= (const CAgentText & pText)
 	return *this;
 }
 
-CAgentText & CAgentText::operator+= (const CAgentText & pText)
+CAgentText& CAgentText::operator+= (const CAgentText& pText)
 {
 	Append (pText.mTextWords, pText.mSpeechWords);
 	return *this;
 }
 
-void CAgentText::Append (const CAgentText & pText, bool pAppendSpeech)
+void CAgentText::Append (const CAgentText& pText, bool pAppendSpeech)
 {
 	Append (pText.mTextWords, pText.mSpeechWords, pAppendSpeech);
 }
 
-void CAgentText::Append (const CAtlStringArray & pTextWords, const CAtlStringArray & pSpeechWords, bool pAppendSpeech)
+void CAgentText::Append (const CAtlStringArray& pTextWords, const CAtlStringArray& pSpeechWords, bool pAppendSpeech)
 {
 	if	(
 			(mTextWords.GetCount() > 0)
@@ -217,12 +217,12 @@ CAgentTextParse::CAgentTextParse (LPCTSTR pText, UINT pSapiVersion)
 	operator= (pText);
 }
 
-CAgentTextParse::CAgentTextParse (const CAtlStringArray & pWords, UINT pSapiVersion)
+CAgentTextParse::CAgentTextParse (const CAtlStringArray& pWords, UINT pSapiVersion)
 :	CAgentText (pWords, pSapiVersion)
 {
 }
 
-CAgentTextParse::CAgentTextParse (const CAgentText & pText, UINT pSapiVersion)
+CAgentTextParse::CAgentTextParse (const CAgentText& pText, UINT pSapiVersion)
 :	CAgentText (pText, pSapiVersion)
 {
 }
@@ -233,14 +233,14 @@ CAgentTextParse::~CAgentTextParse ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentTextParse & CAgentTextParse::operator= (LPCTSTR pText)
+CAgentTextParse& CAgentTextParse::operator= (LPCTSTR pText)
 {
 	mTextWords.RemoveAll ();
 	operator+= (pText);
 	return *this;
 }
 
-CAgentTextParse & CAgentTextParse::operator+= (LPCTSTR pText)
+CAgentTextParse& CAgentTextParse::operator+= (LPCTSTR pText)
 {
 #ifdef	DebugTimeStart
 	DebugTimeStart
@@ -263,25 +263,25 @@ CAgentTextParse & CAgentTextParse::operator+= (LPCTSTR pText)
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentTextParse & CAgentTextParse::operator= (const CAtlStringArray & pWords)
+CAgentTextParse& CAgentTextParse::operator= (const CAtlStringArray& pWords)
 {
 	CAgentText::operator= (pWords);
 	return *this;
 }
 
-CAgentTextParse & CAgentTextParse::operator+= (const CAtlStringArray & pWords)
+CAgentTextParse& CAgentTextParse::operator+= (const CAtlStringArray& pWords)
 {
 	CAgentText::operator+= (pWords);
 	return *this;
 }
 
-CAgentTextParse & CAgentTextParse::operator= (const CAgentText & pText)
+CAgentTextParse& CAgentTextParse::operator= (const CAgentText& pText)
 {
 	CAgentText::operator= (pText);
 	return *this;
 }
 
-CAgentTextParse & CAgentTextParse::operator+= (const CAgentText & pText)
+CAgentTextParse& CAgentTextParse::operator+= (const CAgentText& pText)
 {
 	CAgentText::operator+= (pText);
 	return *this;
@@ -361,7 +361,7 @@ static LPCTSTR MatchTag (LPCTSTR pText)
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextParse::ParseTags (LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords, bool pOuterParse)
+void CAgentTextParse::ParseTags (LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords, bool pOuterParse)
 {
 	int		lTextNdx;
 	int		lTagStart = -1;
@@ -473,7 +473,7 @@ void CAgentTextParse::ParseTags (LPCTSTR pText, CAtlStringArray & pTextWords, CA
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextParse::PutTag (LPCTSTR pTag, LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords, bool pOuterParse)
+void CAgentTextParse::PutTag (LPCTSTR pTag, LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords, bool pOuterParse)
 {
 	ULONG		lNumVal;
 	LPTSTR		lNumValEnd;
@@ -754,7 +754,7 @@ void CAgentTextParse::PutTag (LPCTSTR pTag, LPCTSTR pText, CAtlStringArray & pTe
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-int CAgentTextParse::SplitText (LPCTSTR pText, CAtlStringArray & pTextWords)
+int CAgentTextParse::SplitText (LPCTSTR pText, CAtlStringArray& pTextWords)
 {
 	int		lTextNdx;
 	int		lWordStart = 0;
@@ -814,7 +814,7 @@ int CAgentTextParse::SplitText (LPCTSTR pText, CAtlStringArray & pTextWords)
 
 /////////////////////////////////////////////////////////////////////////////
 
-int CAgentTextParse::SplitMap (LPCTSTR pText, CAtlString * pSpeechWords, CAtlString * pTextWords)
+int CAgentTextParse::SplitMap (LPCTSTR pText, CAtlString* pSpeechWords, CAtlString* pTextWords)
 {
 	int	lRet = 0;
 	int	lTextNdx;
@@ -910,7 +910,7 @@ int CAgentTextParse::SplitMap (LPCTSTR pText, CAtlString * pSpeechWords, CAtlStr
 	return lRet;
 }
 
-void CAgentTextParse::UnquoteMappedText (CAtlString & pText)
+void CAgentTextParse::UnquoteMappedText (CAtlString& pText)
 {
 	if	(
 			(pText.GetLength() >= 2)
@@ -927,7 +927,7 @@ void CAgentTextParse::UnquoteMappedText (CAtlString & pText)
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextParse::AppendWords (const CAtlStringArray & pAppend, CAtlStringArray & pWords, UINT pSapiVersion)
+void CAgentTextParse::AppendWords (const CAtlStringArray& pAppend, CAtlStringArray& pWords, UINT pSapiVersion)
 {
 	if	(pAppend.GetCount() > 0)
 	{
@@ -936,14 +936,14 @@ void CAgentTextParse::AppendWords (const CAtlStringArray & pAppend, CAtlStringAr
 	}
 }
 
-void CAgentTextParse::PadWords (CAtlStringArray & pWords, UINT pSapiVersion)
+void CAgentTextParse::PadWords (CAtlStringArray& pWords, UINT pSapiVersion)
 {
 	INT_PTR	lNdx;
 	bool	lLastWordFound = false;
 
 	for	(lNdx = (INT_PTR)pWords.GetCount()-1; lNdx >= 0; lNdx--)
 	{
-		CAtlString &	lWord = pWords [lNdx];
+		CAtlString&	lWord = pWords [lNdx];
 
 		if	(!lWord.IsEmpty())
 		{
@@ -995,7 +995,7 @@ void CAgentTextParse::PadWords (CAtlStringArray & pWords, UINT pSapiVersion)
 	}
 }
 
-void CAgentTextParse::FinishWords (CAtlStringArray & pWords, UINT pSapiVersion)
+void CAgentTextParse::FinishWords (CAtlStringArray& pWords, UINT pSapiVersion)
 {
 	if	(pWords.GetCount() > 0)
 	{
@@ -1019,7 +1019,7 @@ void CAgentTextParse::FinishWords (CAtlStringArray & pWords, UINT pSapiVersion)
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextParse::SpeechFromText (const CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords)
+void CAgentTextParse::SpeechFromText (const CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords)
 {
 	while	(pSpeechWords.GetCount() < pTextWords.GetCount())
 	{
@@ -1027,7 +1027,7 @@ void CAgentTextParse::SpeechFromText (const CAtlStringArray & pTextWords, CAtlSt
 	}
 }
 
-void CAgentTextParse::FinishSpeech (CAtlStringArray & pSpeechWords)
+void CAgentTextParse::FinishSpeech (CAtlStringArray& pSpeechWords)
 {
 	if	(mSapiVersion >= 5)
 	{
@@ -1065,7 +1065,7 @@ static LPCTSTR	sSaxEmphName = _T("emph");
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextParse::ParseText (LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords)
+void CAgentTextParse::ParseText (LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords)
 {
 	CAtlStringArray		lTextWords;
 	CAtlStringArray		lSpeechWords;
@@ -1408,13 +1408,13 @@ CAgentTextDraw::CAgentTextDraw (UINT pSapiVersion)
 	ResetState (true);
 }
 
-CAgentTextDraw::CAgentTextDraw (const CAgentText & pText, UINT pSapiVersion)
+CAgentTextDraw::CAgentTextDraw (const CAgentText& pText, UINT pSapiVersion)
 :	CAgentText (pText, pSapiVersion)
 {
 	ResetState (true);
 }
 
-CAgentTextDraw::CAgentTextDraw (const CAgentTextDraw & pText, UINT pSapiVersion)
+CAgentTextDraw::CAgentTextDraw (const CAgentTextDraw& pText, UINT pSapiVersion)
 :	CAgentText (pText, pSapiVersion)
 {
 	ResetState (true);
@@ -1426,7 +1426,7 @@ CAgentTextDraw::~CAgentTextDraw ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentTextDraw & CAgentTextDraw::operator= (const CAgentText & pText)
+CAgentTextDraw& CAgentTextDraw::operator= (const CAgentText& pText)
 {
 	CAgentText::operator= (pText);
 	ResetState (true);
@@ -1434,7 +1434,7 @@ CAgentTextDraw & CAgentTextDraw::operator= (const CAgentText & pText)
 	return *this;
 }
 
-CAgentTextDraw & CAgentTextDraw::operator+= (const CAgentText & pText)
+CAgentTextDraw& CAgentTextDraw::operator+= (const CAgentText& pText)
 {
 	CAgentText::operator+= (pText);
 	ResetState (false);
@@ -1443,7 +1443,7 @@ CAgentTextDraw & CAgentTextDraw::operator+= (const CAgentText & pText)
 
 /////////////////////////////////////////////////////////////////////////////
 
-CAgentTextDraw & CAgentTextDraw::operator= (const CAgentTextDraw & pText)
+CAgentTextDraw& CAgentTextDraw::operator= (const CAgentTextDraw& pText)
 {
 	CTextWrap::operator= (pText);
 	CAgentText::operator= (pText);
@@ -1457,7 +1457,7 @@ CAgentTextDraw & CAgentTextDraw::operator= (const CAgentTextDraw & pText)
 	return *this;
 }
 
-CAgentTextDraw & CAgentTextDraw::operator+= (const CAgentTextDraw & pText)
+CAgentTextDraw& CAgentTextDraw::operator+= (const CAgentTextDraw& pText)
 {
 	CAgentText::operator+= (pText);
 	ResetState (false);
@@ -1504,7 +1504,7 @@ CAtlString CAgentTextDraw::GetDisplayText (INT_PTR pLookAhead) const
 		{
 			INT_PTR			lWordDisplayed = min (mWordDisplayed + pLookAhead, (INT_PTR)mTextWords.GetCount()-1);
 			INT_PTR			lTextCacheNdx;
-			CAtlString *	lTextCache;
+			CAtlString*	lTextCache;
 
 			while	(
 						(mTextCacheStart < mWordDisplayed)
@@ -1691,12 +1691,12 @@ bool CAgentTextDraw::DisplayAllWords (bool pForSpeech)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentTextDraw::CanScroll (const CRect & pTextBounds) const
+bool CAgentTextDraw::CanScroll (const CRect& pTextBounds) const
 {
 	return (mBounds.bottom > pTextBounds.bottom);
 }
 
-DWORD CAgentTextDraw::CalcScroll (const CRect & pTextBounds, long & pScrollInc, long & pScrollMin, long & pScrollMax, bool pClipLines, DWORD pMaxLineTime) const
+DWORD CAgentTextDraw::CalcScroll (const CRect& pTextBounds, long& pScrollInc, long& pScrollMin, long& pScrollMax, bool pClipLines, DWORD pMaxLineTime) const
 {
 	DWORD	lScrollTime = 0;
 
@@ -1733,7 +1733,7 @@ DWORD CAgentTextDraw::CalcScroll (const CRect & pTextBounds, long & pScrollInc, 
 	return lScrollTime;
 }
 
-DWORD CAgentTextDraw::InitScroll (const CRect & pTextBounds, bool pForceReinit, bool pClipLines, DWORD pMaxLineTime)
+DWORD CAgentTextDraw::InitScroll (const CRect& pTextBounds, bool pForceReinit, bool pClipLines, DWORD pMaxLineTime)
 {
 	DWORD	lScrollTime;
 	long	lScrollInc = mScrollInc;
@@ -1767,7 +1767,7 @@ DWORD CAgentTextDraw::InitScroll (const CRect & pTextBounds, bool pForceReinit, 
 	return 0;
 }
 
-bool CAgentTextDraw::ApplyScroll (const CRect & pTextBounds, CRect * pClipRect)
+bool CAgentTextDraw::ApplyScroll (const CRect& pTextBounds, CRect* pClipRect)
 {
 	if	(mScrollPos > 0)
 	{
@@ -1843,7 +1843,7 @@ CSize CAgentTextDraw::CalcTextSize (HFONT pFont, USHORT pPerLine)
 
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentTextDraw::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter)
+bool CAgentTextDraw::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter)
 {
 	if	(mTextWords.GetCount() > 0)
 	{

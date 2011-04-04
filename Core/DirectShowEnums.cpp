@@ -60,7 +60,7 @@ CEnumPins::~CEnumPins ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CEnumPins::Initialize (CDirectShowPins & pInputPins, CDirectShowPins & pOutputPins, LPUNKNOWN pOwnerRef)
+void CEnumPins::Initialize (CDirectShowPins& pInputPins, CDirectShowPins& pOutputPins, LPUNKNOWN pOwnerRef)
 {
 	mInputPins = &pInputPins;
 	mOutputPins = &pOutputPins;
@@ -74,7 +74,7 @@ void CEnumPins::Initialize (CDirectShowPins & pInputPins, CDirectShowPins & pOut
 #endif
 }
 
-CEnumPins & CEnumPins::operator= (const CEnumPins & pSource)
+CEnumPins& CEnumPins::operator= (const CEnumPins& pSource)
 {
 	mInputPins = pSource.mInputPins;
 	mOutputPins = pSource.mOutputPins;
@@ -94,7 +94,7 @@ CEnumPins & CEnumPins::operator= (const CEnumPins & pSource)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE CEnumPins::Next (ULONG cPins, IPin **ppPins, ULONG *pcFetched)
+HRESULT STDMETHODCALLTYPE CEnumPins::Next (ULONG cPins, IPin**ppPins, ULONG *pcFetched)
 {
 	HRESULT	lResult = S_FALSE;
 	long	lNdx = 0;
@@ -181,7 +181,7 @@ HRESULT STDMETHODCALLTYPE CEnumPins::Reset ()
 HRESULT STDMETHODCALLTYPE CEnumPins::Clone (IEnumPins **ppEnum)
 {
 	HRESULT						lResult = S_OK;
-	CComObject <CEnumPins> *	lClone = NULL;
+	CComObject <CEnumPins>*	lClone = NULL;
 	IEnumPinsPtr				lInterface;
 
 	if	(!ppEnum)
@@ -230,7 +230,7 @@ CEnumMediaTypes::~CEnumMediaTypes ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CEnumMediaTypes::Initialize (CMediaTypes & pMediaTypes, LPUNKNOWN pOwnerRef)
+void CEnumMediaTypes::Initialize (CMediaTypes& pMediaTypes, LPUNKNOWN pOwnerRef)
 {
 	mMediaTypes = &pMediaTypes;
 	mOwnerRef = pOwnerRef;
@@ -243,7 +243,7 @@ void CEnumMediaTypes::Initialize (CMediaTypes & pMediaTypes, LPUNKNOWN pOwnerRef
 #endif
 }
 
-CEnumMediaTypes & CEnumMediaTypes::operator= (const CEnumMediaTypes & pSource)
+CEnumMediaTypes& CEnumMediaTypes::operator= (const CEnumMediaTypes& pSource)
 {
 	mMediaTypes = pSource.mMediaTypes;
 	mCurrNdx = pSource.mCurrNdx;
@@ -262,7 +262,7 @@ CEnumMediaTypes & CEnumMediaTypes::operator= (const CEnumMediaTypes & pSource)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE CEnumMediaTypes::Next (ULONG cMediaTypes, AM_MEDIA_TYPE **ppMediaTypes, ULONG *pcFetched)
+HRESULT STDMETHODCALLTYPE CEnumMediaTypes::Next (ULONG cMediaTypes, AM_MEDIA_TYPE**ppMediaTypes, ULONG *pcFetched)
 {
 	HRESULT	lResult = S_FALSE;
 	long	lNdx = 0;
@@ -343,7 +343,7 @@ HRESULT STDMETHODCALLTYPE CEnumMediaTypes::Reset ()
 HRESULT STDMETHODCALLTYPE CEnumMediaTypes::Clone (IEnumMediaTypes **ppEnum)
 {
 	HRESULT							lResult = S_OK;
-	CComObject <CEnumMediaTypes> *	lClone = NULL;
+	CComObject <CEnumMediaTypes>*	lClone = NULL;
 	IEnumMediaTypesPtr				lInterface;
 
 	if	(!ppEnum)

@@ -30,14 +30,14 @@ class CRegKeyEx
 {
 public:
 	CRegKeyEx ();
-	CRegKeyEx (const CRegKeyEx & pKey);
-	CRegKeyEx (const CRegKeyEx & pKey, LPCTSTR pName);
+	CRegKeyEx (const CRegKeyEx& pKey);
+	CRegKeyEx (const CRegKeyEx& pKey, LPCTSTR pName);
 	CRegKeyEx (HKEY pParent, LPCTSTR pName, bool pReadOnly = false, bool pCreate = false, bool pAuthorize = false);
 	virtual ~CRegKeyEx ();
 
 // Attributes
-	CString & Name () {return mName;}
-	const CString & Name () const {return mName;}
+	CString& Name () {return mName;}
+	const CString& Name () const {return mName;}
 
 	operator HKEY () const {return mKey;}
 	operator bool () const {return (mKey != NULL);}
@@ -49,7 +49,7 @@ public:
 
 // Operations
 	long Open (HKEY pParent, LPCTSTR pName, bool pReadOnly = false, bool pCreate = false, bool pAuthorize = false);
-	long Reopen (const CRegKeyEx & pKey, bool pReadOnly = false, bool pDeleteOnly = false);
+	long Reopen (const CRegKeyEx& pKey, bool pReadOnly = false, bool pDeleteOnly = false);
 	long Close ();
 	long Delete ();
 	long Empty ();
@@ -64,8 +64,8 @@ public:
 	class CRegValue * operator () (long pNdx);
 	class CRegString Value (bool pExpanded = true) const;
 
-	void LoadStrings (CStringArray & pStrings);
-	void SaveStrings (const CStringArray & pStrings);
+	void LoadStrings (CStringArray& pStrings);
+	void SaveStrings (const CStringArray& pStrings);
 
 	void Dump (UINT pLogLevel, LPCTSTR pTitle = NULL, UINT pIndent = 0);
 #ifdef	__AFX_H__
@@ -88,14 +88,14 @@ class CRegValue
 {
 public:
 	CRegValue (HKEY pKey, LPCTSTR pName = NULL, DWORD pValueType = 0);
-	CRegValue (const CRegValue & pSource);
+	CRegValue (const CRegValue& pSource);
 	virtual ~CRegValue ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegValue)
 #endif
 // Attributes
-	CString & Name () {return mName;}
-	const CString & Name () const {return mName;}
+	CString& Name () {return mName;}
+	const CString& Name () const {return mName;}
 
 	operator bool () const {return (mKey != NULL);}
 	bool operator !() const {return (mKey == NULL);}
@@ -103,7 +103,7 @@ public:
 	ULONG ValueType () const {return mValueType;}
 
 // Operations
-	CRegValue & ExpandName ();
+	CRegValue& ExpandName ();
 	long Delete ();
 	virtual void Dump (UINT pLogLevel, LPCTSTR pTitle = NULL, UINT pIndent = 0);
 
@@ -121,19 +121,19 @@ class CRegString : public CRegValue
 public:
 	CRegString (HKEY pKey, LPCTSTR pName = NULL, bool pForCreate = false, LPCTSTR pValue = NULL);
 	CRegString (HKEY pKey, long pIndex);
-	CRegString (const CRegString & pSource);
+	CRegString (const CRegString& pSource);
 	virtual ~CRegString ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegString)
 #endif
 // Attributes
-	const CString & Value () const {return mValue;}
-	CString & Value () {return mValue;}
+	const CString& Value () const {return mValue;}
+	CString& Value () {return mValue;}
 
 // Operations
 	bool CanExpand () const;
 	void CanExpand (bool pCanExpand);
-	CRegString & Expand (bool pIgnoreValueType = false);
+	CRegString& Expand (bool pIgnoreValueType = false);
 
 	long Update (LPCTSTR pValue = NULL);
 	void Dump (UINT pLogLevel, LPCTSTR pTitle = NULL, UINT pIndent = 0);
@@ -150,14 +150,14 @@ class CRegStrings : public CRegValue
 public:
 	CRegStrings (HKEY pKey, LPCTSTR pName = NULL, bool pForCreate = false, const CStringArray * pValue = NULL);
 	CRegStrings (HKEY pKey, long pIndex);
-	CRegStrings (const CRegStrings & pSource);
+	CRegStrings (const CRegStrings& pSource);
 	virtual ~CRegStrings ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegStrings)
 #endif
 // Attributes
-	const CStringArray & Value () const {return mValue;}
-	CStringArray & Value () {return mValue;}
+	const CStringArray& Value () const {return mValue;}
+	CStringArray& Value () {return mValue;}
 
 // Operations
 	long Update (const CStringArray * pValue = NULL);
@@ -175,20 +175,20 @@ class CRegDWord : public CRegValue
 public:
 	CRegDWord (HKEY pKey, LPCTSTR pName = NULL, bool pForCreate = false, DWORD pValue = 0);
 	CRegDWord (HKEY pKey, long pIndex);
-	CRegDWord (const CRegDWord & pSource);
+	CRegDWord (const CRegDWord& pSource);
 	virtual ~CRegDWord ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegDWord)
 #endif
 // Attributes
-	const DWORD & Value () const {return mValue;}
-	DWORD & Value () {return mValue;}
+	const DWORD& Value () const {return mValue;}
+	DWORD& Value () {return mValue;}
 	bool IsBinary () const;
 	void IsBinary (bool pIsBinary);
 
 // Operations
-	CRegDWord & SetValue (DWORD pValue) {mValue = pValue; return *this;}
-	long Update (DWORD * pValue = NULL);
+	CRegDWord& SetValue (DWORD pValue) {mValue = pValue; return *this;}
+	long Update (DWORD* pValue = NULL);
 	void Dump (UINT pLogLevel, LPCTSTR pTitle = NULL, UINT pIndent = 0);
 
 // Implementation
@@ -203,14 +203,14 @@ class CRegQWord : public CRegValue
 public:
 	CRegQWord (HKEY pKey, LPCTSTR pName = NULL, bool pForCreate = false, ULONGLONG pValue = 0);
 	CRegQWord (HKEY pKey, long pIndex);
-	CRegQWord (const CRegQWord & pSource);
+	CRegQWord (const CRegQWord& pSource);
 	virtual ~CRegQWord ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegQWord)
 #endif
 // Attributes
-	const ULONGLONG & Value () const {return mValue;}
-	ULONGLONG & Value () {return mValue;}
+	const ULONGLONG& Value () const {return mValue;}
+	ULONGLONG& Value () {return mValue;}
 	bool IsBinary () const;
 	void IsBinary (bool pIsBinary);
 
@@ -230,14 +230,14 @@ class CRegBinary : public CRegValue
 public:
 	CRegBinary (HKEY pKey, LPCTSTR pName = NULL, bool pForCreate = false, const CByteArray * pValue = NULL);
 	CRegBinary (HKEY pKey, long pIndex);
-	CRegBinary (const CRegBinary & pSource);
+	CRegBinary (const CRegBinary& pSource);
 	virtual ~CRegBinary ();
 #ifdef	__AFX_H__
 	DECLARE_DYNAMIC (CRegBinary)
 #endif
 // Attributes
-	const CByteArray & Value () const {return mValue;}
-	CByteArray & Value () {return mValue;}
+	const CByteArray& Value () const {return mValue;}
+	CByteArray& Value () {return mValue;}
 
 // Operations
 	long Update (const CByteArray * pValue = NULL);

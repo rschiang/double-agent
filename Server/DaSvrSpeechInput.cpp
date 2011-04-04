@@ -65,9 +65,9 @@ DaSvrSpeechInput::~DaSvrSpeechInput ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrSpeechInput * DaSvrSpeechInput::CreateInstance (LPCTSTR pClientMutexName)
+DaSvrSpeechInput* DaSvrSpeechInput::CreateInstance (LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrSpeechInput> *	lInstance = NULL;
+	CComObject<DaSvrSpeechInput>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrSpeechInput>::CreateInstance (&lInstance))))
 	{

@@ -59,9 +59,9 @@ DaSvrUserInput::~DaSvrUserInput()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrUserInput * DaSvrUserInput::CreateInstance (ISpRecoResult * pRecoResult, bool pGlobalCommand, LPCTSTR pClientMutexName)
+DaSvrUserInput * DaSvrUserInput::CreateInstance (ISpRecoResult* pRecoResult, bool pGlobalCommand, LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrUserInput> *	lInstance = NULL;
+	CComObject<DaSvrUserInput>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrUserInput>::CreateInstance (&lInstance))))
 	{

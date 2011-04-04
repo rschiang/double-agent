@@ -31,8 +31,8 @@ public:
 
 // Operations
 public:
-	HRESULT Initialize (CAgentFile & pAgentFile);
-	HRESULT Initialize (CDaCmnAnimationNames & pSource, LPUNKNOWN pUnknown);
+	HRESULT Initialize (CAgentFile& pAgentFile);
+	HRESULT Initialize (CDaCmnAnimationNames& pSource, LPUNKNOWN pUnknown);
 
 // Interfaces
 	// IDaSvrAnimationNames

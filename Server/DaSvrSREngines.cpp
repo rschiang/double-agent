@@ -63,7 +63,7 @@ DaSvrSREngines::~DaSvrSREngines()
 
 DaSvrSREngines * DaSvrSREngines::CreateInstance (LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrSREngines> *	lInstance = NULL;
+	CComObject<DaSvrSREngines>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrSREngines>::CreateInstance (&lInstance))))
 	{

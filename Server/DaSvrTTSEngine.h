@@ -44,7 +44,7 @@ public:
 public:
 	static DaSvrTTSEngine * CreateInstance (class CSapi5VoiceInfo * pVoiceInfo, LPCTSTR pClientMutexName = NULL);
 #ifndef	_WIN64
-	static DaSvrTTSEngine * CreateInstance (class CSapi4VoiceInfo * pVoiceInfo, LPCTSTR pClientMutexName = NULL);
+	static DaSvrTTSEngine * CreateInstance (class CSapi4VoiceInfo* pVoiceInfo, LPCTSTR pClientMutexName = NULL);
 #endif
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();

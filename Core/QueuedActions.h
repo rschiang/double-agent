@@ -42,13 +42,13 @@ public:
 
 // Operations
 public:
-	CQueuedAction * GetCharAction (QueueAction pAction, long pCharID, bool pReverseOrder = false) const;
-	CQueuedAction * GetNextAction () const;
-	CQueuedAction * GetNextAction (QueueAction pAction) const;
-	CQueuedAction * FindNextAction (long pCharID = -1) const;
+	CQueuedAction* GetCharAction (QueueAction pAction, long pCharID, bool pReverseOrder = false) const;
+	CQueuedAction* GetNextAction () const;
+	CQueuedAction* GetNextAction (QueueAction pAction) const;
+	CQueuedAction* FindNextAction (long pCharID = -1) const;
 
-	void PushQueue (CAtlOwnPtrList <CQueuedAction> & pQueue);
-	void PopQueue (CAtlOwnPtrList <CQueuedAction> & pQueue);
+	void PushQueue (CAtlOwnPtrList <CQueuedAction>& pQueue);
+	void PopQueue (CAtlOwnPtrList <CQueuedAction>& pQueue);
 };
 
 /////////////////////////////////////////////////////////////////////////////

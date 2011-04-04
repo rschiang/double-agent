@@ -27,7 +27,7 @@
 class CDaCmnSettings
 {
 public:
-	CDaCmnSettings (class CGlobalAnchor * pAnchor);
+	CDaCmnSettings (class CGlobalAnchor* pAnchor);
 	virtual ~CDaCmnSettings ();
 
 // Interfaces
@@ -50,7 +50,7 @@ protected:
 	AudioStatusType GetAudioStatus ();
 
 protected:
-	class CGlobalAnchor *	mAnchor;
+	class CGlobalAnchor*	mAnchor;
 };
 
 /////////////////////////////////////////////////////////////////////////////

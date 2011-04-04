@@ -43,7 +43,7 @@ public:
 
 // Operations
 public:
-	static DaSvrSettings * CreateInstance (LPCTSTR pClientMutexName = NULL);
+	static DaSvrSettings* CreateInstance (LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

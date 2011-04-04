@@ -68,7 +68,7 @@ public:
 	static UINT GetUiDrawState (HWND pWindow, UINT pDrawState);
 
 	static void InitUiState (HWND pWindow = NULL);
-	static bool UpdateUiState (MSG & pMsg);
+	static bool UpdateUiState (MSG& pMsg);
 
 	static bool IsScreenReaderActive ();
 

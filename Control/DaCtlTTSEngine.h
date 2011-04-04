@@ -86,7 +86,7 @@ public:
 	HRESULT STDMETHODCALLTYPE get_Manufacturer (BSTR * Manufacturer);
 	HRESULT STDMETHODCALLTYPE GetVersion (short * MajorVersion,  short * MinorVersion);
 	HRESULT STDMETHODCALLTYPE get_Gender (SpeechGenderType * Gender);
-	HRESULT STDMETHODCALLTYPE get_LanguageID (long * LanguageID);
+	HRESULT STDMETHODCALLTYPE get_LanguageID (long* LanguageID);
 	HRESULT STDMETHODCALLTYPE get_LanguageName (VARIANT_BOOL EnglishName,  BSTR * LanguageName);
 
 // Implementation

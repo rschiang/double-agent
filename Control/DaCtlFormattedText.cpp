@@ -585,7 +585,7 @@ HRESULT STDMETHODCALLTYPE DaCtlFormattedText::Append (IDaCtlFormattedText *Forma
 
 	try
 	{
-		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText> *> (FormattedText);
+		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText>*> (FormattedText);
 	}
 	catch AnyExceptionSilent
 

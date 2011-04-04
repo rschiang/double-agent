@@ -2330,7 +2330,7 @@ DWORD LogStart (bool pNewLogFile, LPCTSTR pLogFileName, UINT pLogLevel)
 								)
 							{
 								TCHAR	Speed [20];
-								_stprintf (Speed, _T("%uMHz"), * (DWORD *) lValue);
+								_stprintf (Speed, _T("%uMHz"), *(DWORD*) lValue);
 								_tcscat (lProcessorStr, _T(" "));
 								_tcscat (lProcessorStr, Speed);
 							}
@@ -2466,7 +2466,7 @@ void LogStop (unsigned int pPutLogEnd)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-void LogControl (LPTSTR pLogFileName, UINT & pLogLevel)
+void LogControl (LPTSTR pLogFileName, UINT& pLogLevel)
 {
 	UINT	lLogLevelSave = pLogLevel;
 	HKEY	lRegKey = 0;
@@ -2527,7 +2527,7 @@ void LogControl (LPTSTR pLogFileName, UINT & pLogLevel)
 					&&	(lValueType == REG_DWORD)
 					)
 				{
-					pLogLevel = (* (DWORD *) lValue) & LogSettingsMask;
+					pLogLevel = (*(DWORD*) lValue) & LogSettingsMask;
 				}
 				RegCloseKey (lRegKey);
 			}
@@ -2575,10 +2575,10 @@ void LogControl (LPTSTR pLogFileName, UINT & pLogLevel)
 				if	(
 						(RegQueryValueEx (lRegKey, _T("LogLevel"), NULL, &(lValueType = 0), lValue, &(lValueSize = sizeof (lValue))) == ERROR_SUCCESS)
 					&&	(lValueType == REG_DWORD)
-					&&	(((* (DWORD *) lValue) & LogLevelMask) > (pLogLevel & LogLevelMask))
+					&&	(((*(DWORD*) lValue) & LogLevelMask) > (pLogLevel & LogLevelMask))
 					)
 				{
-					pLogLevel = (* (DWORD *) lValue) & LogSettingsMask;
+					pLogLevel = (*(DWORD*) lValue) & LogSettingsMask;
 				}
 				RegCloseKey (lRegKey);
 			}

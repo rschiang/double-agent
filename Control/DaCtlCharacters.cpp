@@ -257,7 +257,7 @@ STDMETHODIMP DaCtlCharacters::InterfaceSupportsErrorInfo(REFIID riid)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE DaCtlCharacters::get_Count (long * Count)
+HRESULT STDMETHODCALLTYPE DaCtlCharacters::get_Count (long* Count)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE
@@ -524,7 +524,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacters::Load (BSTR CharacterID, VARIANT Provi
 			CAtlString			lFilePath;
 			bool				lFilePathIsDefault;
 			tPtr <CAgentFile>	lLoadFile;
-			CAgentFile *		lAgentFile = NULL;
+			CAgentFile*		lAgentFile = NULL;
 
 			if	(
 					(SUCCEEDED (lResult = CDaCmnCharacter::GetLoadPath (Provider, lFilePath, mOwner->GetSearchPath(), &lFilePathIsDefault)))
@@ -545,7 +545,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacters::Load (BSTR CharacterID, VARIANT Provi
 				&&	(SUCCEEDED (lResult = CDaCmnCharacter::GetAgentFile (lFilePath, lLoadFile)))
 				)
 			{
-				lAgentFile = mOwner->mAnchor.FindCachedFile (lLoadFile->GetGuid());
+				lAgentFile = mOwner->mAnchor.FindCachedFile (lLoadFile->Header.Guid);
 				if	(!lAgentFile)
 				{
 					lAgentFile = lLoadFile;

@@ -75,7 +75,7 @@ public:
 	HRESULT STDMETHODCALLTYPE InterfaceSupportsErrorInfo (REFIID riid);
 
 	// IDaCtlCharacterFiles
-	HRESULT STDMETHODCALLTYPE get_FilePaths (SAFEARRAY ** FilePaths);
+	HRESULT STDMETHODCALLTYPE get_FilePaths (SAFEARRAY** FilePaths);
 	HRESULT STDMETHODCALLTYPE get_SearchPath (BSTR * SearchPath);
 	HRESULT STDMETHODCALLTYPE put_SearchPath (BSTR SearchPath);
 	HRESULT STDMETHODCALLTYPE get_DefaultSearchPath (BSTR * DefaultSearchPath);

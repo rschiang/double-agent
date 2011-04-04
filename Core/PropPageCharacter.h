@@ -79,9 +79,9 @@ protected:
 
 // Implementation
 protected:
-	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
-	LRESULT OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
-	LRESULT OnCtlColor (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
+	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnCtlColor (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
 	BEGIN_MSG_MAP(CPropPageCharacter)
 		MESSAGE_HANDLER(WM_DESTROY, OnDestroy)

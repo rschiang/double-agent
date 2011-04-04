@@ -54,7 +54,7 @@ CAgentTextObject::~CAgentTextObject ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentTextObject::Attach (long pCharID, CEventNotify * pNotify, CSapiVoice * pVoice)
+void CAgentTextObject::Attach (long pCharID, CEventNotify* pNotify, CSapiVoice* pVoice)
 {
 #ifdef	_DEBUG_SPEECH_EVENTS
 	if	(LogIsActive (_DEBUG_SPEECH_EVENTS))
@@ -189,7 +189,7 @@ void CAgentTextObject::OnVoiceWord (long pCharID, UINT pWordPos, int pWordLength
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentTextObject::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentTextObject::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_SPEECH_EVENTS
 	if	(LogIsActive (_DEBUG_SPEECH_EVENTS))
@@ -215,7 +215,7 @@ LRESULT CAgentTextObject::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lPar
 	return 0;
 }
 
-LRESULT CAgentTextObject::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentTextObject::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_SPEECH_EVENTS
 	if	(LogIsActive (_DEBUG_SPEECH_EVENTS))
@@ -241,7 +241,7 @@ LRESULT CAgentTextObject::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return 0;
 }
 
-LRESULT CAgentTextObject::OnVoiceWordMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentTextObject::OnVoiceWordMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_SPEECH_EVENTS
 	if	(LogIsActive (_DEBUG_SPEECH_EVENTS))

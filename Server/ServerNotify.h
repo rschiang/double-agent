@@ -45,7 +45,7 @@ public:
 
 // Operations
 public:
-	HRESULT Register (IUnknown * punkNotifySink, long * pdwSinkID);
+	HRESULT Register (IUnknown * punkNotifySink, long* pdwSinkID);
 	HRESULT Unregister (long dwSinkID, bool pDelay);
 	void UnregisterDelayed ();
 	void UnregisterAll ();

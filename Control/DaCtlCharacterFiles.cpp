@@ -166,7 +166,7 @@ STDMETHODIMP DaCtlCharacterFiles::InterfaceSupportsErrorInfo(REFIID riid)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE DaCtlCharacterFiles::get_FilePaths (SAFEARRAY **FilePaths)
+HRESULT STDMETHODCALLTYPE DaCtlCharacterFiles::get_FilePaths (SAFEARRAY**FilePaths)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE

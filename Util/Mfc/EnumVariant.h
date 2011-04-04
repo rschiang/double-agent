@@ -58,7 +58,7 @@ protected:
 
 protected:
 	virtual long GetItemCount () = 0;
-	virtual void PutItem (long pItemNdx, VARIANT & pItem) = 0;
+	virtual void PutItem (long pItemNdx, VARIANT& pItem) = 0;
 	virtual CEnumVariant * Clone () = 0;
 protected:
 	long	mCurrNdx;

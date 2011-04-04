@@ -50,15 +50,15 @@ public:
 
 // Operations
 public:
-	virtual bool CacheFile (CAgentFile * pFile, CAgentFileClient * pClient);
-	virtual bool UncacheFile (CAgentFile * pFile);
-	virtual bool AddFileClient (CAgentFile * pFile, CAgentFileClient * pClient);
-	virtual bool RemoveFileClient (CAgentFile * pFile, CAgentFileClient * pClient, bool pDeleteUnusedFile = true);
+	virtual bool CacheFile (CAgentFile* pFile, CAgentFileClient* pClient);
+	virtual bool UncacheFile (CAgentFile* pFile);
+	virtual bool AddFileClient (CAgentFile* pFile, CAgentFileClient* pClient);
+	virtual bool RemoveFileClient (CAgentFile* pFile, CAgentFileClient* pClient, bool pDeleteUnusedFile = true);
 
-	virtual CAgentFile * GetCachedFile (INT_PTR pFileNdx);
-	virtual CAgentFile * FindCachedFile (LPCTSTR pFileName);
-	virtual CAgentFile * FindCachedFile (const GUID & pFileGuid);
-	virtual bool GetFileClients (CAgentFile * pFile, CAtlPtrTypeArray <CAgentFileClient> & pClients);
+	virtual CAgentFile* GetCachedFile (INT_PTR pFileNdx);
+	virtual CAgentFile* FindCachedFile (LPCTSTR pFileName);
+	virtual CAgentFile* FindCachedFile (const GUID& pFileGuid);
+	virtual bool GetFileClients (CAgentFile* pFile, CAtlPtrTypeArray <CAgentFileClient>& pClients);
 
 // Implementation
 public:
@@ -66,7 +66,7 @@ public:
 protected:
 	mutable CComAutoCriticalSection										mCritSec;
 	CAtlOwnPtrArray <CAgentFile>										mCachedFiles;
-	CAtlOwnPtrMap <CAgentFile *, CAtlPtrTypeArray <CAgentFileClient> >	mFileClients;
+	CAtlOwnPtrMap <CAgentFile*, CAtlPtrTypeArray <CAgentFileClient> >	mFileClients;
 };
 
 //////////////////////////////////////////////////////////////////////

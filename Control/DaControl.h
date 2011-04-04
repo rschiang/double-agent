@@ -233,7 +233,7 @@ public:
 	LRESULT OnTimer(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnHotKey(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnActivateApp(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
-	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
+	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnCompleteRequests(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnBroadcastOptionsChanged(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 	LRESULT OnBroadcastDefaultCharacterChanged(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
@@ -295,7 +295,7 @@ public:
 	HRESULT STDMETHODCALLTYPE get_MouseIcon (IPictureDisp **MouseIcon);
 
 	HRESULT STDMETHODCALLTYPE get_CharacterFiles (IDaCtlCharacterFiles ** CharacterFiles);
-	HRESULT STDMETHODCALLTYPE get_CharacterStyle (long * CharacterStyle);
+	HRESULT STDMETHODCALLTYPE get_CharacterStyle (long* CharacterStyle);
 	HRESULT STDMETHODCALLTYPE put_CharacterStyle (long CharacterStyle);
 	HRESULT STDMETHODCALLTYPE get_TTSEngines (IDaCtlTTSEngines ** TTSEngines);
 	HRESULT STDMETHODCALLTYPE FindTTSEngines (VARIANT LanguageID,  VARIANT Gender,  IDaCtlTTSEngines ** TTSEngines);
@@ -363,7 +363,7 @@ protected:
 	bool IsDesigning ();
 	HWND GetMsgPostingWnd ();
 	void UpdateWindowStyles ();
-	bool CalcWindowStyles (DWORD & pStyle, DWORD & pExStyle);
+	bool CalcWindowStyles (DWORD& pStyle, DWORD& pExStyle);
 	static COLORREF GetOleColor (OLE_COLOR pColor);
 
 protected:

@@ -62,7 +62,7 @@ DaSvrCommand::~DaSvrCommand()
 
 DaSvrCommand * DaSvrCommand::CreateInstance (DaSvrCommands * pOwner, LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrCommand> *	lInstance = NULL;
+	CComObject<DaSvrCommand>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrCommand>::CreateInstance (&lInstance))))
 	{

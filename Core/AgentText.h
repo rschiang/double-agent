@@ -33,8 +33,8 @@ class CAgentText
 {
 public:
 	CAgentText (UINT pSapiVersion = 5);
-	CAgentText (const CAtlStringArray & pWords, UINT pSapiVersion = 5);
-	CAgentText (const CAgentText & pText, UINT pSapiVersion = 5);
+	CAgentText (const CAtlStringArray& pWords, UINT pSapiVersion = 5);
+	CAgentText (const CAgentText& pText, UINT pSapiVersion = 5);
 	virtual ~CAgentText ();
 
 // Attributes
@@ -42,20 +42,20 @@ public:
 	UINT GetSapiVersion () const;
 	bool SetSapiVersion (UINT pSapiVersion);
 
-	const CAtlString & GetFullText () const {return mText;}
+	const CAtlString& GetFullText () const {return mText;}
 	CAtlString GetSpeechText () const;
 
 // Operations
 public:
-	CAgentText & operator= (const CAtlStringArray & pWords);
-	CAgentText & operator+= (const CAtlStringArray & pWords);
-	CAgentText & operator= (const CAgentText & pText);
-	CAgentText & operator+= (const CAgentText & pText);
+	CAgentText& operator= (const CAtlStringArray& pWords);
+	CAgentText& operator+= (const CAtlStringArray& pWords);
+	CAgentText& operator= (const CAgentText& pText);
+	CAgentText& operator+= (const CAgentText& pText);
 
 // Implementation
 public:
-	void Append (const CAgentText & pText, bool pAppendSpeech = false);
-	void Append (const CAtlStringArray & pTextWords, const CAtlStringArray & pSpeechWords, bool pAppendSpeech = false);
+	void Append (const CAgentText& pText, bool pAppendSpeech = false);
+	void Append (const CAtlStringArray& pTextWords, const CAtlStringArray& pSpeechWords, bool pAppendSpeech = false);
 
 protected:
 	UINT			mSapiVersion;
@@ -82,8 +82,8 @@ class CAgentTextParse : public CComObjectNoLock<CAgentSaxParse>, public CAgentTe
 {
 public:
 	CAgentTextParse (LPCTSTR pText = NULL, UINT pSapiVersion = 5);
-	CAgentTextParse (const CAtlStringArray & pWords, UINT pSapiVersion = 5);
-	CAgentTextParse (const CAgentText & pText, UINT pSapiVersion = 5);
+	CAgentTextParse (const CAtlStringArray& pWords, UINT pSapiVersion = 5);
+	CAgentTextParse (const CAgentText& pText, UINT pSapiVersion = 5);
 	virtual ~CAgentTextParse ();
 
 // Attributes
@@ -91,31 +91,31 @@ public:
 
 // Operations
 public:
-	CAgentTextParse & operator= (LPCTSTR pText);
-	CAgentTextParse & operator+= (LPCTSTR pText);
-	CAgentTextParse & operator= (const CAtlStringArray & pWords);
-	CAgentTextParse & operator+= (const CAtlStringArray & pWords);
-	CAgentTextParse & operator= (const CAgentText & pText);
-	CAgentTextParse & operator+= (const CAgentText & pText);
+	CAgentTextParse& operator= (LPCTSTR pText);
+	CAgentTextParse& operator+= (LPCTSTR pText);
+	CAgentTextParse& operator= (const CAtlStringArray& pWords);
+	CAgentTextParse& operator+= (const CAtlStringArray& pWords);
+	CAgentTextParse& operator= (const CAgentText& pText);
+	CAgentTextParse& operator+= (const CAgentText& pText);
 
 // Overrides
 
 // Implementation
 public:
-	static int SplitText (LPCTSTR pText, CAtlStringArray & pTextWords);
+	static int SplitText (LPCTSTR pText, CAtlStringArray& pTextWords);
 protected:
-	int SplitMap (LPCTSTR pText, CAtlString * pSpeechWords, CAtlString * pTextWords);
+	int SplitMap (LPCTSTR pText, CAtlString* pSpeechWords, CAtlString* pTextWords);
 
-	void ParseText (LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords);
-	void ParseTags (LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords, bool pOuterParse);
-	void PutTag (LPCTSTR pTag, LPCTSTR pText, CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords, bool pOuterParse);
+	void ParseText (LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords);
+	void ParseTags (LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords, bool pOuterParse);
+	void PutTag (LPCTSTR pTag, LPCTSTR pText, CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords, bool pOuterParse);
 
-	void UnquoteMappedText (CAtlString & pText);
-	void AppendWords (const CAtlStringArray & pAppend, CAtlStringArray & pWords, UINT pSapiVersion = 0);
-	void PadWords (CAtlStringArray & pWords, UINT pSapiVersion = 0);
-	void FinishWords (CAtlStringArray & pWords, UINT pSapiVersion = 0);
-	void SpeechFromText (const CAtlStringArray & pTextWords, CAtlStringArray & pSpeechWords);
-	void FinishSpeech (CAtlStringArray & pSpeechWords);
+	void UnquoteMappedText (CAtlString& pText);
+	void AppendWords (const CAtlStringArray& pAppend, CAtlStringArray& pWords, UINT pSapiVersion = 0);
+	void PadWords (CAtlStringArray& pWords, UINT pSapiVersion = 0);
+	void FinishWords (CAtlStringArray& pWords, UINT pSapiVersion = 0);
+	void SpeechFromText (const CAtlStringArray& pTextWords, CAtlStringArray& pSpeechWords);
+	void FinishSpeech (CAtlStringArray& pSpeechWords);
 
 // ISAXContentHandler
 	HRESULT STDMETHODCALLTYPE putDocumentLocator (ISAXLocator *pLocator);
@@ -149,8 +149,8 @@ class CAgentTextDraw : public CTextWrap, public CAgentText
 {
 public:
 	CAgentTextDraw (UINT pSapiVersion = 5);
-	CAgentTextDraw (const CAgentText & pText, UINT pSapiVersion = 5);
-	CAgentTextDraw (const CAgentTextDraw & pText, UINT pSapiVersion = 5);
+	CAgentTextDraw (const CAgentText& pText, UINT pSapiVersion = 5);
+	CAgentTextDraw (const CAgentTextDraw& pText, UINT pSapiVersion = 5);
 	virtual ~CAgentTextDraw ();
 
 // Attributes
@@ -161,7 +161,7 @@ public:
 	INT_PTR GetWordCount () const {return mTextWords.GetCount();}
 	INT_PTR GetWordDisplayed () const {return mWordDisplayed;}
 
-	bool CanScroll (const CRect & pTextBounds) const;
+	bool CanScroll (const CRect& pTextBounds) const;
 	long GetScrollPos () const {return mScrollPos;}
 	long GetScrollInc () const {return mScrollInc;}
 	long GetScrollMin () const {return mScrollMin;}
@@ -169,10 +169,10 @@ public:
 
 // Operations
 public:
-	CAgentTextDraw & operator= (const CAgentText & pText);
-	CAgentTextDraw & operator+= (const CAgentText & pText);
-	CAgentTextDraw & operator= (const CAgentTextDraw & pText);
-	CAgentTextDraw & operator+= (const CAgentTextDraw & pText);
+	CAgentTextDraw& operator= (const CAgentText& pText);
+	CAgentTextDraw& operator+= (const CAgentText& pText);
+	CAgentTextDraw& operator= (const CAgentTextDraw& pText);
+	CAgentTextDraw& operator+= (const CAgentTextDraw& pText);
 
 	bool DisplayFirstWord (bool pForSpeech = false);
 	bool DisplayNextWord (bool pForSpeech = false);
@@ -183,9 +183,9 @@ public:
 	CSize CalcTextSize (HFONT pFont, USHORT pPerLine, USHORT pLines);
 	CSize CalcTextSize (HFONT pFont, USHORT pPerLine);
 
-	DWORD CalcScroll (const CRect & pTextBounds, long & pScrollInc, long & pScrollMin, long & pScrollMax, bool pClipLines = false, DWORD pMaxLineTime = 0) const;
-	DWORD InitScroll (const CRect & pTextBounds, bool pForceReinit = false, bool pClipLines = false, DWORD pMaxLineTime = 0);
-	bool ApplyScroll (const CRect & pTextBounds, CRect * pClipRect = NULL);
+	DWORD CalcScroll (const CRect& pTextBounds, long& pScrollInc, long& pScrollMin, long& pScrollMax, bool pClipLines = false, DWORD pMaxLineTime = 0) const;
+	DWORD InitScroll (const CRect& pTextBounds, bool pForceReinit = false, bool pClipLines = false, DWORD pMaxLineTime = 0);
+	bool ApplyScroll (const CRect& pTextBounds, CRect* pClipRect = NULL);
 	bool Scroll ();
 
 // Overrides
@@ -194,7 +194,7 @@ public:
 public:
 	void ResetState (bool pFullReset);
 protected:
-	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter);
+	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter);
 
 protected:
 	INT_PTR									mWordDisplayed;

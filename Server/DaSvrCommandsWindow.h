@@ -46,7 +46,7 @@ public:
 
 // Operations
 public:
-	static DaSvrCommandsWindow * CreateInstance (CVoiceCommandsWnd * pVoiceCommandsWnd, LPCTSTR pClientMutexName = NULL);
+	static DaSvrCommandsWindow* CreateInstance (CVoiceCommandsWnd* pVoiceCommandsWnd, LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

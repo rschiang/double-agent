@@ -576,7 +576,7 @@ bool CDirectShowWnd::Rewind ()
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CDirectShowWnd::IsPlaying (bool pIncludePause, bool pQuickCheck) const
+bool CDirectShowWnd::IsPlaying (bool pIncludePause) const
 {
 	bool	lRet = false;
 
@@ -589,7 +589,7 @@ bool CDirectShowWnd::IsPlaying (bool pIncludePause, bool pQuickCheck) const
 		{
 			HRESULT			lResult;
 			OAFilterState	lState;
-			int				lRetryCount = pQuickCheck ? 0 : 10;
+			int				lRetryCount = 10;
 
 			do
 			{
@@ -627,7 +627,7 @@ bool CDirectShowWnd::IsPlaying (bool pIncludePause, bool pQuickCheck) const
 	return lRet;
 }
 
-bool CDirectShowWnd::IsPaused (bool pQuickCheck) const
+bool CDirectShowWnd::IsPaused () const
 {
 	bool	lRet = false;
 
@@ -640,7 +640,7 @@ bool CDirectShowWnd::IsPaused (bool pQuickCheck) const
 		{
 			HRESULT			lResult;
 			OAFilterState	lState;
-			int				lRetryCount = pQuickCheck ? 0 : 10;
+			int				lRetryCount = 10;
 
 			do
 			{
@@ -672,7 +672,7 @@ bool CDirectShowWnd::IsPaused (bool pQuickCheck) const
 	return lRet;
 }
 
-bool CDirectShowWnd::IsStopped (bool pQuickCheck) const
+bool CDirectShowWnd::IsStopped () const
 {
 	bool	lRet = false;
 
@@ -685,7 +685,7 @@ bool CDirectShowWnd::IsStopped (bool pQuickCheck) const
 		{
 			HRESULT			lResult;
 			OAFilterState	lState;
-			int				lRetryCount = pQuickCheck ? 0 : 10;
+			int				lRetryCount = 10;
 
 			do
 			{
@@ -860,7 +860,7 @@ HRESULT CDirectShowWnd::Initialize (LPCTSTR pFileName)
 
 	try
 	{
-		lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_FilterGraphNoThread, NULL, CLSCTX_INPROC_SERVER, __uuidof (IGraphBuilder), (void **) &mGraphBuilder));
+		lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_FilterGraphNoThread, NULL, CLSCTX_INPROC_SERVER, __uuidof (IGraphBuilder), (void**) &mGraphBuilder));
 
 		if	(SUCCEEDED (lResult))
 		{
@@ -939,7 +939,7 @@ HRESULT CDirectShowWnd::PrepareGraphWindowed (IBaseFilter ** pFilter)
 	SafeFreeSafePtr (mVMRFilterConfig9);
 	SafeFreeSafePtr (mVMRWindowlessControl9);
 
-	lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoRendererDefault, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void **) &lVideoRenderFilter));
+	lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoRendererDefault, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void**) &lVideoRenderFilter));
 	if	(
 			(SUCCEEDED (lResult))
 		&&	(lVideoRenderFilter != NULL)
@@ -966,7 +966,7 @@ HRESULT CDirectShowWnd::PrepareGraphWindowless (IBaseFilter ** pFilter)
 	SafeFreeSafePtr (mVMRWindowlessControl9);
 
 #if	FALSE
-	lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoMixingRenderer9, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void **) &lVideoRenderFilter));
+	lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoMixingRenderer9, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void**) &lVideoRenderFilter));
 	if	(
 			(SUCCEEDED (lResult))
 		&&	(lVideoRenderFilter != NULL)
@@ -996,7 +996,7 @@ HRESULT CDirectShowWnd::PrepareGraphWindowless (IBaseFilter ** pFilter)
 #endif
 	{
 		lVideoRenderFilter = NULL;
-		lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoMixingRenderer, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void **) &lVideoRenderFilter));
+		lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_VideoMixingRenderer, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void**) &lVideoRenderFilter));
 		if	(
 				(SUCCEEDED (lResult))
 			&&	(lVideoRenderFilter != NULL)
@@ -1251,7 +1251,7 @@ CRect CDirectShowWnd::GetVideoRect ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT CDirectShowWnd::SetVideoRect (const CRect & pVideoRect)
+HRESULT CDirectShowWnd::SetVideoRect (const CRect& pVideoRect)
 {
 	HRESULT	lResult = E_UNEXPECTED;
 
@@ -1296,7 +1296,7 @@ HRESULT CDirectShowWnd::SetVideoRect (const CRect & pVideoRect)
 	return lResult;
 }
 
-HRESULT CDirectShowWnd::CenterVideo (const CSize * pVideoSize)
+HRESULT CDirectShowWnd::CenterVideo (const CSize* pVideoSize)
 {
 	HRESULT	lResult = S_FALSE;
 
@@ -1431,13 +1431,13 @@ DWORD CDirectShowWnd::GetAlphaSmoothing () const
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CDirectShowWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	Close ();
 	return DefWindowProc ();
 }
 
-LRESULT CDirectShowWnd::OnDisplayChange (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnDisplayChange (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	if	(mVMRWindowlessControl9 != NULL)
 	{
@@ -1455,7 +1455,7 @@ LRESULT CDirectShowWnd::OnDisplayChange (UINT uMsg, WPARAM wParam, LPARAM lParam
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CDirectShowWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	tS <PAINTSTRUCT>	lPaintStruct;
 	CMemDCHandle		lPaintDC;
@@ -1469,7 +1469,7 @@ LRESULT CDirectShowWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL &
 	return 0;
 }
 
-LRESULT CDirectShowWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	if	(EraseWindow ((HDC)wParam, GetEraseColor()))
 	{
@@ -1481,7 +1481,7 @@ LRESULT CDirectShowWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam, B
 	}
 }
 
-LRESULT CDirectShowWnd::OnPrintClient (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnPrintClient (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	HDC	lDC = (HDC)wParam;
 
@@ -1553,7 +1553,7 @@ bool CDirectShowWnd::PaintWindow (HDC pDC)
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CDirectShowWnd::OnMediaEvent (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CDirectShowWnd::OnMediaEvent (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_EVENTS
 	if	(mMediaEvent != NULL)
@@ -1568,7 +1568,7 @@ LRESULT CDirectShowWnd::OnMediaEvent (UINT uMsg, WPARAM wParam, LPARAM lParam, B
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-FILTER_STATE CDirectShowWnd::GetState (CAtlString * pStateStr)
+FILTER_STATE CDirectShowWnd::GetState (CAtlString* pStateStr)
 {
 	OAFilterState	lState = -1;
 	HRESULT			lResult;

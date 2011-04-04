@@ -50,12 +50,12 @@ public:
 	BOOL Lookup (aKeyParm pKey, aValType*& pValue) const;
 
 // Operations
-	aValType & operator[] (aKeyParm pKey);
+	aValType& operator[] (aKeyParm pKey);
 	bool RemoveKey (aKeyParm pKey);
 	void RemoveAll ();
 
 	POSITION GetStartPosition () const;
-	void GetNextAssoc (POSITION & pNextPosition, aKeyType& pKey, aValType*& pValue) const;
+	void GetNextAssoc (POSITION& pNextPosition, aKeyType& pKey, aValType*& pValue) const;
 
 	UINT GetHashTableSize () const;
 	void InitHashTable (UINT pHashSize, bool pAllocNow = true);

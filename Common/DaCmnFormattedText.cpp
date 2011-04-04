@@ -36,7 +36,7 @@ CDaCmnFormattedText::~CDaCmnFormattedText ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT CDaCmnFormattedText::Initialize (LPUNKNOWN pObject, CSapiVoice * pSapiVoice)
+HRESULT CDaCmnFormattedText::Initialize (LPUNKNOWN pObject, CSapiVoice* pSapiVoice)
 {
 	return Initialize (pObject, pSapiVoice->SafeIsValid ());
 }
@@ -180,7 +180,7 @@ HRESULT STDMETHODCALLTYPE CDaCmnFormattedText::Parse (BSTR RawText)
 	return lResult;
 }
 
-HRESULT STDMETHODCALLTYPE CDaCmnFormattedText::Append (CDaCmnFormattedText * FormattedText)
+HRESULT STDMETHODCALLTYPE CDaCmnFormattedText::Append (CDaCmnFormattedText* FormattedText)
 {
 	HRESULT	lResult = E_INVALIDARG;
 

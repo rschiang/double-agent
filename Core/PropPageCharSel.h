@@ -53,11 +53,11 @@ protected:
 // Implementation
 protected:
 	LRESULT OnApply(int idCtrl, LPNMHDR pnmh, BOOL& bHandled);
-	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
-	LRESULT OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
-	LRESULT OnCtlColor (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled);
-	LRESULT OnNext(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL & bHandled);
-	LRESULT OnBack(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL & bHandled);
+	LRESULT OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnCtlColor (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnNext(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
+	LRESULT OnBack(WORD wNotifyCode, WORD wID, HWND hWndCtl, BOOL& bHandled);
 
 	BEGIN_MSG_MAP(CPropPageSpeech)
 		NOTIFY_CODE_HANDLER(PSN_APPLY, OnApply)

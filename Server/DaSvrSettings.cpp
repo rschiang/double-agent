@@ -66,9 +66,9 @@ DaSvrSettings::~DaSvrSettings ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrSettings * DaSvrSettings::CreateInstance (LPCTSTR pClientMutexName)
+DaSvrSettings* DaSvrSettings::CreateInstance (LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrSettings> *	lInstance = NULL;
+	CComObject<DaSvrSettings>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrSettings>::CreateInstance (&lInstance))))
 	{

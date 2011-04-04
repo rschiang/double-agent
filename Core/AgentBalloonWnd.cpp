@@ -110,9 +110,9 @@ CAgentBalloonWnd::~CAgentBalloonWnd ()
 	Detach (-1, NULL);
 }
 
-CAgentBalloonWnd * CAgentBalloonWnd::CreateInstance (long pCharID, CAtlPtrTypeArray <CEventNotify> & pNotify)
+CAgentBalloonWnd* CAgentBalloonWnd::CreateInstance (long pCharID, CAtlPtrTypeArray <CEventNotify>& pNotify)
 {
-	CComObject<CAgentBalloonWnd> *	lInstance = NULL;
+	CComObject<CAgentBalloonWnd>*	lInstance = NULL;
 	INT_PTR							lNdx;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<CAgentBalloonWnd>::CreateInstance (&lInstance))))
@@ -234,7 +234,7 @@ CAtlString CAgentBalloonWnd::RecursionIndent () const {return CAtlString();}
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentBalloonWnd::ApplyOptions (CAgentBalloonOptions * pOptions)
+bool CAgentBalloonWnd::ApplyOptions (CAgentBalloonOptions* pOptions)
 {
 	bool	lRet = false;
 
@@ -326,7 +326,7 @@ bool CAgentBalloonWnd::ApplyOptions (CAgentBalloonOptions * pOptions)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentBalloonWnd::Create (CWindow * pOwnerWnd, DWORD pExStyle)
+bool CAgentBalloonWnd::Create (CWindow* pOwnerWnd, DWORD pExStyle)
 {
 	bool	lRet = false;
 
@@ -376,7 +376,7 @@ bool CAgentBalloonWnd::Create (CWindow * pOwnerWnd, DWORD pExStyle)
 
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentBalloonWnd::Attach (long pCharID, CEventNotify * pNotify, bool pSetActiveCharID)
+bool CAgentBalloonWnd::Attach (long pCharID, CEventNotify* pNotify, bool pSetActiveCharID)
 {
 	bool	lRet = false;
 
@@ -400,7 +400,7 @@ bool CAgentBalloonWnd::Attach (long pCharID, CEventNotify * pNotify, bool pSetAc
 	return lRet;
 }
 
-bool CAgentBalloonWnd::Detach (long pCharID, CEventNotify * pNotify)
+bool CAgentBalloonWnd::Detach (long pCharID, CEventNotify* pNotify)
 {
 	bool	lRet = false;
 
@@ -443,7 +443,7 @@ bool CAgentBalloonWnd::IsSpeechShape () const
 {
 	if	(mShape)
 	{
-		return dynamic_cast <const CAgentBalloonSpeak *> (mShape.Ptr()) ? true : false;
+		return dynamic_cast <const CAgentBalloonSpeak*> (mShape.Ptr()) ? true : false;
 	}
 	return false;
 }
@@ -452,7 +452,7 @@ bool CAgentBalloonWnd::IsThoughtShape () const
 {
 	if	(mShape)
 	{
-		return dynamic_cast <const CAgentBalloonThink *> (mShape.Ptr()) ? true : false;
+		return dynamic_cast <const CAgentBalloonThink*> (mShape.Ptr()) ? true : false;
 	}
 	return false;
 }
@@ -537,7 +537,7 @@ bool CAgentBalloonWnd::ShowBalloonSpeech (LPCTSTR pText, UINT pSapiVersion, bool
 	return ShowBalloonSpeech (lText, pNoAutoPace);
 }
 
-bool CAgentBalloonWnd::ShowBalloonSpeech (const CAgentText & pText, bool pNoAutoPace)
+bool CAgentBalloonWnd::ShowBalloonSpeech (const CAgentText& pText, bool pNoAutoPace)
 {
 	bool	lRet = false;
 
@@ -568,7 +568,7 @@ bool CAgentBalloonWnd::ShowBalloonThought (LPCTSTR pText, UINT pSapiVersion, boo
 	return ShowBalloonThought (lText, pNoAutoPace);
 }
 
-bool CAgentBalloonWnd::ShowBalloonThought (const CAgentText & pText, bool pNoAutoPace)
+bool CAgentBalloonWnd::ShowBalloonThought (const CAgentText& pText, bool pNoAutoPace)
 {
 	bool	lRet = false;
 
@@ -652,7 +652,7 @@ bool CAgentBalloonWnd::ShowingBalloon ()
 	return lRet;
 }
 
-bool CAgentBalloonWnd::ShowBalloonText (const CAgentText & pText, UINT pForSpeech, bool pNoAutoPace)
+bool CAgentBalloonWnd::ShowBalloonText (const CAgentText& pText, UINT pForSpeech, bool pNoAutoPace)
 {
 	bool	lRet = false;
 
@@ -861,7 +861,7 @@ void CAgentBalloonWnd::ShowedBalloon (bool pWasVisible)
 			try
 			{
 				INT_PTR			lNotifyNdx;
-				CEventNotify *	lNotify;
+				CEventNotify*	lNotify;
 
 				for	(lNotifyNdx = (INT_PTR)mNotify.GetCount()-1; lNotify = mNotify (lNotifyNdx); lNotifyNdx--)
 				{
@@ -926,7 +926,7 @@ bool CAgentBalloonWnd::HideBalloon (bool pFast)
 			try
 			{
 				INT_PTR			lNotifyNdx;
-				CEventNotify *	lNotify;
+				CEventNotify*	lNotify;
 
 				for	(lNotifyNdx = (INT_PTR)mNotify.GetCount()-1; lNotify = mNotify (lNotifyNdx); lNotifyNdx--)
 				{
@@ -1038,10 +1038,10 @@ bool CAgentBalloonWnd::Pause (bool pPause)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-bool CAgentBalloonWnd::CalcLayoutRects (CRect & pTextRect, CRect & pOwnerRect, CRect & pBounds)
+bool CAgentBalloonWnd::CalcLayoutRects (CRect& pTextRect, CRect& pOwnerRect, CRect& pBounds)
 {
 	bool						lRet = false;
-	CAgentCharacterWnd *		lOwner;
+	CAgentCharacterWnd*		lOwner;
 	HMONITOR					lMonitor;
 	tSS <MONITORINFO, DWORD>	lMonitorInfo;
 
@@ -1055,7 +1055,7 @@ bool CAgentBalloonWnd::CalcLayoutRects (CRect & pTextRect, CRect & pOwnerRect, C
 
 		if	(
 				(mOwnerWnd->GetStyle () & WS_CHILD)
-			&&	(lOwner = dynamic_cast <CAgentCharacterWnd *> ((CAgentWnd*)mOwnerWnd))
+			&&	(lOwner = dynamic_cast <CAgentCharacterWnd*> ((CAgentWnd*)mOwnerWnd))
 			)
 		{
 			CRect	lVideoRect = lOwner->GetVideoRect ();
@@ -1066,14 +1066,14 @@ bool CAgentBalloonWnd::CalcLayoutRects (CRect & pTextRect, CRect & pOwnerRect, C
 
 		if	(
 				(IsAutoSize ())
-			||	(mOptions.mLines < mOptions.mMinLines)
+			||	(mOptions.mLines < CAgentFileBalloon::MinLines)
 			)
 		{
-			pTextRect = CRect (CPoint (0,0), mText.CalcTextSize (mFont.GetSafeHandle()?mFont.GetSafeHandle():GetFont(), min(max(mOptions.mPerLine,mOptions.mMinPerLine),mOptions.mMaxPerLine)));
+			pTextRect = CRect (CPoint (0,0), mText.CalcTextSize (mFont.GetSafeHandle()?mFont.GetSafeHandle():GetFont(), min(max(mOptions.mPerLine,CAgentFileBalloon::MinPerLine),CAgentFileBalloon::MaxPerLine)));
 		}
 		else
 		{
-			pTextRect = CRect (CPoint (0,0), mText.CalcTextSize (mFont.GetSafeHandle()?mFont.GetSafeHandle():GetFont(), min(max(mOptions.mPerLine,mOptions.mMinPerLine),mOptions.mMaxPerLine), min(max(mOptions.mLines,mOptions.mMinLines),mOptions.mMaxLines)));
+			pTextRect = CRect (CPoint (0,0), mText.CalcTextSize (mFont.GetSafeHandle()?mFont.GetSafeHandle():GetFont(), min(max(mOptions.mPerLine,CAgentFileBalloon::MinPerLine),CAgentFileBalloon::MaxPerLine), min(max(mOptions.mLines,CAgentFileBalloon::MinLines),CAgentFileBalloon::MaxLines)));
 		}
 		pTextRect.OffsetRect (pOwnerRect.CenterPoint().x - pTextRect.CenterPoint().x, pOwnerRect.top - pTextRect.bottom);
 
@@ -1104,7 +1104,7 @@ bool CAgentBalloonWnd::CalcLayoutRects (CRect & pTextRect, CRect & pOwnerRect, C
 	return lRet;
 }
 
-bool CAgentBalloonWnd::CalcWinRect (CRect & pWinRect, bool pOnShow)
+bool CAgentBalloonWnd::CalcWinRect (CRect& pWinRect, bool pOnShow)
 {
 	CRect	lTextRect;
 	CRect	lOwnerRect;
@@ -1130,7 +1130,7 @@ bool CAgentBalloonWnd::CalcWinRect (CRect & pWinRect, bool pOnShow)
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CAgentBalloonWnd::ApplyLayout (const CRect & pWinRect, bool pOnShow)
+void CAgentBalloonWnd::ApplyLayout (const CRect& pWinRect, bool pOnShow)
 {
 	if	(!pOnShow)
 	{
@@ -1317,12 +1317,12 @@ bool CAgentBalloonWnd::StopAutoPace ()
 bool CAgentBalloonWnd::StartAutoHide ()
 {
 	bool					lRet = false;
-	CAgentCharacterWnd *	lOwner;
+	CAgentCharacterWnd*	lOwner;
 
 	if	(IsWindow ())
 	{
 		if	(
-				(lOwner = dynamic_cast <CAgentCharacterWnd *> ((CAgentWnd*)mOwnerWnd))
+				(lOwner = dynamic_cast <CAgentCharacterWnd*> ((CAgentWnd*)mOwnerWnd))
 			&&	(lOwner->KeepBalloonVisible (this))
 			)
 		{
@@ -1561,7 +1561,7 @@ void CAgentBalloonWnd::OnVoiceWord (long pCharID, UINT pWordPos, int pWordLength
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_SPEECH
 	if	(LogIsActive (_DEBUG_SPEECH))
@@ -1615,7 +1615,7 @@ LRESULT CAgentBalloonWnd::OnVoiceStartMsg (UINT uMsg, WPARAM wParam, LPARAM lPar
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 #ifdef	_DEBUG_SPEECH
 	if	(LogIsActive (_DEBUG_SPEECH))
@@ -1674,7 +1674,7 @@ LRESULT CAgentBalloonWnd::OnVoiceEndMsg (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnVoiceWordMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnVoiceWordMsg (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	UINT	lWordPos = (UINT)LOWORD(lParam);
 	int		lWordLength = (int)HIWORD(lParam);
@@ -1800,7 +1800,7 @@ void CAgentBalloonWnd::ShowedVoiceWord (bool pFastRefresh)
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnTimer (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTimer (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = DefWindowProc (uMsg, wParam, lParam);
 
@@ -1915,7 +1915,7 @@ LRESULT CAgentBalloonWnd::OnTimer (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 		&&	(!IsPaused ())
 		)
 	{
-		CAgentCharacterWnd *	lOwner;
+		CAgentCharacterWnd*	lOwner;
 
 #ifdef	_DEBUG_AUTO_HIDE
 		if	(LogIsActive (_DEBUG_AUTO_HIDE))
@@ -1926,7 +1926,7 @@ LRESULT CAgentBalloonWnd::OnTimer (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 		StopAutoHide ();
 		if	(
 				(IsAutoHide ())
-			&&	(lOwner = dynamic_cast <CAgentCharacterWnd *> ((CAgentWnd*)mOwnerWnd))
+			&&	(lOwner = dynamic_cast <CAgentCharacterWnd*> ((CAgentWnd*)mOwnerWnd))
 			&&	(!lOwner->KeepBalloonVisible (this))
 			)
 		{
@@ -1943,7 +1943,7 @@ LRESULT CAgentBalloonWnd::OnTimer (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_SHOW_HIDE
@@ -1974,7 +1974,7 @@ LRESULT CAgentBalloonWnd::OnDestroy (UINT uMsg, WPARAM wParam, LPARAM lParam, BO
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	tS <PAINTSTRUCT>	lPaintStruct;
 	CMemDCHandle		lPaintDC;
@@ -2040,7 +2040,7 @@ LRESULT CAgentBalloonWnd::OnPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 	if	(IsDrawingLayered ())
@@ -2062,7 +2062,7 @@ LRESULT CAgentBalloonWnd::OnEraseBkgnd (UINT uMsg, WPARAM wParam, LPARAM lParam,
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnPrint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnPrint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_DRAW
@@ -2071,7 +2071,7 @@ LRESULT CAgentBalloonWnd::OnPrint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnPrintClient (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnPrintClient (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	if	(lParam & PRF_CLIENT)
 	{
@@ -2123,7 +2123,7 @@ LRESULT CAgentBalloonWnd::OnCustomDraw(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 	return lResult;
 }
 
-void CAgentBalloonWnd::DrawBalloon (HDC pDC, const CRect & pDrawRect)
+void CAgentBalloonWnd::DrawBalloon (HDC pDC, const CRect& pDrawRect)
 {
 	CRect	lTextRect (pDrawRect);
 	CRect	lMargin;
@@ -2183,7 +2183,7 @@ void CAgentBalloonWnd::DrawBalloon (HDC pDC, const CRect & pDrawRect)
 #endif
 }
 
-void CAgentBalloonWnd::DrawBalloonText (HDC pDC, const CRect & pDrawRect)
+void CAgentBalloonWnd::DrawBalloonText (HDC pDC, const CRect& pDrawRect)
 {
 	HGDIOBJ	lOldFont = NULL;
 	DWORD	lLayout;
@@ -2422,7 +2422,7 @@ LRESULT CAgentBalloonWnd::OnShow(int idCtrl, LPNMHDR pnmh, BOOL& bHandled)
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnWindowPosChanging (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnWindowPosChanging (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT		lResult = DefWindowProc (uMsg, wParam, lParam);
 	LPWINDOWPOS	lWindowPos = (LPWINDOWPOS) lParam;
@@ -2474,7 +2474,7 @@ LRESULT CAgentBalloonWnd::OnWindowPosChanging (UINT uMsg, WPARAM wParam, LPARAM 
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnWindowPosChanged (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnWindowPosChanged (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_LAYOUT
@@ -2504,7 +2504,7 @@ LRESULT CAgentBalloonWnd::OnWindowPosChanged (UINT uMsg, WPARAM wParam, LPARAM l
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnSize (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnSize (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_LAYOUT
@@ -2519,7 +2519,7 @@ LRESULT CAgentBalloonWnd::OnSize (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL 
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_DRAW
@@ -2529,7 +2529,7 @@ LRESULT CAgentBalloonWnd::OnShowWindow (UINT uMsg, WPARAM wParam, LPARAM lParam,
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnSetRedraw (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnSetRedraw (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = FALSE;
 #ifdef	_DEBUG_DRAW
@@ -2542,7 +2542,7 @@ LRESULT CAgentBalloonWnd::OnSetRedraw (UINT uMsg, WPARAM wParam, LPARAM lParam, 
 
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnNcPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnNcPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = (mRedrawDisabled || IsDrawingLayered ()) ? TRUE : FALSE;
 #ifdef	_DEBUG_DRAW
@@ -2551,7 +2551,7 @@ LRESULT CAgentBalloonWnd::OnNcPaint (UINT uMsg, WPARAM wParam, LPARAM lParam, BO
 	return 0;
 }
 
-LRESULT CAgentBalloonWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	bHandled = TRUE;
 	return HTTRANSPARENT;
@@ -2561,7 +2561,7 @@ LRESULT CAgentBalloonWnd::OnNcHitTest (UINT uMsg, WPARAM wParam, LPARAM lParam, 
 #pragma page()
 /////////////////////////////////////////////////////////////////////////////
 
-LRESULT CAgentBalloonWnd::OnTtmActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTtmActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult;
 #ifdef	_DEBUG_LAYOUT
@@ -2588,7 +2588,7 @@ LRESULT CAgentBalloonWnd::OnTtmActivate (UINT uMsg, WPARAM wParam, LPARAM lParam
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnTtmTrackPosition (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTtmTrackPosition (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult;
 #ifdef	_DEBUG_LAYOUT
@@ -2608,7 +2608,7 @@ LRESULT CAgentBalloonWnd::OnTtmTrackPosition (UINT uMsg, WPARAM wParam, LPARAM l
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnTtmTrackActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTtmTrackActivate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult;
 #ifdef	_DEBUG_LAYOUT
@@ -2646,7 +2646,7 @@ LRESULT CAgentBalloonWnd::OnTtmTrackActivate (UINT uMsg, WPARAM wParam, LPARAM l
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnTtmUpdateTipText (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTtmUpdateTipText (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 #ifdef	_DEBUG_LAYOUT
@@ -2671,7 +2671,7 @@ LRESULT CAgentBalloonWnd::OnTtmUpdateTipText (UINT uMsg, WPARAM wParam, LPARAM l
 	return lResult;
 }
 
-LRESULT CAgentBalloonWnd::OnTtmUpdate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL & bHandled)
+LRESULT CAgentBalloonWnd::OnTtmUpdate (UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
 {
 	LRESULT	lResult = 0;
 #ifdef	_DEBUG_LAYOUT

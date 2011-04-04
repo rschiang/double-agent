@@ -24,10 +24,10 @@
 
 #define	_DOUBLEAGENT_NAME				"Double Agent"
 #define	_DOUBLEAGENT_COMPANY			"Cinnamon Software Inc."
-#define	_DOUBLEAGENT_BUILD				49
-#define	_DOUBLEAGENT_BUILD_STR			"49"
-#define	_DOUBLEAGENT_VERSION			1,1,0,_DOUBLEAGENT_BUILD
-#define	_DOUBLEAGENT_VERSION_STR		"1.1.0." _DOUBLEAGENT_BUILD_STR
+#define	_DOUBLEAGENT_BUILD				51
+#define	_DOUBLEAGENT_BUILD_STR			"51"
+#define	_DOUBLEAGENT_VERSION			1,2,0,_DOUBLEAGENT_BUILD
+#define	_DOUBLEAGENT_VERSION_STR		"1.2.0." _DOUBLEAGENT_BUILD_STR
 #define	_DOUBLEAGENT_COPYRIGHT			"Copyright © Cinnamon Software Inc. 2009-2011"
 
 /////////////////////////////////////////////////////////////////////////////

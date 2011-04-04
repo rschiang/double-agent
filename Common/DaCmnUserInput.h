@@ -31,7 +31,7 @@ public:
 
 // Operations
 public:
-	void Initialize (interface ISpRecoResult * pRecoResult, bool pGlobalCommand);
+	void Initialize (interface ISpRecoResult* pRecoResult, bool pGlobalCommand);
 
 // Interfaces
 public:

@@ -45,7 +45,7 @@ public:
 
 // Operations
 public:
-	static DaSvrBalloon * CreateInstance (long pCharID, CInstanceAnchor * pAnchor, CAgentFile * pFile, class CAgentCharacterWnd * pOwner, LPCTSTR pClientMutexName = NULL);
+	static DaSvrBalloon * CreateInstance (long pCharID, CInstanceAnchor* pAnchor, CAgentFile* pFile, class CAgentCharacterWnd* pOwner, LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

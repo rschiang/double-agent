@@ -198,7 +198,7 @@ typedef struct
 #define	_LOG_CRASH_STACK_SKIP_FRAMES	7
 #endif
 ////////////////////////////////////////////////////////////////////////
-static void _LogCrash_DumpStack (_LogCrash_Stack & pStack)
+static void _LogCrash_DumpStack (_LogCrash_Stack& pStack)
 {
 	UINT	lStackFrameNdx;
 

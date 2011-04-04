@@ -55,7 +55,7 @@ HRESULT CDaCmnSREngines::UseAllInputs ()
 	return lResult;
 }
 
-HRESULT CDaCmnSREngines::UseTheseInputs (CAgentFile * pFile, LANGID pLangId)
+HRESULT CDaCmnSREngines::UseTheseInputs (CAgentFile* pFile, LANGID pLangId)
 {
 	HRESULT								lResult = S_FALSE;
 	CSapiInputCache *					lInputCache;
@@ -67,7 +67,7 @@ HRESULT CDaCmnSREngines::UseTheseInputs (CAgentFile * pFile, LANGID pLangId)
 		&&	(pLangId == 0)
 		)
 	{
-		pLangId = pFile->GetTts().mLanguage;
+		pLangId = pFile->Tts.Language;
 	}
 
 	mSapi5Inputs.RemoveAll ();

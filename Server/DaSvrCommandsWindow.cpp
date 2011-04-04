@@ -65,9 +65,9 @@ DaSvrCommandsWindow::~DaSvrCommandsWindow ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-DaSvrCommandsWindow * DaSvrCommandsWindow::CreateInstance (CVoiceCommandsWnd * pVoiceCommandsWnd, LPCTSTR pClientMutexName)
+DaSvrCommandsWindow* DaSvrCommandsWindow::CreateInstance (CVoiceCommandsWnd* pVoiceCommandsWnd, LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrCommandsWindow> *	lInstance = NULL;
+	CComObject<DaSvrCommandsWindow>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrCommandsWindow>::CreateInstance (&lInstance))))
 	{

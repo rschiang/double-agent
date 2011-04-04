@@ -47,7 +47,7 @@ public:
 
 // Operations
 public:
-	static DaSvrCommands * CreateInstance (long pCharID, CEventNotify * pNotify, LPCTSTR pClientMutexName = NULL);
+	static DaSvrCommands * CreateInstance (long pCharID, CEventNotify* pNotify, LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 
@@ -55,7 +55,7 @@ public:
 public:
 	virtual void OnClientEnded ();
 protected:
-	virtual CDaCmnCommand * NewCommand (LPCTSTR pCaption, LPCTSTR pVoice = NULL, LPCTSTR pVoiceCaption = NULL, bool pEnabled = true, bool pVisible = true);
+	virtual CDaCmnCommand* NewCommand (LPCTSTR pCaption, LPCTSTR pVoice = NULL, LPCTSTR pVoiceCaption = NULL, bool pEnabled = true, bool pVisible = true);
 
 // Declarations
 public:

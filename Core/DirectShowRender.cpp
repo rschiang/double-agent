@@ -120,7 +120,7 @@ HRESULT CDirectShowRender::FinalConstruct ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-const GUID & CDirectShowRender::GetClassID ()
+const GUID& CDirectShowRender::GetClassID ()
 {
 	return GUID_NULL;
 }
@@ -138,7 +138,7 @@ CAtlString CDirectShowRender::GetFilterName ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CDirectShowRender::GetSeekingTimes (REFERENCE_TIME & pCurrTime, REFERENCE_TIME & pStopTime)
+void CDirectShowRender::GetSeekingTimes (REFERENCE_TIME& pCurrTime, REFERENCE_TIME& pStopTime)
 {
 	GetTimes (pCurrTime, pStopTime);
 }
@@ -294,7 +294,7 @@ HRESULT CDirectShowRender::OnStateChanged (FILTER_STATE pOldState, FILTER_STATE 
 	return lResult;
 }
 
-void CDirectShowRender::OnPinConnected (CDirectShowPin * pPin)
+void CDirectShowRender::OnPinConnected (CDirectShowPin* pPin)
 {
 	VIDEOINFOHEADER *	lVideoInfo;
 	IMediaEventSinkPtr	lEventSink;
@@ -482,7 +482,7 @@ void CDirectShowRender::OnClockPulse ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT CDirectShowRender::GetNextSampleTime (REFERENCE_TIME pStreamTime, REFERENCE_TIME & pNextSampleTime)
+HRESULT CDirectShowRender::GetNextSampleTime (REFERENCE_TIME pStreamTime, REFERENCE_TIME& pNextSampleTime)
 {
 	HRESULT		lResult = E_UNEXPECTED;
 	CLockMutex	lLock (mDataLock);
@@ -519,7 +519,7 @@ HRESULT CDirectShowRender::GetNextSampleTime (REFERENCE_TIME pStreamTime, REFERE
 	return lResult;
 }
 
-HRESULT CDirectShowRender::GetInputSample (REFERENCE_TIME pStreamTime, IMediaSamplePtr & pSample, REFERENCE_TIME & pSampleTime, REFERENCE_TIME & pNextSampleTime)
+HRESULT CDirectShowRender::GetInputSample (REFERENCE_TIME pStreamTime, IMediaSamplePtr& pSample, REFERENCE_TIME& pSampleTime, REFERENCE_TIME& pNextSampleTime)
 {
 	HRESULT		lResult = E_UNEXPECTED;
 	CLockMutex	lLock (mDataLock);
@@ -622,7 +622,7 @@ HRESULT CDirectShowRender::GetInputSample (REFERENCE_TIME pStreamTime, IMediaSam
 
 /////////////////////////////////////////////////////////////////////////////
 
-bool CDirectShowRender::GetSampleImage (IMediaSample * pSample)
+bool CDirectShowRender::GetSampleImage (IMediaSample* pSample)
 {
 	bool		lRet = false;
 	CLockMutex	lLock (mDataLock);
@@ -823,7 +823,7 @@ HRESULT STDMETHODCALLTYPE CDirectShowRender::DrawSampleImage (HDC pDC, const REC
 
 /////////////////////////////////////////////////////////////////////////////
 
-CImageBuffer * CDirectShowRender::ScaleImage (const CSize & pImageSize, const CRect & pTargetRect)
+CImageBuffer* CDirectShowRender::ScaleImage (const CSize& pImageSize, const CRect& pTargetRect)
 {
 	tPtr <CImageBuffer>	lTargetBuffer;
 
@@ -849,7 +849,7 @@ CImageBuffer * CDirectShowRender::ScaleImage (const CSize & pImageSize, const CR
 	return NULL;
 }
 
-CImageBuffer * CDirectShowRender::SmoothImage (const CSize & pImageSize, const CRect & pTargetRect)
+CImageBuffer* CDirectShowRender::SmoothImage (const CSize& pImageSize, const CRect& pTargetRect)
 {
 	tPtr <CImageBuffer>	lTargetBuffer;
 
@@ -1018,7 +1018,7 @@ HRESULT STDMETHODCALLTYPE CDirectShowRender::SetRenderWnd (HWND pRenderWnd)
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE CDirectShowRender::GetBkColor (COLORREF *pBkColor)
+HRESULT STDMETHODCALLTYPE CDirectShowRender::GetBkColor (COLORREF*pBkColor)
 {
 	HRESULT		lResult = S_FALSE;
 	CLockMutex	lLock (mStateLock);
@@ -1046,7 +1046,7 @@ HRESULT STDMETHODCALLTYPE CDirectShowRender::GetBkColor (COLORREF *pBkColor)
 	return lResult;
 }
 
-HRESULT STDMETHODCALLTYPE CDirectShowRender::SetBkColor (const COLORREF *pBkColor)
+HRESULT STDMETHODCALLTYPE CDirectShowRender::SetBkColor (const COLORREF*pBkColor)
 {
 	HRESULT		lResult = S_OK;
 	CLockMutex	lLock (mStateLock);

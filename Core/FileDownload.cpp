@@ -80,9 +80,9 @@ CFileDownload::~CFileDownload ()
 	m_dwRef = 0;
 }
 
-CFileDownload * CFileDownload::CreateInstance (LPCTSTR pURL)
+CFileDownload* CFileDownload::CreateInstance (LPCTSTR pURL)
 {
-	CFileDownload *	lInstance;
+	CFileDownload*	lInstance;
 
 	if	(lInstance = new CComObjectNoLock <CFileDownload>)
 	{
@@ -260,7 +260,7 @@ DWORD CFileDownload::SetSecurityMode (bool pEnforeSecurity)
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT CFileDownload::Download (LPUNKNOWN pActiveXContext, CEventNotify * pNotify)
+HRESULT CFileDownload::Download (LPUNKNOWN pActiveXContext, CEventNotify* pNotify)
 {
 	HRESULT		lResult;
 	CAtlString	lCacheName;
@@ -409,7 +409,7 @@ bool CFileDownload::CancelDownload ()
 DWORD WINAPI CFileDownload::AsyncThreadProc (LPVOID lpParameter)
 {
 	HRESULT			lResult = E_FAIL;
-	CFileDownload *	lThis = NULL;
+	CFileDownload*	lThis = NULL;
 	CAtlString		lURL;
 	IUnknownPtr		lActiveXContext;
 	CAtlString		lCacheName;
@@ -534,7 +534,7 @@ HRESULT STDMETHODCALLTYPE CFileDownload::OnProgress (ULONG ulProgress, ULONG ulP
 #endif
 	HRESULT					lResult = S_OK;
 	IBindStatusCallbackPtr	lBindStatusCallback;
-	CEventNotify *			lNotify = NULL;
+	CEventNotify*			lNotify = NULL;
 
 	{
 		CLockCS	lLock (mLock);

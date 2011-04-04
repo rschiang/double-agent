@@ -41,7 +41,7 @@ public:
 
 // Operations
 public:
-	static DaSvrSpeechInput * CreateInstance (LPCTSTR pClientMutexName = NULL);
+	static DaSvrSpeechInput* CreateInstance (LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

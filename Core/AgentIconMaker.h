@@ -32,7 +32,7 @@ public:
 
 // Attributes
 public:
-	HICON MakeIcon (CAgentFile * pAgentFile, const CSize & pIconSize, const CRect * pClipRect = NULL);
+	HICON MakeIcon (CAgentFile* pAgentFile, const CSize& pIconSize, const CRect* pClipRect = NULL);
 
 // Operations
 public:
@@ -42,7 +42,7 @@ public:
 // Implementation
 protected:
 	bool RemoveMargin (class CImageBuffer & pBuffer);
-	HBITMAP GetFrameImage (CAgentFile * pAgentFile);
+	HBITMAP GetFrameImage (CAgentFile* pAgentFile);
 };
 
 /////////////////////////////////////////////////////////////////////////////

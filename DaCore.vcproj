@@ -311,7 +311,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Core\AgentFileAcf.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileAcs.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileBinary.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Common\AgentFileCache.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileParts.cpp"
 				>
 			</File>
 			<File
@@ -661,7 +677,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Core\AgentFileAcf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileAcs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileBinary.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Common\AgentFileCache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileDefs.inl"
+				>
+			</File>
+			<File
+				RelativePath=".\Core\AgentFileParts.h"
 				>
 			</File>
 			<File

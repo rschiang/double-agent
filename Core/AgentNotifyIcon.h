@@ -51,16 +51,16 @@ public:
 	bool SafeIsVisible () const;
 
 	long GetCharID () const;
-	const CAgentIconData & GetSettings () const;
+	const CAgentIconData& GetSettings () const;
 
 // Operations
 public:
-	bool Attach (long pCharID, const CAgentIconData * pIconData);
+	bool Attach (long pCharID, const CAgentIconData* pIconData);
 	bool Detach (long pCharID);
 	bool Remove ();
 
-	bool ShowState (HWND pOwnerWnd, class CAgentFile * pAgentFile);
-	bool SetIconTip (const CAgentIconData * pIconData, class CAgentFile * pAgentFile, LANGID pLangID = 0);
+	bool ShowState (HWND pOwnerWnd, class CAgentFile* pAgentFile);
+	bool SetIconTip (const CAgentIconData* pIconData, class CAgentFile* pAgentFile, LANGID pLangID = 0);
 	bool SetIconTip (LPCTSTR pIconTip);
 
 	UINT OnNotifyIcon (HWND hWnd, WPARAM wParam, LPARAM lParam);

@@ -44,7 +44,7 @@ public:
 
 // Operations
 public:
-	static DaSvrPropertySheet * CreateInstance (LPCTSTR pClientMutexName = NULL);
+	static DaSvrPropertySheet* CreateInstance (LPCTSTR pClientMutexName = NULL);
 	void Terminate (bool pFinal, bool pAbandonned = false);
 	void FinalRelease ();
 

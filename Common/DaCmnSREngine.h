@@ -31,9 +31,9 @@ public:
 
 // Operations
 public:
-	void Initialize (class CSapi5InputInfo * pInputInfo);
-	bool Initialize (class CSapi5Input * pInput);
-	bool Initialize (class CAgentFile * pFile);
+	void Initialize (class CSapi5InputInfo* pInputInfo);
+	bool Initialize (class CSapi5Input* pInput);
+	bool Initialize (class CAgentFile* pFile);
 
 // Interfaces
 public:
@@ -43,12 +43,12 @@ public:
 	HRESULT GetVersion (short *MajorVersion, short *MinorVersion);
 	HRESULT get_LanguageID (long *LanguageID);
 	HRESULT get_LanguageName (VARIANT_BOOL EnglishName, BSTR *LanguageName);
-	HRESULT get_LanguageIDs (SAFEARRAY **LanguageIds);
-	HRESULT get_LanguageNames (VARIANT_BOOL EnglishNames, SAFEARRAY **LanguageNames);
+	HRESULT get_LanguageIDs (SAFEARRAY**LanguageIds);
+	HRESULT get_LanguageNames (VARIANT_BOOL EnglishNames, SAFEARRAY**LanguageNames);
 
 // Implementation
 protected:
-	class CSapi5InputInfo * mSapi5Input;
+	class CSapi5InputInfo* mSapi5Input;
 };
 
 ////////////////////////////////////////////////////////////////////////////

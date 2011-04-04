@@ -75,13 +75,13 @@ public:
 	HRESULT STDMETHODCALLTYPE get_Count (short * Count);
 	HRESULT STDMETHODCALLTYPE get_Name (BSTR * Name);
 	HRESULT STDMETHODCALLTYPE get_CharacterID (BSTR * CharacterID);
-	HRESULT STDMETHODCALLTYPE get_Confidence (long * Confidence);
+	HRESULT STDMETHODCALLTYPE get_Confidence (long* Confidence);
 	HRESULT STDMETHODCALLTYPE get_Voice (BSTR * Voice);
 	HRESULT STDMETHODCALLTYPE get_Alt1Name (BSTR * Alt1Name);
-	HRESULT STDMETHODCALLTYPE get_Alt1Confidence (long * Alt1Confidence);
+	HRESULT STDMETHODCALLTYPE get_Alt1Confidence (long* Alt1Confidence);
 	HRESULT STDMETHODCALLTYPE get_Alt1Voice (BSTR * Alt1Voice);
 	HRESULT STDMETHODCALLTYPE get_Alt2Name (BSTR * Alt2Name);
-	HRESULT STDMETHODCALLTYPE get_Alt2Confidence (long * Alt2Confidence);
+	HRESULT STDMETHODCALLTYPE get_Alt2Confidence (long* Alt2Confidence);
 	HRESULT STDMETHODCALLTYPE get_Alt2Voice (BSTR * Alt2Voice);
 };
 

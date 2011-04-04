@@ -98,10 +98,10 @@ public:
 	HRESULT STDMETHODCALLTYPE InterfaceSupportsErrorInfo (REFIID riid);
 
 	// IDaCtlRequest
-	HRESULT STDMETHODCALLTYPE get_ID (long * ID);
-	HRESULT STDMETHODCALLTYPE get_Status (long * Status);
+	HRESULT STDMETHODCALLTYPE get_ID (long* ID);
+	HRESULT STDMETHODCALLTYPE get_Status (long* Status);
 	HRESULT STDMETHODCALLTYPE get_Description (BSTR * Description);
-	HRESULT STDMETHODCALLTYPE get_Number (long * Number);
+	HRESULT STDMETHODCALLTYPE get_Number (long* Number);
 
 // Implementation
 private:

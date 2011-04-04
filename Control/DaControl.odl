@@ -231,7 +231,7 @@ cpp_quote("#endif")
 		[id(DISPID_MOUSEICON), propget, bindable, requestedit, hidden, restricted] HRESULT MouseIcon([out, retval]IPictureDisp** MouseIcon);
 
 		[helpstring("The default character Style used when a character is loaded (see: CharacterStyleFlags)"), helpcontext(APIHELP_Ctl_Control_CharacterStyle),
-			id(DISPID_IDaControl2_CharacterStyle), propget, bindable] HRESULT CharacterStyle ([out, retval] long * CharacterStyle);
+			id(DISPID_IDaControl2_CharacterStyle), propget, bindable] HRESULT CharacterStyle ([out, retval] long* CharacterStyle);
 			[id(DISPID_IDaControl2_CharacterStyle), propput, bindable] HRESULT CharacterStyle ([in] long CharacterStyle);
 		[helpstring("A collection of installed character files"), helpcontext(APIHELP_Ctl_Control_CharacterFiles),
 			id(DISPID_IDaControl2_CharacterFiles), propget] HRESULT CharacterFiles ([out, retval] IDaCtlCharacterFiles** CharacterFiles);
@@ -593,7 +593,7 @@ cpp_quote("#endif")
 	interface IDaCtlCharacter2 : IDaCtlCharacter
 	{
 		[helpstring("The character's style flags (see: CharacterStyleFlags)"), helpcontext(APIHELP_Ctl_Character_Style),
-			id(DISPID_IDaCtlCharacter2_Style), propget, bindable] HRESULT Style ([out, retval] long * Style);
+			id(DISPID_IDaCtlCharacter2_Style), propget, bindable] HRESULT Style ([out, retval] long* Style);
 			[id(DISPID_IDaCtlCharacter2_Style), propput, bindable] HRESULT Style ([in] long Style);
 		[helpstring("Does the character have a task bar icon?"), helpcontext(APIHELP_Ctl_Character_HasIcon),
 			id(DISPID_IDaCtlCharacter2_HasIcon), propget, readonly, bindable, displaybind] HRESULT HasIcon ([out, retval] VARIANT_BOOL * HasIcon);
@@ -1431,7 +1431,7 @@ cpp_quote("#endif")
 			id(DISPID_VALUE), propget] HRESULT Item ([in] VARIANT Index, [out, retval] IDaCtlTTSEngine ** TTSEngine);
 		[helpstring("The count of Text-to-Speech Engines in the collection"), helpcontext(APIHELP_Ctl_TTSEngines_Count),
 			//custom(CD2BC5C9-F452-4326-B714-F9C539D4DA58, 0), // .NET default member
-			id(DISPID_COLLECT), propget, readonly, bindable, displaybind, defaultbind] HRESULT Count ([out, retval] long * Value);
+			id(DISPID_COLLECT), propget, readonly, bindable, displaybind, defaultbind] HRESULT Count ([out, retval] long* Value);
 		[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown ** Enum);
 	};
 
@@ -1490,7 +1490,7 @@ cpp_quote("#endif")
 			id(DISPID_VALUE), propget] HRESULT Item ([in] VARIANT Index, [out, retval] IDaCtlSREngine ** SREngine);
 		[helpstring("The count of Speech Recognition Engines in the collection"), helpcontext(APIHELP_Ctl_SREngines_Count),
 			//custom(CD2BC5C9-F452-4326-B714-F9C539D4DA58, 0), // .NET default member
-			id(DISPID_COLLECT), propget, readonly, bindable, displaybind, defaultbind] HRESULT Count ([out, retval] long * Value);
+			id(DISPID_COLLECT), propget, readonly, bindable, displaybind, defaultbind] HRESULT Count ([out, retval] long* Value);
 		[id(DISPID_NEWENUM), propget, restricted] HRESULT _NewEnum ([out, retval] IUnknown ** Enum);
 	};
 

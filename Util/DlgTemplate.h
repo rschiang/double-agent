@@ -31,9 +31,9 @@
 class CDlgControl
 {
 public:
-	CDlgControl (class CDlgTemplate * pOwner = NULL, LPDLGITEMTEMPLATE pTemplate = NULL, WORD pVersion = 0, LPBYTE * pTemplateData = NULL);
-	CDlgControl (const CDlgControl & pSource);
-	CDlgControl & operator= (const CDlgControl & pSource);
+	CDlgControl (class CDlgTemplate * pOwner = NULL, LPDLGITEMTEMPLATE pTemplate = NULL, WORD pVersion = 0, LPBYTE* pTemplateData = NULL);
+	CDlgControl (const CDlgControl& pSource);
+	CDlgControl& operator= (const CDlgControl& pSource);
 	virtual ~CDlgControl ();
 
 // Attributes
@@ -93,14 +93,14 @@ public:
 
 	CString GetFontName () const;
 	UINT GetFontSize (bool pInPixels = false) const;
-	bool GetFont (LOGFONT & pFont) const;
+	bool GetFont (LOGFONT& pFont) const;
 
 	CPoint GetPosition (bool pInPixels = false) const;
 	CSize GetSize (bool pInPixels = false) const;
 
 // Implementation
 protected:
-	CSize DlgSizeToPixels (const CSize & pSize) const;
+	CSize DlgSizeToPixels (const CSize& pSize) const;
 
 private:
 	CGlobalHandle		mTemplateHandle;

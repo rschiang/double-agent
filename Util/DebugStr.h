@@ -223,7 +223,7 @@ __if_not_exists(VarTypeStr)
 
 __if_not_exists(VariantString)
 {
-	inline CString VariantString (const VARIANT & pVariant)
+	inline CString VariantString (const VARIANT& pVariant)
 	{
 		if	(V_VT (&pVariant) == VT_BSTR)
 		{
@@ -258,7 +258,7 @@ __if_not_exists(VariantString)
 	}
 }
 
-inline CString DebugVariant (VARIANT & pVariant)
+inline CString DebugVariant (VARIANT& pVariant)
 {
 	return _T("[") + VariantString (pVariant) + _T("] (") + VarTypeStr (V_VT(&pVariant)) + _T(")");
 }
@@ -276,7 +276,7 @@ inline CString DebugVariant (VARIANT & pVariant)
 
 //////////////////////////////////////////////////////////////////////
 
-static inline CString FormatPoint (const POINT & pPoint, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
+static inline CString FormatPoint (const POINT& pPoint, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
 {
 	CString	lRet;
 	if	(pAligned)
@@ -305,7 +305,7 @@ static inline CString FormatPoint (const POINT & pPoint, USHORT pAligned = _DEBU
 	return CString ((LPCTSTR)lRet);
 }
 
-inline CString FormatSize (const SIZE & pSize, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
+inline CString FormatSize (const SIZE& pSize, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
 {
 	CString	lRet;
 	if	(pAligned)
@@ -334,7 +334,7 @@ inline CString FormatSize (const SIZE & pSize, USHORT pAligned = _DEBUG_FORMAT_A
 	return CString ((LPCTSTR)lRet);
 }
 
-static inline CString FormatRect (const RECT & pRect, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
+static inline CString FormatRect (const RECT& pRect, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
 {
 	CString	lRet;
 	if	(pAligned)
@@ -363,7 +363,7 @@ static inline CString FormatRect (const RECT & pRect, USHORT pAligned = _DEBUG_F
 	return CString ((LPCTSTR)lRet);
 }
 
-static inline CString FormatMargin (const RECT & pRect, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
+static inline CString FormatMargin (const RECT& pRect, USHORT pAligned = _DEBUG_FORMAT_ALIGNED, bool pSigned = _DEBUG_FORMAT_SIGNED)
 {
 	CString	lRet;
 	if	(pAligned)

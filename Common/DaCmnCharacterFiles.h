@@ -31,7 +31,7 @@ public:
 
 // Attributes
 public:
-	const CAtlStringArray & FilePaths () const {return mFilePaths;}
+	const CAtlStringArray& FilePaths () const {return mFilePaths;}
 
 // Operations
 public:
@@ -40,7 +40,7 @@ public:
 // Interfaces
 public:
 	// ICDaCharacterFiles
-	HRESULT get_FilePaths (SAFEARRAY **FilePaths);
+	HRESULT get_FilePaths (SAFEARRAY**FilePaths);
 	HRESULT get_SearchPath (BSTR *SearchPath);
 	HRESULT put_SearchPath (BSTR SearchPath);
 	HRESULT get_DefaultSearchPath (BSTR *DefaultSearchPath);

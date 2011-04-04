@@ -430,7 +430,7 @@ HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageName (VARIANT_BOOL EnglishN
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageIDs (SAFEARRAY **LanguageIDs)
+HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageIDs (SAFEARRAY**LanguageIDs)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE
@@ -476,7 +476,7 @@ HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageIDs (SAFEARRAY **LanguageID
 	return lResult;
 }
 
-HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageNames (VARIANT_BOOL EnglishNames, SAFEARRAY **LanguageNames)
+HRESULT STDMETHODCALLTYPE DaCtlSREngine::get_LanguageNames (VARIANT_BOOL EnglishNames, SAFEARRAY**LanguageNames)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE

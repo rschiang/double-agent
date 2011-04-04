@@ -33,12 +33,12 @@ public:
 // Attributes
 public:
 	void SetInputFormat (const LPWAVEFORMATEX pFormat);
-	bool GetInputFormat (LPWAVEFORMATEX & pFormat);
-	bool GetOutputFormat (LPWAVEFORMATEX & pFormat);
+	bool GetInputFormat (LPWAVEFORMATEX& pFormat);
+	bool GetOutputFormat (LPWAVEFORMATEX& pFormat);
 
 	void SetInputBuffer (LPCVOID pBuffer, ULONG pBufferSize);
-	bool GetInputBuffer (LPCVOID & pBuffer, ULONG & pBufferSize);
-	bool GetOutputBuffer (LPVOID & pBuffer, ULONG & pBufferSize, ULONG & pDataLength);
+	bool GetInputBuffer (LPCVOID& pBuffer, ULONG& pBufferSize);
+	bool GetOutputBuffer (LPVOID& pBuffer, ULONG& pBufferSize, ULONG& pDataLength);
 
 // Operations
 public:
@@ -50,7 +50,7 @@ public:
 protected:
 	bool IsValidOutputFormat (const LPWAVEFORMATEX pInputFormat, const LPWAVEFORMATEX pOutputFormat);
 	bool SuggestOutputFormat (const LPWAVEFORMATEX pInputFormat, const LPWAVEFORMATEX pFilterFormat, LPWAVEFORMATEX * pOutputFormat, DWORD pFormatSize);
-	HRESULT EnumAcmFormats (const LPWAVEFORMATEX pInputFormat, CAtlOwnPtrArray <WAVEFORMATEX> & pRankedFormats);
+	HRESULT EnumAcmFormats (const LPWAVEFORMATEX pInputFormat, CAtlOwnPtrArray <WAVEFORMATEX>& pRankedFormats);
 
 	static LPWAVEFORMATEX DuplicateFormat (const LPWAVEFORMATEX pFormat, DWORD pFormatSize = 0);
 	static int RankFormatMatch (const LPWAVEFORMATEX pInputFormat, const LPWAVEFORMATEX pOutputFormat);

@@ -52,7 +52,7 @@ private:
 	/// <summary>
 	/// Required designer variable.
 	/// </summary>
-	System::ComponentModel::Container ^components;
+	System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>

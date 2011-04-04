@@ -53,7 +53,7 @@ CResName::CResName (LPCTSTR pResName, LPCTSTR pResType)
 	}
 }
 
-CResName::CResName (const CResName & pSource)
+CResName::CResName (const CResName& pSource)
 :	mType (pSource.mType),
 	mId (pSource.mId)
 {
@@ -63,7 +63,7 @@ CResName::CResName (const CResName & pSource)
 	}
 }
 
-CResName & CResName::operator= (const CResName & pSource)
+CResName& CResName::operator= (const CResName& pSource)
 {
 	mType = pSource.mType;
 	mId = pSource.mId;

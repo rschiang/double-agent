@@ -32,13 +32,13 @@ public:
 // Operations
 public:
 	void Initialize (class CSapi5VoiceInfo * pVoiceInfo);
-	bool Initialize (class CSapi5Voice * pVoice);
+	bool Initialize (class CSapi5Voice* pVoice);
 #ifndef	_WIN64
-	void Initialize (class CSapi4VoiceInfo * pVoiceInfo);
-	bool Initialize (class CSapi4Voice * pVoice);
+	void Initialize (class CSapi4VoiceInfo* pVoiceInfo);
+	bool Initialize (class CSapi4Voice* pVoice);
 #endif
-	bool Initialize (class CSapiVoice * pVoice);
-	bool Initialize (class CAgentFile * pFile);
+	bool Initialize (class CSapiVoice* pVoice);
+	bool Initialize (class CAgentFile* pFile);
 
 // Interfaces
 public:
@@ -55,7 +55,7 @@ public:
 protected:
 	class CSapi5VoiceInfo * mSapi5Voice;
 #ifndef	_WIN64
-	class CSapi4VoiceInfo *	mSapi4Voice;
+	class CSapi4VoiceInfo*	mSapi4Voice;
 #endif
 };
 

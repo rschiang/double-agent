@@ -41,7 +41,7 @@ public:
 // Operations
 public:
 	virtual void InitLayout ();
-	virtual CRect RecalcLayout (const CRect & pTextRect, const CRect & pRefRect, const CRect & pBounds);
+	virtual CRect RecalcLayout (const CRect& pTextRect, const CRect& pRefRect, const CRect& pBounds);
 
 	virtual HRGN GetBalloonRgn () = 0;
 	virtual bool Draw (HDC pDC, COLORREF pBkColor, COLORREF pBrColor) = 0;
@@ -50,12 +50,12 @@ public:
 
 // Implementation
 protected:
-	void CalcLayout (const CRect & pTextRect, const CRect & pRefRect, const CRect & pBounds, CRect & pBalloonRect, CPoint & pCalloutBeg, CPoint & pCalloutEnd);
-	void CalcRectIntersect (const _complex & pRefPoint, const _complex & pRectCenter, const _complex & pRectSize, _complex & pRectIntersect, double pMinAngle = 0.0);
-	bool ValidateBalloonRect (CRect & pBalloonRect, const CRect & pRefRect, const CRect & pBounds);
-	void FixupNearPoint (CPoint & pPoint, const CRect & pRefRect, long pNearness = 2);
-	void MakeRoundRect (Gdiplus::GraphicsPath & pShapePath);
-	void DrawShadow (Gdiplus::GraphicsPath & pShapePath, Gdiplus::Graphics & pGraphics);
+	void CalcLayout (const CRect& pTextRect, const CRect& pRefRect, const CRect& pBounds, CRect& pBalloonRect, CPoint& pCalloutBeg, CPoint& pCalloutEnd);
+	void CalcRectIntersect (const _complex& pRefPoint, const _complex& pRectCenter, const _complex& pRectSize, _complex& pRectIntersect, double pMinAngle = 0.0);
+	bool ValidateBalloonRect (CRect& pBalloonRect, const CRect& pRefRect, const CRect& pBounds);
+	void FixupNearPoint (CPoint& pPoint, const CRect& pRefRect, long pNearness = 2);
+	void MakeRoundRect (Gdiplus::GraphicsPath& pShapePath);
+	void DrawShadow (Gdiplus::GraphicsPath& pShapePath, Gdiplus::Graphics& pGraphics);
 
 protected:
 	CRect	mBounds;
@@ -66,15 +66,15 @@ protected:
 
 #ifdef	_DEBUG
 protected:
-	void InitTrace (const CRect & pRect);
-	void InitTrace (const CRect & pRect1, const CRect & pRect2);
-	void InitTrace (const CRect & pRect1, const CRect & pRect2, const CRect & pRect3);
+	void InitTrace (const CRect& pRect);
+	void InitTrace (const CRect& pRect1, const CRect& pRect2);
+	void InitTrace (const CRect& pRect1, const CRect& pRect2, const CRect& pRect3);
 	void ShowTrace ();
-	void TraceRect (const CRect & pRect, COLORREF pColor) const;
-	void TracePointFill (const CPoint & pPoint, COLORREF pColor, UINT pSize = 1) const;
-	void TracePointFill (const _complex & pPoint, COLORREF pColor, UINT pSize = 1) const;
-	void TracePointFrame (const CPoint & pPoint, COLORREF pColor, UINT pSize = 3) const;
-	void TracePointFrame (const _complex & pPoint, COLORREF pColor, UINT pSize = 3) const;
+	void TraceRect (const CRect& pRect, COLORREF pColor) const;
+	void TracePointFill (const CPoint& pPoint, COLORREF pColor, UINT pSize = 1) const;
+	void TracePointFill (const _complex& pPoint, COLORREF pColor, UINT pSize = 1) const;
+	void TracePointFrame (const CPoint& pPoint, COLORREF pColor, UINT pSize = 3) const;
+	void TracePointFrame (const _complex& pPoint, COLORREF pColor, UINT pSize = 3) const;
 
 protected:
 	mutable tPtr <class CImageBuffer>	mTraceBuffer;
@@ -106,7 +106,7 @@ public:
 
 // Implementation
 protected:
-	void GetCalloutPoints (Gdiplus::PointF * pPoints);
+	void GetCalloutPoints (Gdiplus::PointF* pPoints);
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ public:
 
 // Implementation
 protected:
-	void GetCalloutEllipses (Gdiplus::RectF * pEllipses);
+	void GetCalloutEllipses (Gdiplus::RectF* pEllipses);
 };
 
 /////////////////////////////////////////////////////////////////////////////

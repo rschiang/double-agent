@@ -39,7 +39,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::AlphaBlend (HDC pDst, const CRect & pDstRect, HDC pSrc, const CRect & pSrcRect, BYTE pAlpha, bool pAllowInternal)
+bool CImageAlpha::AlphaBlend (HDC pDst, const CRect& pDstRect, HDC pSrc, const CRect& pSrcRect, BYTE pAlpha, bool pAllowInternal)
 {
 	return AlphaBlend (pDst, pDstRect.left, pDstRect.top, pDstRect.Width (), pDstRect.Height (), pSrc, pSrcRect.left, pSrcRect.top, pSrcRect.Width (), pSrcRect.Height (), pAlpha, pAllowInternal);
 }
@@ -187,7 +187,7 @@ bool CImageAlpha::AlphaBlend (HDC pDst, int pDstX, int pDstY, int pDstCx, int pD
 
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::InternalAlphaBlend (HDC pDst, int pDstX, int pDstY, int pDstCx, int pDstCy, HDC pSrc, int pSrcX, int pSrcY, int pSrcCx, int pSrcCy, BYTE pAlpha, bool & pLogSizeMismatch, bool & pDevSizeMismatch)
+bool CImageAlpha::InternalAlphaBlend (HDC pDst, int pDstX, int pDstY, int pDstCx, int pDstCy, HDC pSrc, int pSrcX, int pSrcY, int pSrcCx, int pSrcCy, BYTE pAlpha, bool& pLogSizeMismatch, bool& pDevSizeMismatch)
 {
 	bool		lRet = false;
 	CRect		lDstRect (CPoint (pDstX, pDstY), CSize (pDstCx, pDstCy));
@@ -408,7 +408,7 @@ HBRUSH CImageAlpha::GetAlphaBrush (COLORREF pColor, BYTE pAlpha, bool pAlphaPrec
 
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::AlphaScaleImage (ATL::CImage & pImage, BYTE pAlpha)
+bool CImageAlpha::AlphaScaleImage (ATL::CImage& pImage, BYTE pAlpha)
 {
 	bool	lRet = false;
 
@@ -445,7 +445,7 @@ bool CImageAlpha::AlphaScaleImage (ATL::CImage & pImage, BYTE pAlpha)
 #pragma page()
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::AlphaClearImage (ATL::CImage & pImage, COLORREF pClearColor, BYTE pAlpha)
+bool CImageAlpha::AlphaClearImage (ATL::CImage& pImage, COLORREF pClearColor, BYTE pAlpha)
 {
 	bool	lRet = false;
 
@@ -455,7 +455,7 @@ bool CImageAlpha::AlphaClearImage (ATL::CImage & pImage, COLORREF pClearColor, B
 		&&	(pImage.IsDIBSection ())
 		)
 	{
-		COLORREF *	lBitmapBits = (COLORREF *) GetImageBits (pImage);
+		COLORREF*	lBitmapBits = (COLORREF*) GetImageBits (pImage);
 		COLORREF	lClearColor = (pClearColor & 0x00FFFFFF) | (((COLORREF) pAlpha) << 24);
 		long		lMaxNdx = GetImageBytes (pImage) / sizeof (COLORREF);
 		long		lNdx;
@@ -475,7 +475,7 @@ bool CImageAlpha::AlphaClearImage (ATL::CImage & pImage, COLORREF pClearColor, B
 	return lRet;
 }
 
-bool CImageAlpha::AlphaFillImage (ATL::CImage & pImage, BYTE pAlpha, bool pClearBlack, bool pClearWhite)
+bool CImageAlpha::AlphaFillImage (ATL::CImage& pImage, BYTE pAlpha, bool pClearBlack, bool pClearWhite)
 {
 	bool	lRet = false;
 
@@ -542,7 +542,7 @@ bool CImageAlpha::AlphaFillImage (ATL::CImage & pImage, BYTE pAlpha, bool pClear
 	return lRet;
 }
 
-bool CImageAlpha::AlphaSaturateImage (ATL::CImage & pImage, BYTE pMinAlpha, BYTE pMaxAlpha)
+bool CImageAlpha::AlphaSaturateImage (ATL::CImage& pImage, BYTE pMinAlpha, BYTE pMaxAlpha)
 {
 	bool	lRet = false;
 
@@ -574,7 +574,7 @@ bool CImageAlpha::AlphaSaturateImage (ATL::CImage & pImage, BYTE pMinAlpha, BYTE
 	return lRet;
 }
 
-bool CImageAlpha::AlphaInvertImage (ATL::CImage & pImage, bool pClearBlack, bool pSkipBlack, bool pSkipWhite)
+bool CImageAlpha::AlphaInvertImage (ATL::CImage& pImage, bool pClearBlack, bool pSkipBlack, bool pSkipWhite)
 {
 	bool	lRet = false;
 
@@ -647,7 +647,7 @@ bool CImageAlpha::AlphaInvertImage (ATL::CImage & pImage, bool pClearBlack, bool
 	return lRet;
 }
 
-bool CImageAlpha::AlphaFixImage (ATL::CImage & pImage, BYTE pMinAlpha)
+bool CImageAlpha::AlphaFixImage (ATL::CImage& pImage, BYTE pMinAlpha)
 {
 	bool	lRet = false;
 
@@ -680,7 +680,7 @@ bool CImageAlpha::AlphaFixImage (ATL::CImage & pImage, BYTE pMinAlpha)
 	return lRet;
 }
 
-bool CImageAlpha::AlphaClampImage (ATL::CImage & pImage, BYTE pMinAlpha, BYTE pMaxAlpha, BYTE pNewAlpha)
+bool CImageAlpha::AlphaClampImage (ATL::CImage& pImage, BYTE pMinAlpha, BYTE pMaxAlpha, BYTE pNewAlpha)
 {
 	bool	lRet = false;
 
@@ -716,7 +716,7 @@ bool CImageAlpha::AlphaClampImage (ATL::CImage & pImage, BYTE pMinAlpha, BYTE pM
 
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::AlphaFeatherImage (ATL::CImage & pImage, const CRect & pCenter, BYTE pAlpha, bool pRectangular, bool pPrecalc)
+bool CImageAlpha::AlphaFeatherImage (ATL::CImage& pImage, const CRect& pCenter, BYTE pAlpha, bool pRectangular, bool pPrecalc)
 {
 	bool	lRet = false;
 
@@ -846,7 +846,7 @@ bool CImageAlpha::AlphaFeatherImage (ATL::CImage & pImage, const CRect & pCenter
 	return lRet;
 }
 
-bool CImageAlpha::AlphaCalcImage (ATL::CImage & pImage, COLORREF pOpaqueColor, COLORREF pSaturateColor)
+bool CImageAlpha::AlphaCalcImage (ATL::CImage& pImage, COLORREF pOpaqueColor, COLORREF pSaturateColor)
 {
 	bool	lRet = false;
 
@@ -919,7 +919,7 @@ bool CImageAlpha::AlphaCalcImage (ATL::CImage & pImage, COLORREF pOpaqueColor, C
 	return lRet;
 }
 
-bool CImageAlpha::AlphaHitTestImage (ATL::CImage & pImage, const CPoint & pPoint, const CRect & pBounds, const CRect * pAperture, BYTE pMinAlpha, BYTE pMaxAlpha)
+bool CImageAlpha::AlphaHitTestImage (ATL::CImage& pImage, const CPoint& pPoint, const CRect& pBounds, const CRect* pAperture, BYTE pMinAlpha, BYTE pMaxAlpha)
 {
 	bool	lRet = false;
 
@@ -983,7 +983,7 @@ bool CImageAlpha::AlphaHitTestImage (ATL::CImage & pImage, const CPoint & pPoint
 #pragma page()
 //////////////////////////////////////////////////////////////////////
 
-bool CImageAlpha::AlphaPreDrawBuffer (ATL::CImage & pImage, COLORREF pFillColor)
+bool CImageAlpha::AlphaPreDrawBuffer (ATL::CImage& pImage, COLORREF pFillColor)
 {
 	bool	lRet = false;
 
@@ -1018,7 +1018,7 @@ bool CImageAlpha::AlphaPreDrawBuffer (ATL::CImage & pImage, COLORREF pFillColor)
 	return lRet;
 }
 
-bool CImageAlpha::AlphaPostDrawBuffer (ATL::CImage & pImage, COLORREF pMaskColor, bool pAlphaPreCalc)
+bool CImageAlpha::AlphaPostDrawBuffer (ATL::CImage& pImage, COLORREF pMaskColor, bool pAlphaPreCalc)
 {
 	bool	lRet = false;
 

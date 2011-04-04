@@ -40,8 +40,8 @@ public:
 	bool ParseOpenRecent (CRecentFileList * pRecent, bool pDefaultFileNew = false, bool pDefaultFileOpen = false, bool pDefaultOpenRecent = false);
 	bool RequiresOpenDlg () const;
 
-	static int SplitCmdLine (CStringArray & pCmdLineParts); // for quoted paths __targv is unreliable, as is CommandLineToArgvW
-	static int SplitCmdLine (LPCTSTR pCmdLine, CStringArray & pCmdLineParts);
+	static int SplitCmdLine (CStringArray& pCmdLineParts); // for quoted paths __targv is unreliable, as is CommandLineToArgvW
+	static int SplitCmdLine (LPCTSTR pCmdLine, CStringArray& pCmdLineParts);
 
 // Overrides
 	//{{AFX_VIRTUAL(CCmdLineInfoEx)

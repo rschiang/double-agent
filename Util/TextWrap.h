@@ -32,8 +32,8 @@ class CTextWrap
 {
 public:
 	CTextWrap (LPCTSTR pBreakBefore = NULL, LPCTSTR pBreakAfter = NULL, int pWrapIndent = 0);
-	CTextWrap (const CRect & pBounds, LPCTSTR pBreakBefore = NULL, LPCTSTR pBreakAfter = NULL, int pWrapIndent = 0);
-	CTextWrap (const CTextWrap & pSource);
+	CTextWrap (const CRect& pBounds, LPCTSTR pBreakBefore = NULL, LPCTSTR pBreakAfter = NULL, int pWrapIndent = 0);
+	CTextWrap (const CTextWrap& pSource);
 	virtual ~CTextWrap ();
 
 // Attributes
@@ -42,23 +42,23 @@ public:
 	bool	mUseExternalLeading;
 	bool	mUseInternalLeading;
 
-	const CSize & GetSize () const							{return mSize;}
+	const CSize& GetSize () const							{return mSize;}
 	int GetLineCount () const								{return (int)mTextLines.GetCount();}
-	const COwnPtrArray <POLYTEXT> & GetLines () const		{return mTextLines;}
+	const COwnPtrArray <POLYTEXT>& GetLines () const		{return mTextLines;}
 
 // Operations
-	virtual CSize MeasureText (LPCTSTR pText, HDC pDC = NULL, HFONT pFont = NULL, bool * pWordBroken = NULL);
-	virtual void DrawText (HDC pDC, HFONT pFont = NULL, const CRect * pClipRect = NULL, HDC pAttribDC = NULL);
-	virtual void DrawText (HDC pDC, const CRect & pBounds, LPCTSTR pText, HFONT pFont = NULL, const CRect * pClipRect = NULL, HDC pAttribDC = NULL);
+	virtual CSize MeasureText (LPCTSTR pText, HDC pDC = NULL, HFONT pFont = NULL, bool* pWordBroken = NULL);
+	virtual void DrawText (HDC pDC, HFONT pFont = NULL, const CRect* pClipRect = NULL, HDC pAttribDC = NULL);
+	virtual void DrawText (HDC pDC, const CRect& pBounds, LPCTSTR pText, HFONT pFont = NULL, const CRect* pClipRect = NULL, HDC pAttribDC = NULL);
 
 #ifdef	__AFXWIN_H__
-	CSize MeasureText (LPCTSTR pText, CDC & pDC, HFONT pFont = NULL, bool * pWordBroken = NULL) {return MeasureText (pText, pDC.m_hAttribDC, pFont, pWordBroken);}
-	void DrawText (CDC & pDC, HFONT pFont = NULL, const CRect * pClipRect = NULL) {DrawText (pDC.m_hDC, pFont, pClipRect, pDC.IsPrinting() ? NULL : pDC.m_hAttribDC);}
-	void DrawText (CDC & pDC, const CRect & pBounds, LPCTSTR pText, HFONT pFont = NULL, const CRect * pClipRect = NULL) {DrawText (pDC.m_hDC, pBounds, pText, pFont, pClipRect, pDC.IsPrinting() ? NULL : pDC.m_hAttribDC);}
+	CSize MeasureText (LPCTSTR pText, CDC& pDC, HFONT pFont = NULL, bool* pWordBroken = NULL) {return MeasureText (pText, pDC.m_hAttribDC, pFont, pWordBroken);}
+	void DrawText (CDC& pDC, HFONT pFont = NULL, const CRect* pClipRect = NULL) {DrawText (pDC.m_hDC, pFont, pClipRect, pDC.IsPrinting() ? NULL : pDC.m_hAttribDC);}
+	void DrawText (CDC& pDC, const CRect& pBounds, LPCTSTR pText, HFONT pFont = NULL, const CRect* pClipRect = NULL) {DrawText (pDC.m_hDC, pBounds, pText, pFont, pClipRect, pDC.IsPrinting() ? NULL : pDC.m_hAttribDC);}
 #endif
 
 	void Offset (int pXOffset, int pYOffset);
-	void Offset (const CPoint & pOffset) {Offset (pOffset.x, pOffset.y);}
+	void Offset (const CPoint& pOffset) {Offset (pOffset.x, pOffset.y);}
 	UINT CenterLines ();
 
 	CString GetWrappedText () const;
@@ -71,11 +71,11 @@ public:
 
 // Implementation
 protected:
-	virtual void DrawLine (HDC pDC, int pLineNum, LPCTSTR pLineText, int pLineLength, CPoint & pLinePos, CRect & pLineRect);
-	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter);
+	virtual void DrawLine (HDC pDC, int pLineNum, LPCTSTR pLineText, int pLineLength, CPoint& pLinePos, CRect& pLineRect);
+	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter);
 	virtual int GetLineIndent (LPCTSTR pText, int pTextLen, HDC pDC, int pLineNdx);
 
-	CTextWrap & operator= (const CTextWrap & pSource);
+	CTextWrap& operator= (const CTextWrap& pSource);
 
 protected:
 	CSize					mSize;
@@ -92,12 +92,12 @@ class CTextWrapPath : public CTextWrap
 {
 public:
 	CTextWrapPath ();
-	CTextWrapPath (const CRect & pBounds);
+	CTextWrapPath (const CRect& pBounds);
 	virtual ~CTextWrapPath ();
 
 // Implementation
 protected:
-	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter);
+	virtual bool IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter);
 };
 
 //////////////////////////////////////////////////////////////////////

@@ -49,7 +49,7 @@ CTextWrap::CTextWrap (LPCTSTR pBreakBefore, LPCTSTR pBreakAfter, int pWrapIndent
 {
 }
 
-CTextWrap::CTextWrap (const CRect & pBounds, LPCTSTR pBreakBefore, LPCTSTR pBreakAfter, int pWrapIndent)
+CTextWrap::CTextWrap (const CRect& pBounds, LPCTSTR pBreakBefore, LPCTSTR pBreakAfter, int pWrapIndent)
 :	mBounds (pBounds),
 	mSize (0, 0),
 	mBreakBefore (pBreakBefore),
@@ -60,7 +60,7 @@ CTextWrap::CTextWrap (const CRect & pBounds, LPCTSTR pBreakBefore, LPCTSTR pBrea
 {
 }
 
-CTextWrap::CTextWrap (const CTextWrap & pSource)
+CTextWrap::CTextWrap (const CTextWrap& pSource)
 {
 	operator= (pSource);
 }
@@ -71,7 +71,7 @@ CTextWrap::~CTextWrap ()
 
 //////////////////////////////////////////////////////////////////////
 
-CTextWrap & CTextWrap::operator= (const CTextWrap & pSource)
+CTextWrap& CTextWrap::operator= (const CTextWrap& pSource)
 {
 	mBounds = pSource.mBounds;
 	mSize = pSource.mSize;
@@ -88,7 +88,7 @@ CTextWrap & CTextWrap::operator= (const CTextWrap & pSource)
 #pragma page()
 //////////////////////////////////////////////////////////////////////
 
-CSize CTextWrap::MeasureText (LPCTSTR pText, HDC pDC, HFONT pFont, bool * pWordBroken)
+CSize CTextWrap::MeasureText (LPCTSTR pText, HDC pDC, HFONT pFont, bool* pWordBroken)
 {
 	HDC					lTempDC = NULL;
 	CSize				lVptExt;
@@ -332,12 +332,12 @@ CSize CTextWrap::MeasureText (LPCTSTR pText, HDC pDC, HFONT pFont, bool * pWordB
 	return mSize;
 }
 
-void CTextWrap::DrawText (HDC pDC, HFONT pFont, const CRect * pClipRect, HDC pAttribDC)
+void CTextWrap::DrawText (HDC pDC, HFONT pFont, const CRect* pClipRect, HDC pAttribDC)
 {
 	DrawText (pDC, mBounds, NULL, pFont, pClipRect, pAttribDC);
 }
 
-void CTextWrap::DrawText (HDC pDC, const CRect & pBounds, LPCTSTR pText, HFONT pFont, const CRect * pClipRect, HDC pAttribDC)
+void CTextWrap::DrawText (HDC pDC, const CRect& pBounds, LPCTSTR pText, HFONT pFont, const CRect* pClipRect, HDC pAttribDC)
 {
 	HGDIOBJ	lOldFont = NULL;
 
@@ -432,7 +432,7 @@ void CTextWrap::DrawText (HDC pDC, const CRect & pBounds, LPCTSTR pText, HFONT p
 	}
 }
 
-void CTextWrap::DrawLine (HDC pDC, int pLineNum, LPCTSTR pLineText, int pLineLength, CPoint & pLinePos, CRect & pLineRect)
+void CTextWrap::DrawLine (HDC pDC, int pLineNum, LPCTSTR pLineText, int pLineLength, CPoint& pLinePos, CRect& pLineRect)
 {
 	ExtTextOut (pDC, pLinePos.x, pLinePos.y, 0, &pLineRect, pLineText, pLineLength, NULL);
 }
@@ -620,7 +620,7 @@ int CTextWrap::GetLineHeight (int pLineNdx) const
 #pragma page()
 //////////////////////////////////////////////////////////////////////
 
-bool CTextWrap::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter)
+bool CTextWrap::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter)
 {
 	TCHAR	lChar = pText [pNdx];
 
@@ -679,7 +679,7 @@ CTextWrapPath::CTextWrapPath ()
 {
 }
 
-CTextWrapPath::CTextWrapPath (const CRect & pBounds)
+CTextWrapPath::CTextWrapPath (const CRect& pBounds)
 :	CTextWrap (pBounds, _T("\\/]"), _T("["), -2)
 {
 }
@@ -690,7 +690,7 @@ CTextWrapPath::~CTextWrapPath ()
 
 //////////////////////////////////////////////////////////////////////
 
-bool CTextWrapPath::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool & pBreakAfter)
+bool CTextWrapPath::IsBreakChar (LPCTSTR pText, int pNdx, UINT pPriority, bool& pBreakAfter)
 {
 	TCHAR	lChar = pText [pNdx];
 

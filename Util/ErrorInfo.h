@@ -30,8 +30,8 @@ class CErrorInfo
 {
 public:
 	CErrorInfo ();
-	CErrorInfo (LPCTSTR pDescription, LPCTSTR pSource = NULL, const GUID & pGuid = GUID_NULL, LPCTSTR pHelpFile = NULL, DWORD pHelpContext = 0);
-	CErrorInfo (HRESULT pError, LPCTSTR pSource = NULL, const GUID & pGuid = GUID_NULL, LPCTSTR pHelpFile = NULL, DWORD pHelpContext = 0);
+	CErrorInfo (LPCTSTR pDescription, LPCTSTR pSource = NULL, const GUID& pGuid = GUID_NULL, LPCTSTR pHelpFile = NULL, DWORD pHelpContext = 0);
+	CErrorInfo (HRESULT pError, LPCTSTR pSource = NULL, const GUID& pGuid = GUID_NULL, LPCTSTR pHelpFile = NULL, DWORD pHelpContext = 0);
 	~CErrorInfo () {}
 
 // Attributes

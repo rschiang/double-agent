@@ -79,7 +79,7 @@ CDirectSoundPinPush::~CDirectSoundPinPush ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-CDirectSoundPinPush & CDirectSoundPinPush::Initialize (CDirectShowFilter & pFilter, CDirectSoundConvertCache & pConvertCache, long pSoundNdx)
+CDirectSoundPinPush& CDirectSoundPinPush::Initialize (CDirectShowFilter& pFilter, CDirectSoundConvertCache& pConvertCache, long pSoundNdx)
 {
 	CDirectShowPinOut::Initialize (pFilter);
 	InitMediaSeeking (*this, pFilter, 0, AM_SEEKING_CanDoSegments);
@@ -234,12 +234,12 @@ HRESULT CDirectSoundPinPush::ConnectFilters ()
 			lFilterName.Format (_T("Audio Render (%d)"), mSoundNdx);
 
 #ifdef	_NO_FILTER_CACHE
-			if	(SUCCEEDED (lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_DSoundRender, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void **) &mAudioRender))))
+			if	(SUCCEEDED (lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_DSoundRender, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void**) &mAudioRender))))
 #else
 			LogComErr (LogNormal|LogTime, GetFilterFromCache (CLSID_DSoundRender, lGraphBuilder, &mAudioRender));
 			if	(
 					(mAudioRender != NULL)
-				||	(SUCCEEDED (lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_DSoundRender, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void **) &mAudioRender))))
+				||	(SUCCEEDED (lResult = LogComErr (LogNormal|LogTime, CoCreateInstance (CLSID_DSoundRender, NULL, CLSCTX_INPROC, __uuidof (IBaseFilter), (void**) &mAudioRender))))
 				)
 #endif
 			{

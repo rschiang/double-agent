@@ -66,7 +66,7 @@ DaSvrTTSEngines::~DaSvrTTSEngines()
 
 DaSvrTTSEngines * DaSvrTTSEngines::CreateInstance (LPCTSTR pClientMutexName)
 {
-	CComObject<DaSvrTTSEngines> *	lInstance = NULL;
+	CComObject<DaSvrTTSEngines>*	lInstance = NULL;
 
 	if	(SUCCEEDED (LogComErr (LogIfActive|LogTime, CComObject<DaSvrTTSEngines>::CreateInstance (&lInstance))))
 	{
@@ -230,7 +230,7 @@ HRESULT STDMETHODCALLTYPE DaSvrTTSEngines::get_Item (long Index, IDaSvrTTSEngine
 #ifndef	_WIN64
 			else
 			{
-				CSapi4VoiceInfo *	lSapi4VoiceInfo;
+				CSapi4VoiceInfo*	lSapi4VoiceInfo;
 
 				if	(lSapi4VoiceInfo = GetSapi4VoiceAt (Index))
 				{

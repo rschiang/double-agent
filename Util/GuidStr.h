@@ -32,8 +32,8 @@ public:
 	CGuidStr (REFGUID pGuid);
 	~CGuidStr () {}
 
-	operator CString &() {return mValue;}
-	operator const CString &() const {return mValue;}
+	operator CString&() {return mValue;}
+	operator const CString&() const {return mValue;}
 	operator LPCTSTR () const {return mValue;}
 
 	static GUID Parse (LPCTSTR pGuidStr);

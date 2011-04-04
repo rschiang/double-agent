@@ -35,7 +35,7 @@ CDaCmnCommandsWindow::~CDaCmnCommandsWindow ()
 
 /////////////////////////////////////////////////////////////////////////////
 
-void CDaCmnCommandsWindow::Initialize (CVoiceCommandsWnd * pVoiceCommandsWnd)
+void CDaCmnCommandsWindow::Initialize (CVoiceCommandsWnd* pVoiceCommandsWnd)
 {
 	mVoiceCommandsWnd = pVoiceCommandsWnd;
 }

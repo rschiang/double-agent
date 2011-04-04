@@ -93,7 +93,7 @@ void CUiState::InitUiState (HWND pWindow)
 #endif
 }
 
-bool CUiState::UpdateUiState (MSG & pMsg)
+bool CUiState::UpdateUiState (MSG& pMsg)
 {
 #ifndef	_UNICODE
 	if	(

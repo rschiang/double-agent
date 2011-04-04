@@ -100,7 +100,7 @@ static inline System::String^ FormatMethodArguments (System::Reflection::MethodB
 	{
 		return FormatArguments (lArguments);
 	}
-	return System::String::Empty;
+	return String::Empty;
 }
 
 static inline System::String^ FormatTypeArguments (System::Type^ pType)
@@ -115,7 +115,7 @@ static inline System::String^ FormatTypeArguments (System::Type^ pType)
 	{
 		return FormatArguments (lArguments);
 	}
-	return System::String::Empty;
+	return String::Empty;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -139,18 +139,18 @@ static inline tBstrPtr _BT (System::Type^ pType)
 	{
 		if	(
 				(pType->IsGenericParameter)
-			&&	(!System::String::IsNullOrEmpty (pType->Name))
+			&&	(!String::IsNullOrEmpty (pType->Name))
 			)
 		{
 			return _B(pType->Name);
 		}
 		else
-		if	(!System::String::IsNullOrEmpty (pType->FullName))
+		if	(!String::IsNullOrEmpty (pType->FullName))
 		{
 			return _B(pType->FullName+FormatTypeArguments(pType));
 		}
 		else
-		if	(!System::String::IsNullOrEmpty (pType->Namespace))
+		if	(!String::IsNullOrEmpty (pType->Namespace))
 		{
 			return _B(pType->Namespace+"."+pType->Name+FormatTypeArguments(pType));
 		}

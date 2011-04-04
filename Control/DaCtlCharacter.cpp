@@ -372,7 +372,7 @@ bool DaCtlCharacter::SetSuspended (bool pSuspended)
 
 DaCtlBalloon * DaCtlCharacter::GetBalloon ()
 {
-	CComObject <DaCtlBalloon> *	lRet = NULL;
+	CComObject <DaCtlBalloon>*	lRet = NULL;
 
 	if	(mBalloon == NULL)
 	{
@@ -411,14 +411,14 @@ DaCtlBalloon * DaCtlCharacter::GetBalloon ()
 	}
 	if	(mBalloon != NULL)
 	{
-		lRet = dynamic_cast <CComObject <DaCtlBalloon> *> (mBalloon.GetInterfacePtr());
+		lRet = dynamic_cast <CComObject <DaCtlBalloon>*> (mBalloon.GetInterfacePtr());
 	}
 	return lRet;
 }
 
 DaCtlCommands * DaCtlCharacter::GetCommands ()
 {
-	CComObject <DaCtlCommands> *	lRet = NULL;
+	CComObject <DaCtlCommands>*	lRet = NULL;
 
 	if	(mCommands == NULL)
 	{
@@ -457,7 +457,7 @@ DaCtlCommands * DaCtlCharacter::GetCommands ()
 	}
 	if	(mCommands != NULL)
 	{
-		lRet = dynamic_cast <CComObject <DaCtlCommands> *> (mCommands.GetInterfacePtr());
+		lRet = dynamic_cast <CComObject <DaCtlCommands>*> (mCommands.GetInterfacePtr());
 	}
 	return lRet;
 }
@@ -4049,7 +4049,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacter::SpeakFormatted (IDaCtlFormattedText * 
 
 	try
 	{
-		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText> *> (FormattedText);
+		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText>*> (FormattedText);
 	}
 	catch AnyExceptionSilent
 
@@ -4126,7 +4126,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacter::ThinkFormatted (IDaCtlFormattedText * 
 
 	try
 	{
-		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText> *> (FormattedText);
+		lFormattedText = dynamic_cast <CComObject <DaCtlFormattedText>*> (FormattedText);
 	}
 	catch AnyExceptionSilent
 
@@ -4858,7 +4858,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_SmoothEdges (VARIANT_BOOL *SmoothE
 
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_Animations (SAFEARRAY **Animations)
+HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_Animations (SAFEARRAY**Animations)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE
@@ -4904,7 +4904,7 @@ HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_Animations (SAFEARRAY **Animations
 	return lResult;
 }
 
-HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_States (SAFEARRAY **States)
+HRESULT STDMETHODCALLTYPE DaCtlCharacter::get_States (SAFEARRAY**States)
 {
 	ClearControlError ();
 #ifdef	_DEBUG_INTERFACE
