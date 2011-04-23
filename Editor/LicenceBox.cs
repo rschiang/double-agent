@@ -18,32 +18,16 @@
     along with Double Agent.  If not, see <http://www.gnu.org/licenses/>.
 */
 /////////////////////////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace AgentCharacterEditor
 {
-	partial class AboutBox : Form
+	partial class LicenseBox : Form
 	{
-		public AboutBox ()
+		public LicenseBox ()
 		{
 			InitializeComponent ();
-
-			//LogoPictureBox.Image = Properties.Resources.DoubleAgent.ToBitmap ();
-			
-			Text = String.Format ("About {0}", Program.AssemblyTitle);
-			LabelProductName.Text = Program.AssemblyTitle;
-			LabelVersion.Text = String.Format ("Version {0}", Program.AssemblyVersion);
-			LabelCopyright.Text = Program.AssemblyCopyright;
-			TextBoxLicenseIntro.Rtf = Properties.Resources.LicenseIntro;
-		}
-
-		private void LicenseButton_Click (object sender, EventArgs e)
-		{
-			(new AgentCharacterEditor.LicenseBox ()).ShowDialog (this);
+			TextBoxLicenseDetails.Rtf = Properties.Resources.LicenseDetails;
 		}
 	}
 }
