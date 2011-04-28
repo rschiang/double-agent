@@ -30,7 +30,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class TtsForm : UserControl
+	public partial class TtsPanel : UserControl
 	{
 		private CharacterFile	mCharacterFile = null;
 		private Sapi4Voices		mVoices = null;
@@ -38,7 +38,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public TtsForm ()
+		public TtsPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;

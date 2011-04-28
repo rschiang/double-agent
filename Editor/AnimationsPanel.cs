@@ -30,14 +30,14 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class AnimationsForm : UserControl
+	public partial class AnimationsPanel : UserControl
 	{
 		private CharacterFile	mCharacterFile = null;
 
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public AnimationsForm ()
+		public AnimationsPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;
@@ -54,7 +54,7 @@ namespace AgentCharacterEditor
 
 			if (Program.MainForm != null)
 			{
-				Program.MainForm.CanEdit -= new Global.EditEventHandler (MainForm_CanEdit);
+				Program.MainForm.CanEdit -= new Global.CanEditEventHandler (MainForm_CanEdit);
 				Program.MainForm.EditCopy -= new Global.EditEventHandler (MainForm_EditCopy);
 				Program.MainForm.EditCut -= new Global.EditEventHandler (MainForm_EditCut);
 				Program.MainForm.EditDelete -= new Global.EditEventHandler (MainForm_EditDelete);
@@ -62,7 +62,7 @@ namespace AgentCharacterEditor
 				Program.MainForm.EditMenu -= new Global.ContextMenuEventHandler (MainForm_EditMenu);
 				if (Visible)
 				{
-					Program.MainForm.CanEdit += new Global.EditEventHandler (MainForm_CanEdit);
+					Program.MainForm.CanEdit += new Global.CanEditEventHandler (MainForm_CanEdit);
 					Program.MainForm.EditCopy += new Global.EditEventHandler (MainForm_EditCopy);
 					Program.MainForm.EditCut += new Global.EditEventHandler (MainForm_EditCut);
 					Program.MainForm.EditDelete += new Global.EditEventHandler (MainForm_EditDelete);
@@ -104,7 +104,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Events
 
-		public event Global.GoToAnimationEventHandler GoToAnimation;
+		public event Global.NavigationEventHandler Navigate;
 
 		#endregion
 		///////////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@ namespace AgentCharacterEditor
 			}
 		}
 
-		private void ShowEditState (Global.EditEventArgs pEventArgs, Boolean pListIsFocused, Boolean pNewNameIsFocused)
+		private void ShowEditState (Global.CanEditEventArgs pEventArgs, Boolean pListIsFocused, Boolean pNewNameIsFocused)
 		{
 			if (!pEventArgs.IsUsed && pListIsFocused)
 			{
@@ -527,7 +527,7 @@ namespace AgentCharacterEditor
 
 		private void ListViewAnimations_ItemActivate (object sender, EventArgs e)
 		{
-			if (!IsEmpty && (GoToAnimation != null))
+			if (!IsEmpty && (Navigate != null))
 			{
 				FileAnimation lAnimation = GetSelectedAnimation (false);
 
@@ -535,7 +535,7 @@ namespace AgentCharacterEditor
 				{
 					try
 					{
-						GoToAnimation (this, new Global.AnimationEventArgs (lAnimation));
+						Navigate (this, new Global.NavigationEventArgs (new ResolveAnimation (lAnimation)));
 					}
 					catch
 					{
@@ -685,7 +685,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Internal Event Handlers
 
-		internal void MainForm_CanEdit (object sender, Global.EditEventArgs e)
+		internal void MainForm_CanEdit (object sender, Global.CanEditEventArgs e)
 		{
 			if (!IsEmpty)
 			{

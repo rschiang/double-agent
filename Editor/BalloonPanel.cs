@@ -30,14 +30,14 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class BalloonForm : UserControl
+	public partial class BalloonPanel : UserControl
 	{
 		private CharacterFile	mCharacterFile = null;
 
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public BalloonForm ()
+		public BalloonPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;

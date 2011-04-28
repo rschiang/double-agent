@@ -30,7 +30,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class StateForm : UserControl
+	public partial class StatePanel : UserControl
 	{
 		private CharacterFile	mCharacterFile = null;
 		private String			mStateName = null;
@@ -38,7 +38,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public StateForm ()
+		public StatePanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;
@@ -99,7 +99,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Events
 
-		public event Global.GoToAnimationEventHandler GoToAnimation;
+		public event Global.NavigationEventHandler Navigate;
 
 		#endregion
 		///////////////////////////////////////////////////////////////////////////////
@@ -260,7 +260,7 @@ namespace AgentCharacterEditor
 
 		private void ListViewAnimations_ItemActivate (object sender, EventArgs e)
 		{
-			if (!IsEmpty && (GoToAnimation != null))
+			if (!IsEmpty && (Navigate != null))
 			{
 				ListViewItem	lItem = ListViewAnimations.SelectedItem;
 
@@ -268,7 +268,7 @@ namespace AgentCharacterEditor
 				{
 					try
 					{
-						GoToAnimation (this, new Global.AnimationEventArgs (mCharacterFile.Gestures[lItem.Text]));
+						Navigate (this, new Global.NavigationEventArgs (new ResolveAnimation (lItem.Text)));
 					}
 					catch
 					{

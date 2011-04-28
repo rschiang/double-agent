@@ -31,7 +31,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class BranchingForm : UserControl
+	public partial class BranchingPanel : UserControl
 	{
 		private CharacterFile		mCharacterFile = null;
 		private FileAnimationFrame	mFrame = null;
@@ -39,7 +39,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public BranchingForm ()
+		public BranchingPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;

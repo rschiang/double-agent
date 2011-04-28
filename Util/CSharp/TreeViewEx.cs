@@ -1,5 +1,5 @@
 ﻿/////////////////////////////////////////////////////////////////////////////
-//	Copyright 2009-2011 Cinnamon Software Inc.
+//	Double Agent - Copyright 2009-2011 Cinnamon Software Inc.
 /////////////////////////////////////////////////////////////////////////////
 /*
 	This file is a utility used by Double Agent but not specific to
@@ -20,51 +20,22 @@
     along with this file.  If not, see <http://www.gnu.org/licenses/>.
 */
 /////////////////////////////////////////////////////////////////////////////
-using System;
 using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace DoubleAgent
 {
 	/// <summary>
-	/// A <see cref="System.Windows.Forms.TextBox"/> that triggers validation when the return key is pressed.
+	/// A <see cref="System.Windows.Forms.TreeView"/> with a double-buffering enabled
 	/// </summary>
-	/// <remarks>The <see cref="AcceptsReturn"/> property is initialized to True.</remarks>
-	public class TextBoxEx : System.Windows.Forms.TextBox
+	public class TreeViewEx : System.Windows.Forms.TreeView
 	{
-		private const int WM_KEYDOWN = 0x0100;
-
 		/// <summary>
-		/// Constructor
+		/// Enables double buffering.
 		/// </summary>
-		public TextBoxEx ()
+		protected override void OnCreateControl ()
 		{
-			AcceptsReturn = true;
-		}
-
-		protected override bool ProcessCmdKey (ref Message pMessage, Keys pKeyData)
-		{
-			if ((pMessage.Msg == WM_KEYDOWN) && (pKeyData == Keys.Return) && (this.AcceptsReturn))
-			{
-				ValidateNow ();
-				return true;
-			}
-			return base.ProcessCmdKey (ref pMessage, pKeyData);
-		}
-
-		private Boolean ValidateNow ()
-		{
-			if (CausesValidation)
-			{
-				CancelEventArgs	lEventArgs = new CancelEventArgs ();
-				OnValidating (lEventArgs);
-				if (!lEventArgs.Cancel)
-				{
-					OnValidated (new EventArgs ());
-					return true;
-				}
-			}
-			return false;
+			this.DoubleBuffered = true;
+			base.OnCreateControl ();
 		}
 	}
 }

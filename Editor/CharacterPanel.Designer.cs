@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class CharacterForm
+	partial class CharacterPanel
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -79,7 +79,7 @@ namespace AgentCharacterEditor
 			System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem ("Swedish");
 			System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem ("Thai");
 			System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem ("Turkish");
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager (typeof (CharacterForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager (typeof (CharacterPanel));
 			this.GroupBoxGeneral = new System.Windows.Forms.GroupBox ();
 			this.LayoutPanelGeneral = new System.Windows.Forms.TableLayoutPanel ();
 			this.LabelName = new System.Windows.Forms.Label ();

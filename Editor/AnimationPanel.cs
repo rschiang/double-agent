@@ -30,7 +30,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class AnimationForm : UserControl
+	public partial class AnimationPanel : UserControl
 	{
 		private CharacterFile mCharacterFile = null;
 		private FileAnimation mAnimation = null;
@@ -41,7 +41,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public AnimationForm ()
+		public AnimationPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;
@@ -61,7 +61,7 @@ namespace AgentCharacterEditor
 			if (Program.MainForm != null)
 			{
 				Program.MainForm.UpdateApplied -= new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-				Program.MainForm.CanEdit -= new Global.EditEventHandler (MainForm_CanEdit);
+				Program.MainForm.CanEdit -= new Global.CanEditEventHandler (MainForm_CanEdit);
 				Program.MainForm.EditCopy -= new Global.EditEventHandler (MainForm_EditCopy);
 				Program.MainForm.EditCut -= new Global.EditEventHandler (MainForm_EditCut);
 				Program.MainForm.EditDelete -= new Global.EditEventHandler (MainForm_EditDelete);
@@ -70,7 +70,7 @@ namespace AgentCharacterEditor
 				if (Visible)
 				{
 					Program.MainForm.UpdateApplied += new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-					Program.MainForm.CanEdit += new Global.EditEventHandler (MainForm_CanEdit);
+					Program.MainForm.CanEdit += new Global.CanEditEventHandler (MainForm_CanEdit);
 					Program.MainForm.EditCopy += new Global.EditEventHandler (MainForm_EditCopy);
 					Program.MainForm.EditCut += new Global.EditEventHandler (MainForm_EditCut);
 					Program.MainForm.EditDelete += new Global.EditEventHandler (MainForm_EditDelete);
@@ -129,8 +129,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Events
 
-		public event Global.GoToFrameEventHandler GoToFrame;
-		public event Global.GoToStateEventHandler GoToState;
+		public event Global.NavigationEventHandler Navigate;
 
 		#endregion
 		///////////////////////////////////////////////////////////////////////////////
@@ -350,7 +349,7 @@ namespace AgentCharacterEditor
 			ButtonMoveDown.Text = String.Format (Properties.Resources.EditMoveFrameDown.NoMenuPrefix (), Global.TitleFrame (ButtonMoveDown.Enabled ? pFrame : null));
 		}
 
-		private void ShowEditState (Global.EditEventArgs pEventArgs)
+		private void ShowEditState (Global.CanEditEventArgs pEventArgs)
 		{
 			FileAnimationFrame lFrame = GetSelectedFrame (false);
 
@@ -568,7 +567,7 @@ namespace AgentCharacterEditor
 
 		private void ListViewPreview_ItemActivate (object sender, EventArgs e)
 		{
-			if (!IsEmpty && (GoToFrame != null))
+			if (!IsEmpty && (Navigate != null))
 			{
 				FileAnimationFrame lFrame = GetSelectedFrame (false);
 
@@ -576,7 +575,7 @@ namespace AgentCharacterEditor
 				{
 					try
 					{
-						GoToFrame (this, new Global.AnimationFrameEventArgs (mAnimation, lFrame));
+						Navigate (this, new Global.NavigationEventArgs (new ResolveAnimationFrame (lFrame)));
 					}
 					catch
 					{
@@ -587,7 +586,7 @@ namespace AgentCharacterEditor
 
 		private void ListViewStates_ItemActivate (object sender, EventArgs e)
 		{
-			if (!IsEmpty && (GoToState != null))
+			if (!IsEmpty && (Navigate != null))
 			{
 				ListViewItem lItem = ListViewStates.SelectedItem;
 
@@ -595,7 +594,7 @@ namespace AgentCharacterEditor
 				{
 					try
 					{
-						GoToState (this, new Global.StateEventArgs (lItem.Text));
+						Navigate (this, new Global.NavigationEventArgs (new ResolveState (lItem.Text)));
 					}
 					catch
 					{
@@ -681,7 +680,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Internal Event Handlers
 
-		internal void MainForm_CanEdit (object sender, Global.EditEventArgs e)
+		internal void MainForm_CanEdit (object sender, Global.CanEditEventArgs e)
 		{
 			if (!e.IsUsed && !IsEmpty && ListViewPreview.ContainsFocus)
 			{

@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class OverlayForm
+	partial class OverlayPanel
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -49,7 +49,7 @@ namespace AgentCharacterEditor
 		private void InitializeComponent ()
 		{
 			this.components = new System.ComponentModel.Container ();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager (typeof (OverlayForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager (typeof (OverlayPanel));
 			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem ("Closed", "MouthClosed");
 			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem ("Wide 1", "MouthWide1");
 			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem ("Wide 2", "MouthWide2");

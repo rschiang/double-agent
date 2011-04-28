@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class TtsForm
+	partial class TtsPanel
 	{
 		/// <summary> 
 		/// Required designer variable.

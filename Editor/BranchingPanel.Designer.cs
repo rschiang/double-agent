@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class BranchingForm
+	partial class BranchingPanel
 	{
 		/// <summary> 
 		/// Required designer variable.

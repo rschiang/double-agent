@@ -30,7 +30,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class CharacterForm : UserControl
+	public partial class CharacterPanel : UserControl
 	{
 		private CharacterFile mCharacterFile = null;
 		internal const UInt16 mLangDefault = 0x0409;
@@ -39,7 +39,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public CharacterForm ()
+		public CharacterPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;
@@ -68,7 +68,7 @@ namespace AgentCharacterEditor
 			if (Program.MainForm != null)
 			{
 				Program.MainForm.UpdateApplied -= new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-				Program.MainForm.CanEdit -= new Global.EditEventHandler (MainForm_CanEdit);
+				Program.MainForm.CanEdit -= new Global.CanEditEventHandler (MainForm_CanEdit);
 				Program.MainForm.EditCopy -= new Global.EditEventHandler (MainForm_EditCopy);
 				Program.MainForm.EditCut -= new Global.EditEventHandler (MainForm_EditCut);
 				Program.MainForm.EditDelete -= new Global.EditEventHandler (MainForm_EditDelete);
@@ -76,7 +76,7 @@ namespace AgentCharacterEditor
 				if (Visible)
 				{
 					Program.MainForm.UpdateApplied += new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-					Program.MainForm.CanEdit += new Global.EditEventHandler (MainForm_CanEdit);
+					Program.MainForm.CanEdit += new Global.CanEditEventHandler (MainForm_CanEdit);
 					Program.MainForm.EditCopy += new Global.EditEventHandler (MainForm_EditCopy);
 					Program.MainForm.EditCut += new Global.EditEventHandler (MainForm_EditCut);
 					Program.MainForm.EditDelete += new Global.EditEventHandler (MainForm_EditDelete);
@@ -485,7 +485,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Internal Event Handlers
 
-		internal void MainForm_CanEdit (object sender, Global.EditEventArgs e)
+		internal void MainForm_CanEdit (object sender, Global.CanEditEventArgs e)
 		{
 			if (!e.IsUsed && !IsEmpty && ListViewLanguage.ContainsFocus)
 			{

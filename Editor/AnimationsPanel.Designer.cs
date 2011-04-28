@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class AnimationsForm
+	partial class AnimationsPanel
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -48,7 +48,7 @@ namespace AgentCharacterEditor
 		/// </summary>
 		private void InitializeComponent ()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimationsForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimationsPanel));
 			this.LayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
 			this.GroupBoxPalette = new System.Windows.Forms.GroupBox();
 			this.PictureBoxPalette = new System.Windows.Forms.PictureBox();

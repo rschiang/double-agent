@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class BalloonForm
+	partial class BalloonPanel
 	{
 		/// <summary> 
 		/// Required designer variable.

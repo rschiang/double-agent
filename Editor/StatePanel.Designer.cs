@@ -20,7 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////
 namespace AgentCharacterEditor
 {
-	partial class StateForm
+	partial class StatePanel
 	{
 		/// <summary> 
 		/// Required designer variable.

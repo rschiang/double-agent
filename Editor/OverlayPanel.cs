@@ -31,7 +31,7 @@ using AgentCharacterEditor.Updates;
 
 namespace AgentCharacterEditor
 {
-	public partial class OverlayForm : UserControl
+	public partial class OverlayPanel : UserControl
 	{
 		private CharacterFile		mCharacterFile = null;
 		private FileAnimationFrame	mFrame = null;
@@ -39,7 +39,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Initialization
 
-		public OverlayForm ()
+		public OverlayPanel ()
 		{
 			InitializeComponent ();
 			CausesValidation = Visible;
@@ -52,7 +52,7 @@ namespace AgentCharacterEditor
 			if (Program.MainForm != null)
 			{
 				Program.MainForm.UpdateApplied -= new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-				Program.MainForm.CanEdit -= new Global.EditEventHandler (MainForm_CanEdit);
+				Program.MainForm.CanEdit -= new Global.CanEditEventHandler (MainForm_CanEdit);
 				Program.MainForm.EditCopy -= new Global.EditEventHandler (MainForm_EditCopy);
 				Program.MainForm.EditCut -= new Global.EditEventHandler (MainForm_EditCut);
 				Program.MainForm.EditDelete -= new Global.EditEventHandler (MainForm_EditDelete);
@@ -61,7 +61,7 @@ namespace AgentCharacterEditor
 				if (Visible)
 				{
 					Program.MainForm.UpdateApplied += new UndoUnit.AppliedEventHandler (OnUpdateApplied);
-					Program.MainForm.CanEdit += new Global.EditEventHandler (MainForm_CanEdit);
+					Program.MainForm.CanEdit += new Global.CanEditEventHandler (MainForm_CanEdit);
 					Program.MainForm.EditCopy += new Global.EditEventHandler (MainForm_EditCopy);
 					Program.MainForm.EditCut += new Global.EditEventHandler (MainForm_EditCut);
 					Program.MainForm.EditDelete += new Global.EditEventHandler (MainForm_EditDelete);
@@ -322,7 +322,7 @@ namespace AgentCharacterEditor
 			ButtonChooseFile.Text = ButtonChooseFile.Enabled ? String.Format (Properties.Resources.EditChooseThisFile.NoMenuPrefix (), Global.OverlayTypeName (pFrameOverlay.OverlayType)) : Properties.Resources.EditChooseFile.NoMenuPrefix ();
 		}
 
-		private void ShowEditState (Global.EditEventArgs pEventArgs)
+		private void ShowEditState (Global.CanEditEventArgs pEventArgs)
 		{
 			FileFrameOverlay	lFrameOverlay = GetSelectedOverlay (false);
 
@@ -681,7 +681,7 @@ namespace AgentCharacterEditor
 		///////////////////////////////////////////////////////////////////////////////
 		#region Internal Event Handlers
 
-		internal void MainForm_CanEdit (object sender, Global.EditEventArgs e)
+		internal void MainForm_CanEdit (object sender, Global.CanEditEventArgs e)
 		{
 			if (!e.IsUsed && !IsEmpty && ListViewOverlays.ContainsFocus)
 			{
