@@ -19,26 +19,25 @@
 */
 /////////////////////////////////////////////////////////////////////////////
 #pragma once
-#include "DaServerOdl.h"
+#include "DaCmnTTSEngine.h"
 
 /////////////////////////////////////////////////////////////////////////////
 
-class CDaCmnTTSEngine
+class CDaCmnTTSPrivate : public CDaCmnTTSEngine 
 {
 public:
-	CDaCmnTTSEngine ();
-	virtual ~CDaCmnTTSEngine ();
+	CDaCmnTTSPrivate ();
+	virtual ~CDaCmnTTSPrivate ();
 
 // Operations
 public:
-	virtual void Initialize (class CSapi5VoiceInfo * pVoiceInfo);
-	virtual bool Initialize (class CSapi5Voice* pVoice);
-#ifndef	_WIN64
-	void Initialize (class CSapi4VoiceInfo* pVoiceInfo);
-	bool Initialize (class CSapi4Voice* pVoice);
-#endif
-	virtual bool Initialize (class CSapiVoice* pVoice);
-	virtual bool Initialize (class CAgentFile* pFile);
+	class CSapi5Voice* GetCachedVoice (class CSapiVoiceClient * pClient);
+	class CSapi5Voice* PrepareAndCacheVoice (class CSapiVoiceClient * pClient);
+private:
+	virtual void Initialize (class CSapi5VoiceInfo* pVoiceInfo) {}
+	virtual bool Initialize (class CSapi5Voice* pVoice) {return false;}
+	virtual bool Initialize (class CSapiVoice* pVoice) {return false;}
+	virtual bool Initialize (class CAgentFile* pFile) {return false;}
 
 // Interfaces
 public:
@@ -51,12 +50,28 @@ public:
 	HRESULT get_LanguageID (long *LanguageID);
 	HRESULT get_LanguageName (VARIANT_BOOL EnglishName, BSTR *LanguageName);
 
+	// IDaXxxTTSPrivate
+	HRESULT get_InitDisplayName (BSTR *DisplayName);
+    HRESULT put_InitDisplayName (BSTR DisplayName);
+	HRESULT get_InitManufacturer (BSTR *Manufacturer);
+    HRESULT put_InitManufacturer (BSTR Manufacturer);
+	HRESULT get_InitVersion (BSTR *Version);
+    HRESULT put_InitVersion (BSTR Version);
+	HRESULT get_InitGender (SpeechGenderType *Gender);
+    HRESULT put_InitGender (SpeechGenderType Gender);
+	HRESULT get_InitLanguageID (long *LanguageID);
+    HRESULT put_InitLanguageID (long LanguageID);
+    HRESULT get_InitString (BSTR ValuePath, BSTR *StringValue);
+    HRESULT put_InitString (BSTR ValuePath, BSTR StringValue);
+    HRESULT get_InitAttribute (BSTR AttributeName, BSTR *AttributeValue);
+    HRESULT put_InitAttribute (BSTR AttributeName, BSTR AttributeValue);
+	HRESULT get_InitFilePath (BSTR FileId, BSTR *FilePath);
+    HRESULT put_InitFilePath (BSTR FileId, BSTR FilePath);
+
 // Implementation
 protected:
-	class CSapi5VoiceInfo * mSapi5Voice;
-#ifndef	_WIN64
-	class CSapi4VoiceInfo*	mSapi4Voice;
-#endif
+	tPtr<class CSapi5VoicePrivate>	mSapi5VoicePrivate;
+	tPtr<class CSapi5VoiceInfo>		mPrivateVoiceInfo;
 };
 
 /////////////////////////////////////////////////////////////////////////////
